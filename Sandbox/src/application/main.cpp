@@ -1,10 +1,10 @@
 #include "math/math.h"
-#include <iostream>
+#include "logging/logger.h"
 
 int main()
 {
     int result = jumi::add(1, 3);
-    std::cout << result << '\n';
+    JUMI_INFO("{}", result);
 
     return 0;
 }

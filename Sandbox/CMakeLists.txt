@@ -18,7 +18,6 @@ target_include_directories(Sandbox PUBLIC "${PROJECT_SOURCE_DIR}/include")
 
 # Link with the EngineCore library
 add_dependencies(Sandbox EngineCore)
-target_link_libraries(Sandbox PRIVATE EngineCore)
 
 # Link dependencies from vcpkg or other sources here
-# target_link_libraries(Sandbox <dependencies>)
+target_link_libraries(Sandbox PRIVATE EngineCore)
