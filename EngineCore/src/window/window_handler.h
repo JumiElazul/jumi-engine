@@ -1,18 +1,20 @@
 #pragma once
 
+#include "core/core.h"
+
 struct GLFWwindow;
 
 namespace jumi
 {
 
-    struct WindowContext
+    struct JUMI_API WindowContext
     {
         int width;
         int height;
         const char* title;
     };
 
-    class WindowHandler
+    class JUMI_API WindowHandler
     {
     public:
         WindowHandler(const WindowHandler& other) = delete;

@@ -1,10 +1,6 @@
 #pragma once
 
-#ifdef JUMIAPI_EXPORT
-    #define JUMI_API __attribute__((visibility("default")))
-#else
-    #define JUMI_API
-#endif
+#include "core/core.h"
 
 namespace jumi
 {

@@ -8,19 +8,16 @@ namespace jumi
 
     WindowHandler::WindowHandler()
     {
-        JUMI_INFO("Constructor");
         init(); 
     }
     WindowHandler::~WindowHandler()
     {
-        JUMI_INFO("Destructor");
         // This line causes a segfault for some reason?  Need to figure this out.
         // glfwTerminate();
     }
 
     WindowHandler& WindowHandler::instance()
     {
-        JUMI_INFO("instance()");
         static WindowHandler instance;
         return instance;
     }
@@ -32,18 +29,14 @@ namespace jumi
 
     bool WindowHandler::create_window(const WindowContext& context)
     {
-        JUMI_INFO("create_window()");
         _window = glfwCreateWindow(context.width, context.height, context.title, nullptr, nullptr);
 
         if (!_window)
         {
-            JUMI_INFO("_window is nullptr");
             return false;
         }
 
-        JUMI_INFO("_window created");
         glfwMakeContextCurrent(_window);
-        JUMI_INFO("Context set to current window");
         return true;
     }
 
@@ -52,7 +45,6 @@ namespace jumi
         if (_window)
         {
             glfwShowWindow(_window);
-            JUMI_INFO("Show window");
         }
     }
 
@@ -76,7 +68,7 @@ namespace jumi
     {
         if (!glfwInit())
         {
-            JUMI_WARN("glfw could not be initialized");
+            JUMI_CRITICAL("glfw could not be initialized");
             return false;
         }
         return true;

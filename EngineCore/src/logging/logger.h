@@ -2,6 +2,7 @@
 
 // This macro needs to be defined before #include <spdlog/spdlog.h> to take effect when using spdlog macros instead of functions
 #define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_TRACE
+#include "core/core.h"
 #include <spdlog/spdlog.h>
 #include <string>
 
@@ -25,7 +26,7 @@ namespace jumi
 {
     constexpr int LOGMAP_SIZE = 7;
 
-	class Logger
+	class JUMI_API Logger
 	{
     public:
 		static std::shared_ptr<spdlog::logger> get_logger();

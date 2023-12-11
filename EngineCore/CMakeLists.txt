@@ -17,11 +17,16 @@ file(GLOB_RECURSE SOURCES "src/*.cpp")
 # Define the library
 add_library(EngineCore SHARED ${SOURCES})
 
+# Define JUMI_API_EXPORT when building the library
+target_compile_definitions(EngineCore PRIVATE JUMI_API_EXPORT)
+
+# Apply -fvisibility=hidden if not on Windows
+if(NOT WIN32)
+    target_compile_options(EngineCore PRIVATE "-fvisibility=hidden")
+endif()
+
 # Include directories
 target_include_directories(EngineCore PUBLIC "${PROJECT_SOURCE_DIR}/src/")
-
-# Define JUMIAPI_EXPORT when building the library
-target_compile_definitions(EngineCore PRIVATE JUMIAPI_EXPORT)
 
 # Link dependencies from vcpkg or other sources here
 target_link_libraries(EngineCore PUBLIC spdlog::spdlog glfw)

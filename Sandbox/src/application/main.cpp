@@ -12,7 +12,7 @@ int main()
     window_handler.show_window();
 
     float time{};
-    while (time < 4.0f)
+    while (time < 2.0f)
     {
         time = window_handler.get_time();
 
