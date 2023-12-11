@@ -4,10 +4,12 @@
 VCPKG_TOOLCHAIN=~/Documents/programming/vcpkg/scripts/buildsystems/vcpkg.cmake
 
 # Create the build directory
-mkdir -p bin
+if [ ! -d "bin" ]; then
+    mkdir -p bin
+fi
 
 # Run CMake with the vcpkg toolchain
-cmake -S . -B bin -DCMAKE_TOOLCHAIN_FILE=${VCPKG_TOOLCHAIN} -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+cmake -S . -B bin --log-level=VERBOSE -DCMAKE_TOOLCHAIN_FILE=${VCPKG_TOOLCHAIN} -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
 # Build the project
 cd bin

@@ -9,6 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Find the required libraries
 find_package(spdlog CONFIG REQUIRED)
+find_package(glfw3 CONFIG REQUIRED)
 
 # Add source files
 file(GLOB_RECURSE SOURCES "src/*.cpp")
@@ -23,4 +24,4 @@ target_include_directories(EngineCore PUBLIC "${PROJECT_SOURCE_DIR}/src/")
 target_compile_definitions(EngineCore PRIVATE JUMIAPI_EXPORT)
 
 # Link dependencies from vcpkg or other sources here
-target_link_libraries(EngineCore PUBLIC spdlog::spdlog)
+target_link_libraries(EngineCore PUBLIC spdlog::spdlog glfw)

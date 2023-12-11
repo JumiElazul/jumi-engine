@@ -3,7 +3,6 @@
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <memory>
 #include <string>
-#include <iostream>
 
 namespace jumi
 {
