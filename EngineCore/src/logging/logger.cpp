@@ -12,14 +12,7 @@ namespace jumi
 	std::shared_ptr<spdlog::logger> Logger::_core_logger;
 	std::string Logger::_log_level_map[LOGMAP_SIZE];
 
-    std::shared_ptr<spdlog::logger> Logger::get_logger()
-    {
-        if (!_initialized)
-        {
-            init();
-        }
-        return _core_logger; 
-    }
+    std::shared_ptr<spdlog::logger> Logger::get_logger() { return _core_logger; }
 
 	void Logger::init()
 	{

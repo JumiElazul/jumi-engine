@@ -3,7 +3,8 @@
   "version-string": "0.0.1",
   "dependencies": [
       "spdlog",
-      "glfw3"
+      "glfw3",
+      "glad"
   ],
   "builtin-baseline": "871e20cf67ebaa80c048b868be53c8e7375c79f3"
 }

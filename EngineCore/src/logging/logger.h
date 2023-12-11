@@ -30,10 +30,11 @@ namespace jumi
 	{
     public:
 		static std::shared_ptr<spdlog::logger> get_logger();
+		static void init();
+
 	private:
         static bool _initialized;
 
-		static void init();
 		static std::shared_ptr<spdlog::logger> _core_logger;
 		static std::string _log_level_map[LOGMAP_SIZE];
 
