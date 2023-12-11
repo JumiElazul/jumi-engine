@@ -5,13 +5,12 @@
 namespace jumi
 {
 
-	Camera::Camera(CameraSpecification spec)
-		: _camera_specification(spec),
+    Camera::Camera(CameraSpecification spec) :
+        _camera_specification(spec),
 		_projection_matrix(Mat4::identity()),
-		_vector_directions(),
 		_transform()
 	{
-		calculate_perspective_matrix();
+		calculate_projection_matrix();
 	}
 
 	Camera::~Camera() { }
@@ -64,10 +63,10 @@ namespace jumi
 		float aspect = _camera_specification.aspect_ratio;
 		float z_near = _camera_specification.z_near;
 		float z_far = _camera_specification.z_far;
-        float tanHalfFOV = tan(fov / 2.0f);
+        float tan_half_fov = tan(fov / 2.0f);
 
-        result[0][0] = 1.0f / (tanHalfFOV * aspect);
-        result[1][1] = 1.0f / tanHalfFOV;
+        result[0][0] = 1.0f / (tan_half_fov * aspect);
+        result[1][1] = 1.0f / tan_half_fov;
         result[2][2] = -(z_far + z_near) / (z_far - z_near);
         result[2][3] = -1.0f;
         result[3][2] = -(2.0f * z_far * z_near) / (z_far - z_near);

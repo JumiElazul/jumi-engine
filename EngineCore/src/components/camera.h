@@ -21,16 +21,6 @@ namespace jumi
 		"Perspective"
 	};
 
-	struct CameraDirection
-	{
-		Vec3 forward;
-		Vec3 backward;
-		Vec3 left;
-		Vec3 right;
-		Vec3 up;
-		Vec3 down;
-	};
-
 	struct CameraSpecification
 	{
 		ProjectionType projection_type;
@@ -56,7 +46,6 @@ namespace jumi
 	private:
 		CameraSpecification _camera_specification;
 		Mat4 _projection_matrix;
-		CameraDirection _vector_directions;
 		Transform _transform;
 
 		Mat4 calculate_perspective_matrix() const;

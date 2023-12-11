@@ -4,7 +4,10 @@
 namespace jumi
 {
 
-    Transform::Transform() {}
+    Transform::Transform() :
+        _position(),
+        _rotation(),
+        _scale() {}
 
     Transform::~Transform() {}
 
@@ -24,13 +27,47 @@ namespace jumi
 
     Mat4 Transform::model_matrix() const
     {
-        Mat4 modelMatrix{ Mat4::identity() };
-        modelMatrix = Mat4::scale(modelMatrix, _scale);
-        modelMatrix = Mat4::rotate(modelMatrix, _rotation);
-        modelMatrix = Mat4::translate(modelMatrix, _position);
+        Mat4 model_matrix{ Mat4::identity() };
+        model_matrix = Mat4::scale(model_matrix, _scale);
+        model_matrix = Mat4::rotate(model_matrix, _rotation);
+        model_matrix = Mat4::translate(model_matrix, _position);
 
-        return modelMatrix;
+        return model_matrix;
     }
 
+    void Transform::update_direction_vectors()
+    {
+
+    }
+
+    void Transform::update_left_vector()
+    {
+
+    }
+
+    void Transform::update_right_vector()
+    {
+
+    }
+
+    void Transform::update_forward_vector()
+    {
+
+    }
+
+    void Transform::update_back_vector()
+    {
+
+    }
+
+    void Transform::update_up_vector()
+    {
+
+    }
+
+    void Transform::update_down_vector()
+    {
+
+    }
 
 }
