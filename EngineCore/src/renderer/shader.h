@@ -40,6 +40,7 @@ namespace jumi
 		Shader& operator=(Shader&& other) noexcept;
 
 		const std::string& name() const;
+        unsigned int get_shader_id() const;
 		void bind_shader() const;
 		void set_uniform_float(const char* uniform, float value) const;
 		void set_uniform_int(const char* uniform, int value) const;

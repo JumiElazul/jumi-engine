@@ -19,6 +19,8 @@ namespace jumi
 
 	const std::string& SceneObject::name() const { return _name; }
 
+    int SceneObject::id() const { return _id; }
+
 	std::shared_ptr<Mesh> SceneObject::get_mesh() const { return _mesh; }
 
 	std::shared_ptr<Shader> SceneObject::get_shader() const { return _shader; }

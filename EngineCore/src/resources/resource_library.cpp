@@ -8,19 +8,19 @@
 namespace jumi
 {
 
-	const std::string ResourceLibrary::s_default_shader_name = "DEFAULT_SHADER";
+	const std::string ResourceLibrary::s_default_shader_name = "_DEFAULT_SHADER";
 
 	const std::string ResourceLibrary::s_default_vertex_shader =
 		"#version 420 core\n"										     		                                 \
 		"layout(location = 0) in vec3 VPOS;\n\n"						     	                                 \
                                                                                                                  \
-		"uniform mat4 u_modelMatrix;\n"                                                                          \
-		"uniform mat4 u_viewMatrix;\n"                                                                           \
-		"uniform mat4 u_projectionMatrix;\n"                                                                     \
+		"uniform mat4 u_model_matrix;\n"                                                                         \
+		"uniform mat4 u_view_matrix;\n"                                                                          \
+		"uniform mat4 u_projection_matrix;\n"                                                                    \
                                                                                                                  \
 		"void main()\n"														                                     \
 		"{\n"														                                             \
-			"gl_Position = u_projectionMatrix * u_viewMatrix * u_modelMatrix * vec4(VPOS, 1.0);"                 \
+			"gl_Position = u_projection_matrix * u_view_matrix * u_model_matrix * vec4(VPOS, 1.0);"              \
 		"}\n";
 
 	const std::string ResourceLibrary::s_default_fragment_shader =

@@ -18,6 +18,7 @@ namespace jumi
 
 		Transform& get_transform();
 		const std::string& name() const;
+        int id() const;
 		std::shared_ptr<Mesh> get_mesh() const;
 		std::shared_ptr<Shader> get_shader() const;
 

@@ -11,6 +11,7 @@
 #include "renderer/shader.h"
 #include "resources/resource_library.h"
 #include "window/window_handler.h"
+#include <iostream>
 
 int main(int argc, char* argv[])
 {
@@ -25,7 +26,7 @@ int main(int argc, char* argv[])
 	renderer.set_clear_color({ 0.2f, 0.2f, 0.2f });
 
 	std::shared_ptr<jumi::Mesh> cube_mesh = jumi::ResourceLibrary::create_primitive_mesh(jumi::MeshType::Cube);
-	std::shared_ptr<jumi::Shader> shader = jumi::ResourceLibrary::get_shader("DEFAULT_SHADER");
+	std::shared_ptr<jumi::Shader> shader = jumi::ResourceLibrary::get_default_shader();
 
 	jumi::Mat4 model{ jumi::Mat4::identity() };
 	model = jumi::Mat4::rotate(model, { 45.0f, 0.0f, 0.0f });
@@ -43,6 +44,8 @@ int main(int argc, char* argv[])
 
 	std::shared_ptr<jumi::SceneObject> cube = std::make_shared<jumi::SceneObject>("CubeSceneObject", cube_mesh);
 
+    std::cout << "Cube sceneobject has a mesh: " << (cube->get_mesh() != nullptr) << '\n';
+
 	jumi::Scene main_scene;
 	main_scene.add_scene_object(cube);
 
@@ -51,9 +54,9 @@ int main(int argc, char* argv[])
 		renderer.clear_color_buffer();
 		renderer.clear_depth_buffer();
 
-        shader->set_uniform_mat4("u_modelMatrix", model);
-        shader->set_uniform_mat4("u_viewMatrix", camera.view_matrix());
-        shader->set_uniform_mat4("u_projectionMatrix", camera.projection_matrix());
+        shader->set_uniform_mat4("u_model_matrix", model);
+        shader->set_uniform_mat4("u_view_matrix", camera.view_matrix());
+        shader->set_uniform_mat4("u_projection_matrix", camera.projection_matrix());
 
 		if (input.is_key_held(JUMI_KEY_F))
 		{

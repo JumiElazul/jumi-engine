@@ -82,6 +82,8 @@ namespace jumi
 
 	const std::string& Shader::name() const { return _shader_name; }
 
+    unsigned int Shader::get_shader_id() const { return _shader_program_id; }
+
 	void Shader::bind_shader() const
 	{
 		glUseProgram(_shader_program_id);

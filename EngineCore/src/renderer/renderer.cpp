@@ -41,6 +41,10 @@ namespace jumi
 		{
 			std::shared_ptr<Mesh> mesh = scene_object->get_mesh();
 			std::shared_ptr<Shader> shader = scene_object->get_shader();
+            JUMI_INFO("Attemping to render scene_object id: {}, name: {}, has_mesh: {}, has_shader: {}", scene_object->id(),
+                    scene_object->name(),
+                    scene_object->get_mesh() != nullptr,
+                    scene_object->get_shader() != nullptr);
 
 			if (mesh)
 			{
@@ -52,17 +56,21 @@ namespace jumi
     void Renderer::render_mesh(const Mesh& mesh,
             const Camera& camera,
             std::shared_ptr<Shader> shader, 
-            RenderMode renderMode)
+            RenderMode render_mode)
     {
 		if (shader == nullptr)
 		{
 			shader = ResourceLibrary::get_default_shader();
 		}
 
+        JUMI_INFO("Rendering mesh: {}, vertice_count: {}, indice_count: {}", mesh.name(), mesh.get_vertice_count(), mesh.get_indice_count());
+        JUMI_INFO("With shader id: {}, name: {}", shader->get_shader_id(), shader->name());
+        JUMI_INFO("With RenderMode: {}", render_mode);
+
 		mesh.bind_mesh();
 		shader->bind_shader();
 
-		switch (renderMode)
+		switch (render_mode)
 		{
 		case jumi::DrawElements:
 			glDrawElements(GL_TRIANGLES, mesh.get_indice_count(), GL_UNSIGNED_INT, 0);
@@ -71,7 +79,7 @@ namespace jumi
             glDrawArrays(GL_TRIANGLES, 0, mesh.get_vertice_count());
 			break;
 		default:
-			JUMI_ERROR("Invalid Renderer RenderMode");
+			JUMI_ERROR("Invalid RenderMode");
 			break;
 		}
 	}
