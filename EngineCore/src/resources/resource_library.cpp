@@ -11,7 +11,7 @@ namespace jumi
 	const std::string ResourceLibrary::s_default_shader_name = "_DEFAULT_SHADER";
 
 	const std::string ResourceLibrary::s_default_vertex_shader =
-		"#version 420 core\n"										     		                                 \
+		"#version 460 core\n"										     		                                 \
 		"layout(location = 0) in vec3 VPOS;\n\n"						     	                                 \
                                                                                                                  \
 		"uniform mat4 u_model_matrix;\n"                                                                         \
@@ -24,7 +24,7 @@ namespace jumi
 		"}\n";
 
 	const std::string ResourceLibrary::s_default_fragment_shader =
-		"#version 420 core\n"							                                	                     \
+		"#version 460 core\n"							                                	                     \
 		                                                                                                         \
 		"out vec4 fragColor;\n"										     		                                 \
 		                                                                                                         \
