@@ -19,6 +19,8 @@
     #define JUMI_PAUSE assert(false)
 #endif
 
+#define JUMI_UNUSED __attribute__((unused))
+
 
 namespace jumi
 {

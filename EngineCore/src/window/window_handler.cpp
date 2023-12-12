@@ -37,7 +37,14 @@ namespace jumi
 
 	WindowHandler::WindowHandler() { }
 
-	WindowHandler::~WindowHandler() { }
+	WindowHandler::~WindowHandler() 
+    {
+        if (_window)
+        {
+            JUMI_INFO("WindowHandler destructor called: destroying window");
+            glfwDestroyWindow(_window);
+        }
+    }
 
 	bool WindowHandler::init(const WindowContext& window_context)
 	{

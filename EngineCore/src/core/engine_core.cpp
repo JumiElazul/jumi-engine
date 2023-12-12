@@ -1,4 +1,5 @@
 #include "core/engine_core.h"
+#include "core/core.h"
 #include "logging/logger.h"
 #include "input/keycode_converter.h"
 #include "input/input_handler.h"
@@ -19,7 +20,16 @@ namespace jumi
 
 	}
 
-	EngineCore::~EngineCore() { }
+	EngineCore::~EngineCore() 
+    {
+		if (!_initialized)
+		{
+			JUMI_ERROR("Not calling glfwTerminate(), EngineCore was never initialized.  Destructor called.");
+			return;
+		}
+
+		glfwTerminate();
+    }
 
 	EngineCore& EngineCore::instance()
 	{
@@ -95,18 +105,6 @@ namespace jumi
 		/* glDebugMessageCallback(gl_debug_msg_callback, nullptr); */
 
 		return true;
-	}
-
-	void EngineCore::shutdown()
-	{
-		if (!_initialized)
-		{
-			JUMI_ERROR("Shutdown cannot be called, EngineCore was not initialized");
-			return;
-		}
-
-		glfwTerminate();
-		_initialized = false;
 	}
 
 	void EngineCore::set_window_context(int width, int height, const char* title, bool v_sync, bool fullscreen)
@@ -208,7 +206,7 @@ namespace jumi
 		JUMI_ERROR("[err_code: {}] {}", err_code, description);
 	}
 
-	void WindowUserPointer::glfw_key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+	void WindowUserPointer::glfw_key_callback(GLFWwindow* window, int key, JUMI_UNUSED int scancode, int action, JUMI_UNUSED int mods)
 	{
 		// Convert the incoming glfw keycode to our custom engine keycodes
 		JUMI_KEYCODE keycode = KeyCodeConverter::glfw_to_jumi_keycode(key);
@@ -222,7 +220,7 @@ namespace jumi
     // TODO: This function can only be used as a callback on versions of OpenGL >= 4.3.  Currently this project is
     // running on 4.2 due to WSL limitations, but this function can remain here if its ever upgraded.
     void EngineCore::gl_debug_msg_callback(unsigned int source, unsigned int type, unsigned int id, unsigned int severity,
-            int length, const char* message, const void* userParam)
+            JUMI_UNUSED int length, const char* message, JUMI_UNUSED const void* user_param)
 	{
 		std::string _source;
 		std::string _type;

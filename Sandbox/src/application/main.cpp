@@ -1,3 +1,4 @@
+#include "core/core.h"
 #include "core/engine_core.h"
 #include "components/camera.h"
 #include "components/scene.h"
@@ -13,7 +14,7 @@
 #include "window/window_handler.h"
 #include <iostream>
 
-int main(int argc, char* argv[])
+int main(JUMI_UNUSED int argc, JUMI_UNUSED char* argv[])
 {
 	jumi::EngineCore& engine_core = jumi::EngineCore::instance();
 
@@ -85,6 +86,5 @@ int main(int argc, char* argv[])
 		}
 	}
 
-	engine_core.shutdown();
 	return 0;
 }

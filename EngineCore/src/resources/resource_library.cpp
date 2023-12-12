@@ -102,14 +102,17 @@ namespace jumi
             case MeshType::Sphere:
             {
                 JUMI_INFO("Creating MeshType::Sphere");
+                break;
             }
             case MeshType::Diamond:
             {
                 JUMI_INFO("Creating MeshType::Diamond");
+                break;
             }
             case MeshType::Plane:
             {
                 JUMI_INFO("Creating MeshType::Plane");
+                break;
             }
             default:
             {

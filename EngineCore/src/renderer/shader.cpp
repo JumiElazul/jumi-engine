@@ -13,7 +13,7 @@
 namespace jumi
 {
 
-	void BasicUniformStrategy::apply_uniforms(Shader& shader, const Camera& camera)
+	void BasicUniformStrategy::apply_uniforms(JUMI_UNUSED Shader& shader, JUMI_UNUSED const Camera& camera)
 	{
 
 	}

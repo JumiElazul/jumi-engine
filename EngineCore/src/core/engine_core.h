@@ -39,7 +39,6 @@ namespace jumi
 		static EngineCore& instance();
 
 		void init();
-		void shutdown();
 		void set_window_context(int width, int height, const char* title, bool vSync = false, bool fullscreen = false);
 		double get_time() const;
 		WindowHandler& get_window();

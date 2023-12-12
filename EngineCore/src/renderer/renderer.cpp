@@ -1,6 +1,7 @@
 #include "renderer/renderer.h"
 #include "components/scene.h"
 #include "components/scene_object.h"
+#include "core/core.h"
 #include "logging/logger.h"
 #include "math/vector.h"
 #include "renderer/mesh.h"
@@ -54,7 +55,7 @@ namespace jumi
 	}
 
     void Renderer::render_mesh(const Mesh& mesh,
-            const Camera& camera,
+            JUMI_UNUSED const Camera& camera,
             std::shared_ptr<Shader> shader, 
             RenderMode render_mode)
     {
