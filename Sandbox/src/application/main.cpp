@@ -45,8 +45,6 @@ int main(JUMI_UNUSED int argc, JUMI_UNUSED char* argv[])
 
 	std::shared_ptr<jumi::SceneObject> cube = std::make_shared<jumi::SceneObject>("CubeSceneObject", cube_mesh);
 
-    std::cout << "Cube sceneobject has a mesh: " << (cube->get_mesh() != nullptr) << '\n';
-
 	jumi::Scene main_scene;
 	main_scene.add_scene_object(cube);
 
@@ -54,15 +52,16 @@ int main(JUMI_UNUSED int argc, JUMI_UNUSED char* argv[])
 	{
 		renderer.clear_color_buffer();
 		renderer.clear_depth_buffer();
+        input.poll_events();
 
         shader->set_uniform_mat4("u_model_matrix", model);
         shader->set_uniform_mat4("u_view_matrix", camera.view_matrix());
         shader->set_uniform_mat4("u_projection_matrix", camera.projection_matrix());
 
-		if (input.is_key_held(JUMI_KEY_F))
-		{
-			camera.get_transform().move({ 0.0f, 0.01f, 0.0f });
-		}
+        if (input.is_key_held(JUMI_KEY_F))
+        {
+            camera.get_transform().move({ 0.0f, 0.01f, 0.0f });
+        }
 		if (input.is_key_held(JUMI_KEY_S))
 		{
 			camera.get_transform().move({ 0.0f, -0.01f, 0.0f });
@@ -77,7 +76,6 @@ int main(JUMI_UNUSED int argc, JUMI_UNUSED char* argv[])
 		}
 
 		renderer.render_scene(main_scene);
-		//renderer.RenderMesh(mesh, camera, shader);
 
 		window.swap_buffers();
 		if (input.is_key_down(JUMI_KEY_Q))

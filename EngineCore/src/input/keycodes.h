@@ -130,6 +130,7 @@ namespace Jumi
 		constexpr JUMI_KEYCODE JUMI_KEY_RIGHT_ALT           = 346;
 		constexpr JUMI_KEYCODE JUMI_KEY_RIGHT_SUPER         = 347;
 		constexpr JUMI_KEYCODE JUMI_KEY_MENU                = 348;
+		constexpr JUMI_KEYCODE JUMI_MAX_KEYCODE             = 349;
 
 		constexpr JUMI_KEYACTION JUMI_KEYACTION_RELEASE     = 0;
 		constexpr JUMI_KEYACTION JUMI_KEYACTION_PRESS       = 1;

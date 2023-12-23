@@ -22,13 +22,14 @@ namespace jumi
 
 	EngineCore::~EngineCore() 
     {
-		if (!_initialized)
-		{
-			JUMI_ERROR("Not calling glfwTerminate(), EngineCore was never initialized.  Destructor called.");
-			return;
-		}
-
-		glfwTerminate();
+        if (!_initialized)
+        {
+            JUMI_ERROR("Not calling glfwTerminate(), EngineCore was never initialized.  Destructor called.");
+        }
+        else
+        {
+            glfwTerminate();
+        }
     }
 
 	EngineCore& EngineCore::instance()

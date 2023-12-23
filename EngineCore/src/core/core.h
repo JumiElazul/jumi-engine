@@ -21,7 +21,6 @@
 
 #define JUMI_UNUSED __attribute__((unused))
 
-
 namespace jumi
 {
 

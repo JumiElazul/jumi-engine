@@ -22,6 +22,9 @@
 	#define JUMI_CRITICAL(...)
 #endif
 
+#define JUMI_INPUT_LOGGING
+/* #define JUMI_RENDER_LOGGING */
+
 namespace jumi
 {
     constexpr int LOGMAP_SIZE = 7;

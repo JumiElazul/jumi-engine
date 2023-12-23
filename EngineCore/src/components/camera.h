@@ -3,6 +3,7 @@
 #include "core/core.h"
 #include "math/matrix.h"
 #include "math/vector.h"
+#include "components/component_interface.h"
 #include "components/transform.h"
 
 namespace jumi
@@ -30,7 +31,7 @@ namespace jumi
 		float z_far;
 	};
 
-	class JUMI_API Camera
+	class JUMI_API Camera : public IComponent
 	{
 	public:
 		Camera(CameraSpecification spec);

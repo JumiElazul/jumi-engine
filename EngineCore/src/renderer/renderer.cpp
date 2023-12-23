@@ -42,10 +42,6 @@ namespace jumi
 		{
 			std::shared_ptr<Mesh> mesh = scene_object->get_mesh();
 			std::shared_ptr<Shader> shader = scene_object->get_shader();
-            JUMI_INFO("Attemping to render scene_object id: {}, name: {}, has_mesh: {}, has_shader: {}", scene_object->id(),
-                    scene_object->name(),
-                    scene_object->get_mesh() != nullptr,
-                    scene_object->get_shader() != nullptr);
 
 			if (mesh)
 			{
@@ -64,9 +60,12 @@ namespace jumi
 			shader = ResourceLibrary::get_default_shader();
 		}
 
-        JUMI_INFO("Rendering mesh: {}, vertice_count: {}, indice_count: {}", mesh.name(), mesh.get_vertice_count(), mesh.get_indice_count());
-        JUMI_INFO("With shader id: {}, name: {}", shader->get_shader_id(), shader->name());
-        JUMI_INFO("With RenderMode: {}", render_mode);
+#ifdef JUMI_RENDER_LOGGING
+        JUMI_INFO("Rendering: Mesh: [name: {}, vert_count: {}, indice_count: {}] with Shader: [id: {}, name: {}]    RenderMode: [{}]",
+                mesh.name(), mesh.get_vertice_count(), mesh.get_indice_count(),
+                shader->get_shader_id(), shader->name(),
+                render_mode);
+#endif
 
 		mesh.bind_mesh();
 		shader->bind_shader();
