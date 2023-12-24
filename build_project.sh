@@ -1,4 +1,4 @@
-#!/bin/bash
+!#/bin/bash
 
 # Define the path to the vcpkg toolchain file
 VCPKG_TOOLCHAIN=~/Documents/programming/vcpkg/scripts/buildsystems/vcpkg.cmake
