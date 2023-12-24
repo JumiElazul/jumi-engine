@@ -23,7 +23,7 @@ namespace jumi
 		bool is_key_down(JUMI_KEYCODE keycode);
 		bool is_key_up(JUMI_KEYCODE keycode);
 		bool is_key_held(JUMI_KEYCODE keycode);
-        void poll_events();
+        void poll_input_events();
 
 	private:
 		Keymap _curr_keymap;

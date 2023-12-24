@@ -3,6 +3,7 @@
 #include "components/camera.h"
 #include "components/scene.h"
 #include "components/scene_object.h"
+#include "events/event_bus.h"
 #include "input/input_handler.h"
 #include "input/keycodes.h"
 #include "math/matrix.h"
@@ -52,7 +53,7 @@ int main(JUMI_UNUSED int argc, JUMI_UNUSED char* argv[])
 	{
 		renderer.clear_color_buffer();
 		renderer.clear_depth_buffer();
-        input.poll_events();
+        input.poll_input_events();
 
         shader->set_uniform_mat4("u_model_matrix", model);
         shader->set_uniform_mat4("u_view_matrix", camera.view_matrix());
@@ -82,6 +83,8 @@ int main(JUMI_UNUSED int argc, JUMI_UNUSED char* argv[])
 		{
 			window.close_window();
 		}
+
+        jumi::EventBus::instance().dispatch_events();
 	}
 
 	return 0;

@@ -1,6 +1,7 @@
 #include "input/input_handler.h"
-#include "input/keycode_converter.h"
+#include "core/core.h"
 #include "core/engine_core.h"
+#include "events/event_bus.h"
 #include "logging/logger.h"
 #include <GLFW/glfw3.h>
 
@@ -36,30 +37,40 @@ namespace jumi
 		_curr_keymap[keycode] = key_state;
 	}
 
-    void InputHandler::poll_events()
+    void InputHandler::poll_input_events()
     {
-#ifdef JUMI_INPUT_LOGGING
+        _prev_keymap = _curr_keymap;
+        glfwPollEvents();
+
         for (const auto& key_state : _curr_keymap)
         {
             JUMI_KEYCODE keycode = key_state.first;
 
             if (is_key_down(keycode))
             {
+#ifdef JUMI_INPUT_LOGGING
                 JUMI_TRACE("Key down: {}", keycode);
+#endif
+                Scope<KeyPressedEvent> event = CreateScope<KeyPressedEvent>(keycode);
+                EventBus::instance().push_to_event_queue(std::move(event));
             }
             else if (is_key_up(keycode))
             {
+#ifdef JUMI_INPUT_LOGGING
                 JUMI_TRACE("Key up: {}", keycode);
+#endif
+                Scope<KeyReleasedEvent> event = CreateScope<KeyReleasedEvent>(keycode);
+                EventBus::instance().push_to_event_queue(std::move(event));
             }
             else if (is_key_held(keycode))
             {
+#ifdef JUMI_INPUT_LOGGING
                 JUMI_TRACE("Key held: {}", keycode);
+#endif
+                Scope<KeyHeldEvent> event = CreateScope<KeyHeldEvent>(keycode);
+                EventBus::instance().push_to_event_queue(std::move(event));
             }
         }
-#endif
-
-        _prev_keymap = _curr_keymap;
-        glfwPollEvents();
     }
 
 }

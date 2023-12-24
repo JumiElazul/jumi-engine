@@ -28,7 +28,7 @@ namespace jumi
 		WindowHandler& _window_handler;
 		InputHandler& _input_handler;
 
-		static void glfw_error_callback(int errorCode, const char* description);
+		static void glfw_error_callback(int err_code, const char* description);
 		static void glfw_key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 	};
 

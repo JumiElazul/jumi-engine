@@ -27,7 +27,7 @@
 
 namespace jumi
 {
-    constexpr int LOGMAP_SIZE = 7;
+    constexpr int32 LOGMAP_SIZE = 7;
 
 	class JUMI_API Logger
 	{
@@ -42,7 +42,7 @@ namespace jumi
 		static std::string _log_level_map[LOGMAP_SIZE];
 
 		static void initialize_log_map();
-		static std::string get_log_level(int log_level);
+		static std::string get_log_level(int32 log_level);
 	};
 
 }

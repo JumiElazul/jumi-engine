@@ -1,4 +1,5 @@
 #include "math/matrix.h"
+#include "core/core.h"
 #include "math/functions.h"
 #include "math/vector.h"
 #include <cmath>
@@ -105,9 +106,9 @@ namespace jumi
     Mat4 Mat4::operator+(const Mat4& other) const
     {
         Mat4 result;
-        for (int i = 0; i < 4; ++i)
+        for (uint8 i = 0; i < 4; ++i)
         {
-            for (int j = 0; j < 4; ++j)
+            for (uint8 j = 0; j < 4; ++j)
             {
                 result[i][j] = _matrix[i][j] + other._matrix[i][j];
             }
@@ -118,9 +119,9 @@ namespace jumi
     Mat4 Mat4::operator-(const Mat4& other) const
     {
         Mat4 result;
-        for (int i = 0; i < 4; ++i)
+        for (uint8 i = 0; i < 4; ++i)
 		{
-			for (int j = 0; j < 4; ++j)
+			for (uint8 j = 0; j < 4; ++j)
 			{
 				result[i][j] = _matrix[i][j] - other._matrix[i][j];
 			}
@@ -132,12 +133,12 @@ namespace jumi
 	{
 		Mat4 result;
 
-		for (int i = 0; i < 4; ++i)
+		for (uint8 i = 0; i < 4; ++i)
 		{
-			for (int j = 0; j < 4; ++j)
+			for (uint8 j = 0; j < 4; ++j)
 			{
 				result[i][j] = 0;
-				for (int k = 0; k < 4; ++k)
+				for (uint8 k = 0; k < 4; ++k)
 				{
 					result[i][j] += _matrix[i][k] * other._matrix[k][j];
 				}
@@ -146,8 +147,8 @@ namespace jumi
 		return result;
 	}
 
-	const std::array<float, 4>& Mat4::operator[](int index) const { return _matrix[index]; }
-	std::array<float, 4>& Mat4::operator[](int index) { return _matrix[index]; }
+	const std::array<float, 4>& Mat4::operator[](int32 index) const { return _matrix[index]; }
+	std::array<float, 4>& Mat4::operator[](int32 index) { return _matrix[index]; }
 
 	Mat4 Mat4::identity()
 	{

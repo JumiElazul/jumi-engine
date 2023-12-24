@@ -91,25 +91,25 @@ namespace jumi
 
 	void Shader::set_uniform_float(const char* uniform, float value) const
 	{
-		int location = get_uniform_location(uniform);
+		int32 location = get_uniform_location(uniform);
 		glUniform1f(location, value);
 	}
 
-	void Shader::set_uniform_int(const char* uniform, int value) const
+	void Shader::set_uniform_int(const char* uniform, int32 value) const
 	{
-		int location = get_uniform_location(uniform);
+		int32 location = get_uniform_location(uniform);
 		glUniform1i(location, value);
 	}
 
 	void Shader::set_uniform_vec3(const char* uniform, const Vec3& value) const
 	{
-		int location = get_uniform_location(uniform);
+		int32 location = get_uniform_location(uniform);
 		glUniform3f(location, value.x, value.y, value.z);
 	}
 
 	void Shader::set_uniform_mat4(const char* uniform, const Mat4& value) const
 	{
-		int location = get_uniform_location(uniform);
+		int32 location = get_uniform_location(uniform);
 		glUniformMatrix4fv(location, 1, GL_FALSE, value.get_value_ptr());
 	}
 
@@ -127,9 +127,9 @@ namespace jumi
 		JUMI_ERROR("_uniform_strategy is nullptr, apply_uniforms() could not be called");
 	}
 
-	int Shader::get_uniform_location(const char* uniform) const
+	int32 Shader::get_uniform_location(const char* uniform) const
 	{
-		int location = glGetUniformLocation(_shader_program_id, uniform);
+		int32 location = glGetUniformLocation(_shader_program_id, uniform);
 
 		if (location < 0)
 			JUMI_CRITICAL("Uniform {} on ShaderID {} doesn't exist", uniform, _shader_program_id);
@@ -143,7 +143,7 @@ namespace jumi
 		glShaderSource(vertex_shader_id, 1, &vertex_shader, nullptr);
 		glCompileShader(vertex_shader_id);
 
-		int success;
+		int32 success;
 		char buffer[512];
 		glGetShaderiv(vertex_shader_id, GL_COMPILE_STATUS, &success);
 
@@ -163,7 +163,7 @@ namespace jumi
 		glShaderSource(fragment_shader_id, 1, &fragment_shader, nullptr);
 		glCompileShader(fragment_shader_id);
 
-		int success;
+		int32 success;
 		char buffer[512];
 		glGetShaderiv(fragment_shader_id, GL_COMPILE_STATUS, &success);
 
@@ -183,7 +183,7 @@ namespace jumi
 		glAttachShader(_shader_program_id, vertex_id);
 		glAttachShader(_shader_program_id, fragment_id);
 
-		int success;
+		int32 success;
 		char buffer[512];
 		glLinkProgram(_shader_program_id);
 		glGetProgramiv(_shader_program_id, GL_LINK_STATUS, &success);

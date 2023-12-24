@@ -39,7 +39,7 @@ namespace jumi
 
 	inline std::ostream& operator<<(std::ostream& stream, const Mat4& mat4)
 	{
-		for (int i = 0; i < 4; ++i)
+		for (size_t i = 0; i < 4; ++i)
 		{
 			stream << "[";
 			for (int j = 0; j < 4; ++j)

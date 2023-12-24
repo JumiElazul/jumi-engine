@@ -107,7 +107,7 @@ namespace jumi
 		return true;
 	}
 
-	void EngineCore::set_window_context(int width, int height, const char* title, bool v_sync, bool fullscreen)
+	void EngineCore::set_window_context(int32 width, int32 height, const char* title, bool v_sync, bool fullscreen)
 	{
 		_window_context = std::make_unique<WindowContext>(width, height, title, v_sync, fullscreen);
 	}

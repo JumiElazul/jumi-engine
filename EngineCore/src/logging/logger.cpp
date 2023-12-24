@@ -29,7 +29,7 @@ namespace jumi
         }
 
 		_core_logger->set_level(spdlog::level::trace);
-		int log_level = static_cast<int>(_core_logger->level());
+		int32 log_level = static_cast<int32>(_core_logger->level());
 
         // This needs to happen before the calls below to avoid infinite recursion
         Logger::_initialized = true;
@@ -54,7 +54,7 @@ namespace jumi
 		_log_level_map[SPDLOG_LEVEL_OFF] =      "OFF";
 	}
 
-	std::string Logger::get_log_level(int log_level)
+	std::string Logger::get_log_level(int32 log_level)
 	{
 		return _log_level_map[log_level];
 	}

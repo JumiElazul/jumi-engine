@@ -63,7 +63,7 @@ namespace jumi
 		}
 
 		// Enable raw mouse motion if supported
-		int rawmouse_supported = glfwRawMouseMotionSupported();
+		int32 rawmouse_supported = glfwRawMouseMotionSupported();
 		if (rawmouse_supported)
 		{
 			glfwSetInputMode(_window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
@@ -90,7 +90,7 @@ namespace jumi
 
 	GLFWwindow* WindowHandler::get_window() const { return _window; }
 
-	void WindowHandler::change_resolution(int width, int height)
+	void WindowHandler::change_resolution(int32 width, int32 height)
 	{
 		_window_context.width = width;
 		_window_context.height = height;

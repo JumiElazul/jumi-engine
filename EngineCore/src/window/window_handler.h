@@ -10,8 +10,8 @@ namespace jumi
 
 	struct WindowContext
 	{
-		int width = 1280;
-		int height = 720;
+		int32 width = 1280;
+		int32 height = 720;
 		const char* title = "DefaultWindow";
 		bool v_sync = false;
 		bool fullscreen = false;
@@ -21,12 +21,12 @@ namespace jumi
 
 	struct MonitorContext
 	{
-		int width = 0;
-		int height = 0;
-		int red_bits = 0;
-		int green_bits = 0;
-		int blue_bits = 0;
-		int refresh_rate = 0;
+		int32 width = 0;
+		int32 height = 0;
+		int32 red_bits = 0;
+		int32 green_bits = 0;
+		int32 blue_bits = 0;
+		int32 refresh_rate = 0;
 
 		std::string to_string();
 	};
@@ -46,7 +46,7 @@ namespace jumi
 		void shutdown();
 		void show_window() const;
 		GLFWwindow* get_window() const;
-		void change_resolution(int width, int height);
+		void change_resolution(int32 width, int32 height);
 		void set_fullscreen(bool fullscreen);
 		const WindowContext& get_window_context() const;
 		const MonitorContext& get_monitor_context() const;
