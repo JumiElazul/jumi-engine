@@ -4,7 +4,10 @@
   "dependencies": [
       "spdlog",
       "glfw3",
-      "glad"
+      {
+          "name": "glad",
+          "features": ["gl-api-latest"]
+      }
   ],
   "builtin-baseline": "871e20cf67ebaa80c048b868be53c8e7375c79f3"
 }

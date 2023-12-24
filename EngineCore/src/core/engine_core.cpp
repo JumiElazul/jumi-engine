@@ -102,8 +102,7 @@ namespace jumi
 		glEnable(GL_MULTISAMPLE);  
 		glViewport(0, 0, context.width, context.height);
 
-        // This function can only be used on OpenGL versions >= 4.3.  See the note on gl_debug_msg_callback.
-		/* glDebugMessageCallback(gl_debug_msg_callback, nullptr); */
+		glDebugMessageCallback(gl_debug_msg_callback, nullptr);
 
 		return true;
 	}
@@ -218,8 +217,6 @@ namespace jumi
 		windowUserPointer->get_input_handler().on_key_pressed(keycode, keyaction);
 	}
 
-    // TODO: This function can only be used as a callback on versions of OpenGL >= 4.3.  Currently this project is
-    // running on 4.2 due to WSL limitations, but this function can remain here if its ever upgraded.
     void EngineCore::gl_debug_msg_callback(unsigned int source, unsigned int type, unsigned int id, unsigned int severity,
             JUMI_UNUSED int length, const char* message, JUMI_UNUSED const void* user_param)
 	{
@@ -229,91 +226,114 @@ namespace jumi
 
 		switch (source) 
 		{
-		case GL_DEBUG_SOURCE_API:
-			_source = "API";
-			break;
-
-		case GL_DEBUG_SOURCE_WINDOW_SYSTEM:
-			_source = "WINDOW SYSTEM";
-			break;
-
-		case GL_DEBUG_SOURCE_SHADER_COMPILER:
-			_source = "SHADER COMPILER";
-			break;
-
-		case GL_DEBUG_SOURCE_THIRD_PARTY:
-			_source = "THIRD PARTY";
-			break;
-
-		case GL_DEBUG_SOURCE_APPLICATION:
-			_source = "APPLICATION";
-			break;
-
-		case GL_DEBUG_SOURCE_OTHER:
-			_source = "UNKNOWN";
-			break;
-
-		default:
-			_source = "DEFAULT";
-			break;
+            case GL_DEBUG_SOURCE_API:
+            {
+                _source = "API";
+                break;
+            }
+            case GL_DEBUG_SOURCE_WINDOW_SYSTEM:
+            {
+                _source = "WINDOW SYSTEM";
+                break;
+            }
+            case GL_DEBUG_SOURCE_SHADER_COMPILER:
+            {
+                _source = "SHADER COMPILER";
+                break;
+            }
+            case GL_DEBUG_SOURCE_THIRD_PARTY:
+            {
+                _source = "THIRD PARTY";
+                break;
+            }
+            case GL_DEBUG_SOURCE_APPLICATION:
+            {
+                _source = "APPLICATION";
+                break;
+            }
+            case GL_DEBUG_SOURCE_OTHER:
+            {
+                _source = "UNKNOWN";
+                break;
+            }
+            default:
+            {
+                _source = "DEFAULT";
+                break;
+            }
 		}
 
 		switch (type)
 		{
-		case GL_DEBUG_TYPE_ERROR:
-			_type = "ERROR";
-			break;
-
-		case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR:
-			_type = "DEPRECATED BEHAVIOR";
-			break;
-
-		case GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR:
-			_type = "UNDEFINED BEHAVIOR";
-			break;
-
-		case GL_DEBUG_TYPE_PORTABILITY:
-			_type = "PORTABILITY";
-			break;
-
-		case GL_DEBUG_TYPE_PERFORMANCE:
-			_type = "PERFORMANCE";
-			break;
-
-		case GL_DEBUG_TYPE_OTHER:
-			_type = "OTHER";
-			break;
-
-		case GL_DEBUG_TYPE_MARKER:
-			_type = "MARKER";
-			break;
-
-		default:
-			_type = "UNKNOWN";
-			break;
+            case GL_DEBUG_TYPE_ERROR:
+            {
+                _type = "ERROR";
+                break;
+            }
+            case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR:
+            {
+                _type = "DEPRECATED BEHAVIOR";
+                break;
+            }
+            case GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR:
+            {
+                _type = "UNDEFINED BEHAVIOR";
+                break;
+            }
+            case GL_DEBUG_TYPE_PORTABILITY:
+            {
+                _type = "PORTABILITY";
+                break;
+            }
+            case GL_DEBUG_TYPE_PERFORMANCE:
+            {
+                _type = "PERFORMANCE";
+                break;
+            }
+            case GL_DEBUG_TYPE_OTHER:
+            {
+                _type = "OTHER";
+                break;
+            }
+            case GL_DEBUG_TYPE_MARKER:
+            {
+                _type = "MARKER";
+                break;
+            }
+            default:
+            {
+                _type = "UNKNOWN";
+                break;
+            }
 		}
 
 		switch (severity) 
 		{
-		case GL_DEBUG_SEVERITY_HIGH:
-			_severity = "HIGH";
-			break;
-
-		case GL_DEBUG_SEVERITY_MEDIUM:
-			_severity = "MEDIUM";
-			break;
-
-		case GL_DEBUG_SEVERITY_LOW:
-			_severity = "LOW";
-			break;
-
-		case GL_DEBUG_SEVERITY_NOTIFICATION:
-			_severity = "NOTIFICATION";
-			break;
-
-		default:
-			_severity = "UNKNOWN";
-			break;
+            case GL_DEBUG_SEVERITY_HIGH:
+            {
+                _severity = "HIGH";
+                break;
+            }
+            case GL_DEBUG_SEVERITY_MEDIUM:
+            {
+                _severity = "MEDIUM";
+                break;
+            }
+            case GL_DEBUG_SEVERITY_LOW:
+            {
+                _severity = "LOW";
+                break;
+            }
+            case GL_DEBUG_SEVERITY_NOTIFICATION:
+            {
+                _severity = "NOTIFICATION";
+                break;
+            }
+            default:
+            {
+                _severity = "UNKNOWN";
+                break;
+            }
 		}
 
 		JUMI_CRITICAL("[OpenGLDebugCallback] [{}, {}, {}, {}]:  {}", id, _source, _severity, _type, message);
