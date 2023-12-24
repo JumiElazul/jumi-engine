@@ -14,9 +14,10 @@
     #define JUMI_PAUSE __debugbreak()
 #else
     #define JUMI_API __attribute__((visibility("default")))
-    #define JUMI_UNUSED __attribute__((unused))
     #define JUMI_PAUSE assert(false)
 #endif
+
+#define JUMI_UNUSED [[maybe_unused]]
 
 namespace jumi
 {

@@ -24,5 +24,7 @@ add_subdirectory(Sandbox)
 if(WIN32)
     target_compile_definitions(EngineCore PUBLIC JUMI_WINDOWS)
     target_compile_definitions(Sandbox PUBLIC JUMI_WINDOWS)
+
+    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT Sandbox)
 endif()
 
