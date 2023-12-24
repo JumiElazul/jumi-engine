@@ -24,6 +24,8 @@ target_link_libraries(Sandbox PRIVATE EngineCore)
 
 find_package(Python3 REQUIRED)
 
-add_custom_command(TARGET Sandbox PRE_BUILD
-                   COMMAND ${Python3_EXECUTABLE} "${CMAKE_CURRENT_SOURCE_DIR}/pre_build.py" "$<TARGET_FILE_DIR:Sandbox>"
-                   COMMENT "Running pre-build Python script for Sandbox")
+if(WIN32)
+    add_custom_command(TARGET Sandbox PRE_BUILD
+                       COMMAND ${Python3_EXECUTABLE} "${CMAKE_CURRENT_SOURCE_DIR}/pre_build.py" "$<TARGET_FILE_DIR:Sandbox>"
+                       COMMENT "Running pre-build Python script for Sandbox")
+endif()

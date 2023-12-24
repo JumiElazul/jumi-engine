@@ -34,6 +34,8 @@ target_link_libraries(EngineCore PUBLIC spdlog::spdlog glfw glad::glad)
 
 find_package(Python3 REQUIRED)
 
-add_custom_command(TARGET EngineCore POST_BUILD
-                   COMMAND ${Python3_EXECUTABLE} "${CMAKE_CURRENT_SOURCE_DIR}/post_build.py" "$<TARGET_FILE_DIR:EngineCore>"
-                   COMMENT "Running post-build Python script for EngineCore")
+if(WIN32)
+    add_custom_command(TARGET EngineCore POST_BUILD
+                       COMMAND ${Python3_EXECUTABLE} "${CMAKE_CURRENT_SOURCE_DIR}/post_build.py" "$<TARGET_FILE_DIR:EngineCore>"
+                       COMMENT "Running post-build Python script for EngineCore")
+endif()
