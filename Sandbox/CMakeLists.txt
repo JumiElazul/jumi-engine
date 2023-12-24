@@ -14,7 +14,7 @@ file(GLOB_RECURSE SOURCES "src/*.cpp")
 add_executable(Sandbox ${SOURCES})
 
 # Include directories
-target_include_directories(Sandbox PUBLIC "${PROJECT_SOURCE_DIR}/include")
+target_include_directories(Sandbox PUBLIC ${PROJECT_SOURCE_DIR}/include)
 
 # Link with the EngineCore library
 add_dependencies(Sandbox EngineCore)

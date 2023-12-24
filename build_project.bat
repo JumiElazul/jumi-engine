@@ -4,7 +4,7 @@ REM Define the path to the vcpkg toolchain file
 set VCPKG_TOOLCHAIN=D:\vcpkg\scripts\buildsystems\vcpkg.cmake
 
 REM Create the build directory
-if not exist "bin" mkdir bin
+if not exist bin mkdir bin
 
 REM Ask user for build mode
 echo Select build mode: (d) Debug, (r) Release

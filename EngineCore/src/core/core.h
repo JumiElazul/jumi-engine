@@ -10,18 +10,13 @@
     #else
         #define JUMI_API __declspec(dllimport)
     #endif
-#else
-    #define JUMI_API __attribute__((visibility("default")))
-#endif
 
-
-#ifdef JUMI_WINDOWS
     #define JUMI_PAUSE __debugbreak()
 #else
+    #define JUMI_API __attribute__((visibility("default")))
+    #define JUMI_UNUSED __attribute__((unused))
     #define JUMI_PAUSE assert(false)
 #endif
-
-#define JUMI_UNUSED __attribute__((unused))
 
 namespace jumi
 {

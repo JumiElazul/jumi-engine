@@ -27,7 +27,7 @@ if(NOT WIN32)
 endif()
 
 # Include directories
-target_include_directories(EngineCore PUBLIC "${PROJECT_SOURCE_DIR}/src/")
+target_include_directories(EngineCore PUBLIC ${PROJECT_SOURCE_DIR}/src/)
 
 # Link dependencies from vcpkg or other sources here
 target_link_libraries(EngineCore PUBLIC spdlog::spdlog glfw glad::glad)
