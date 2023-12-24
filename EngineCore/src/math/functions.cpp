@@ -1,7 +1,10 @@
 #include "math/functions.h"
 #include "core/core.h"
 #include <cmath>
+
+#ifdef JUMI_WINDOWS
 #include <corecrt_math_defines.h>
+#endif
 
 namespace jumi
 {
