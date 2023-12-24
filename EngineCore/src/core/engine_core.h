@@ -12,6 +12,7 @@ namespace jumi
 	class Renderer;
 	class WindowHandler;
 	class ResourceLibrary;
+    class IGame;
 
 	class WindowUserPointer
 	{
@@ -41,9 +42,11 @@ namespace jumi
 		void init();
 		void set_window_context(int width, int height, const char* title, bool vSync = false, bool fullscreen = false);
 		double get_time() const;
+		double get_deltatime() const;
 		WindowHandler& get_window();
 		InputHandler& get_input();
 		Renderer& get_renderer();
+        void run(IGame& game) const;
 
 	private:
 		EngineCore();
@@ -54,6 +57,8 @@ namespace jumi
 		EngineCore operator=(EngineCore&& other) = delete;
 
 		bool _initialized = false;
+        double _last_frame_time = 0.0;
+        double _deltatime = 0.0;
 		std::unique_ptr<WindowHandler> _window_handler;
 		std::unique_ptr<InputHandler> _input_handler;
 		std::unique_ptr<Renderer> _renderer;
@@ -63,6 +68,7 @@ namespace jumi
 		bool init_glfw();
 		bool init_opengl();
 		void* get_window_user_pointer();
+        void calculate_deltatime();
 
 		static void gl_debug_msg_callback(unsigned int source, unsigned int type, unsigned int id, unsigned int severity,
 			int length, const char* message, const void* user_param);

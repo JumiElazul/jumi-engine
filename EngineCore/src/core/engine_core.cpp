@@ -1,7 +1,8 @@
 #include "core/engine_core.h"
+#include "core/game.h"
 #include "core/core.h"
 #include "logging/logger.h"
-#include "input/keycode_converter.h"
+#include "input/keycodes.h"
 #include "input/input_handler.h"
 #include "renderer/renderer.h"
 #include "window/window_handler.h"
@@ -113,6 +114,7 @@ namespace jumi
 	}
 
     double EngineCore::get_time() const { return glfwGetTime(); }
+    double EngineCore::get_deltatime() const { return _deltatime; }
 
 	WindowHandler& EngineCore::get_window()
 	{
@@ -147,6 +149,21 @@ namespace jumi
 		return *_renderer.get();
 	}
 
+    void EngineCore::run(IGame& game) const
+    {
+        game.init();
+
+        while (!_window_handler->should_close())
+        {
+            double deltatime = get_deltatime();
+
+            _input_handler->poll_input_events();
+            game.update(deltatime);
+            game.render();
+            _window_handler->swap_buffers();
+        }
+    }
+
 	bool EngineCore::init_glfw()
 	{
 		if (!glfwInit())
@@ -159,6 +176,13 @@ namespace jumi
 	}
 
     void* EngineCore::get_window_user_pointer() { return glfwGetWindowUserPointer(_window_handler->get_window()); }
+
+    void EngineCore::calculate_deltatime()
+    {
+        double current_frame_time = get_time();
+        _deltatime = current_frame_time - _last_frame_time;
+        _last_frame_time = current_frame_time;
+    }
 
 
 	// Window User Pointer ----------------------------------------

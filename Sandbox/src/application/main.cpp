@@ -13,12 +13,10 @@
 #include "renderer/shader.h"
 #include "resources/resource_library.h"
 #include "window/window_handler.h"
-#include <iostream>
 
 int main(JUMI_UNUSED int argc, JUMI_UNUSED char* argv[])
 {
 	jumi::EngineCore& engine_core = jumi::EngineCore::instance();
-
 	engine_core.set_window_context(1920, 1080, "jumi Window!", false, true);
 	engine_core.init();
 
@@ -48,6 +46,8 @@ int main(JUMI_UNUSED int argc, JUMI_UNUSED char* argv[])
 
 	jumi::Scene main_scene;
 	main_scene.add_scene_object(cube);
+
+    /* jumi::EventBus& event_bus = jumi::EventBus::instance(); */
 
 	while (!window.should_close())
 	{
@@ -84,7 +84,7 @@ int main(JUMI_UNUSED int argc, JUMI_UNUSED char* argv[])
 			window.close_window();
 		}
 
-        jumi::EventBus::instance().dispatch_events();
+/*         event_bus.dispatch_events(); */
 	}
 
 	return 0;

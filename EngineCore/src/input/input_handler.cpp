@@ -1,6 +1,7 @@
 #include "input/input_handler.h"
 #include "core/core.h"
 #include "core/engine_core.h"
+#include "input/keycodes.h"
 #include "events/event_bus.h"
 #include "logging/logger.h"
 #include <GLFW/glfw3.h>
@@ -49,7 +50,7 @@ namespace jumi
             if (is_key_down(keycode))
             {
 #ifdef JUMI_INPUT_LOGGING
-                JUMI_TRACE("Key down: {}", keycode);
+                JUMI_TRACE("Key down: {}", KeyCodeConverter::keycode_to_string(keycode));
 #endif
                 Scope<KeyPressedEvent> event = CreateScope<KeyPressedEvent>(keycode);
                 EventBus::instance().push_to_event_queue(std::move(event));
@@ -57,7 +58,7 @@ namespace jumi
             else if (is_key_up(keycode))
             {
 #ifdef JUMI_INPUT_LOGGING
-                JUMI_TRACE("Key up: {}", keycode);
+                JUMI_TRACE("Key up: {}", KeyCodeConverter::keycode_to_string(keycode));
 #endif
                 Scope<KeyReleasedEvent> event = CreateScope<KeyReleasedEvent>(keycode);
                 EventBus::instance().push_to_event_queue(std::move(event));
@@ -65,7 +66,7 @@ namespace jumi
             else if (is_key_held(keycode))
             {
 #ifdef JUMI_INPUT_LOGGING
-                JUMI_TRACE("Key held: {}", keycode);
+                JUMI_TRACE("Key held: {}", KeyCodeConverter::keycode_to_string(keycode));
 #endif
                 Scope<KeyHeldEvent> event = CreateScope<KeyHeldEvent>(keycode);
                 EventBus::instance().push_to_event_queue(std::move(event));
