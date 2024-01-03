@@ -1,5 +1,5 @@
 #include "EngineCore/renderer/shader.h"
-#include "EngineCore/log/logger.h"
+#include "EngineCore/logging/logger.h"
 #include "EngineCore/core/core.h"
 #include "EngineCore/math/vector.h"
 #include "EngineCore/math/matrix.h"

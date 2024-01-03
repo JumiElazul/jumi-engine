@@ -1,5 +1,5 @@
 #include "EngineCore/resources/resource_library.h"
-#include "EngineCore/log/logger.h"
+#include "EngineCore/logging/logger.h"
 #include "EngineCore/renderer/shader.h"
 #include "EngineCore/renderer/mesh.h"
 #include <memory>
