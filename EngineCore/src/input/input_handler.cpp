@@ -3,7 +3,7 @@
 #include "EngineCore/core/engine_core.h"
 #include "EngineCore/input/keycodes.h"
 #include "EngineCore/events/event_bus.h"
-#include "EngineCore/log/logger.h"
+#include "EngineCore/logging/logger.h"
 #include <GLFW/glfw3.h>
 
 namespace jumi

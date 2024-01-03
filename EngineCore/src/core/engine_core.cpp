@@ -1,6 +1,6 @@
 #include "EngineCore/core/engine_core.h"
 #include "EngineCore/core/core.h"
-#include "EngineCore/log/logger.h"
+#include "EngineCore/logging/logger.h"
 #include "EngineCore/input/keycodes.h"
 #include "EngineCore/input/input_handler.h"
 #include "EngineCore/renderer/renderer.h"

@@ -2,7 +2,7 @@
 #include "EngineCore/components/scene.h"
 #include "EngineCore/components/scene_object.h"
 #include "EngineCore/core/core.h"
-#include "EngineCore/log/logger.h"
+#include "EngineCore/logging/logger.h"
 #include "EngineCore/math/vector.h"
 #include "EngineCore/renderer/mesh.h"
 #include "EngineCore/renderer/shader.h"

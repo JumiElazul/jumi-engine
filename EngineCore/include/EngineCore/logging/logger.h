@@ -2,7 +2,7 @@
 
 // This macro needs to be defined before #include <spdlog/spdlog.h> to take effect when using spdlog macros instead of functions
 #define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_TRACE
-#include "core/core.h"
+#include "EngineCore/core/core.h"
 #include <spdlog/spdlog.h>
 #include <string>
 

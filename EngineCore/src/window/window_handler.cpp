@@ -1,5 +1,5 @@
 #include "EngineCore/window/window_handler.h"
-#include "EngineCore/log/logger.h"
+#include "EngineCore/logging/logger.h"
 #include "EngineCore/core/core.h"
 #include <GLFW/glfw3.h>
 #include <sstream>

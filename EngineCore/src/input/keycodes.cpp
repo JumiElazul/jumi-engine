@@ -1,5 +1,5 @@
 #include "EngineCore/input/keycodes.h"
-#include "EngineCore/log/logger.h"
+#include "EngineCore/logging/logger.h"
 #include <GLFW/glfw3.h>
 
 namespace jumi
