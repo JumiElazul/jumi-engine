@@ -14,10 +14,10 @@
 #include "EngineCore/resources/resource_library.h"
 #include "EngineCore/window/window_handler.h"
 
-int main()
+void show_test_scene()
 {
     jumi::EngineCore& engine_core = jumi::EngineCore::instance();
-    engine_core.set_window_context(1920, 1080, "jumi Window!", false, true);
+    engine_core.set_window_context(1920, 1080, "Jumi Editor", false, false);
     engine_core.init();
 
 	jumi::WindowHandler& window = engine_core.get_window();
@@ -46,8 +46,6 @@ int main()
 
 	jumi::Scene main_scene;
 	main_scene.add_scene_object(cube);
-
-    /* jumi::EventBus& event_bus = jumi::EventBus::instance(); */
 
 	while (!window.should_close())
 	{
@@ -83,9 +81,11 @@ int main()
 		{
 			window.close_window();
 		}
-
-/*         event_bus.dispatch_events(); */
 	}
+}
 
+int main()
+{
+	 show_test_scene();
 	return 0;
 }

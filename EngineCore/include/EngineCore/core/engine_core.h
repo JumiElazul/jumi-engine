@@ -17,20 +17,23 @@ namespace jumi
 	class WindowUserPointer
 	{
 	public:
-		WindowUserPointer(WindowHandler& windowHandler, InputHandler& inputHandler);
+		WindowUserPointer(WindowHandler& windowHandler, InputHandler& inputHandler, Renderer& renderer);
 		~WindowUserPointer();
 
 		WindowHandler& get_window_handler() const;
 		InputHandler& get_input_handler() const;
+		Renderer& get_renderer() const;
 
 		void configure_callbacks() const;
 
 	private:
 		WindowHandler& _window_handler;
 		InputHandler& _input_handler;
+		Renderer& _renderer;
 
 		static void glfw_error_callback(int err_code, const char* description);
 		static void glfw_key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+		static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 	};
 
 
@@ -72,5 +75,4 @@ namespace jumi
 		static void gl_debug_msg_callback(unsigned int source, unsigned int type, unsigned int id, unsigned int severity,
 			int length, const char* message, const void* user_param);
 	};
-
 }

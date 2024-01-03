@@ -3,6 +3,8 @@
 #include "EngineCore/core/core.h"
 #include <memory>
 
+struct GLFWwindow;
+
 namespace jumi
 {
 	class Vec3;
@@ -35,6 +37,8 @@ namespace jumi
                 const Camera& camera,
                 std::shared_ptr<Shader> shader = nullptr, 
                 RenderMode renderMode = DrawElements);
+
+		void on_framebuffer_size_changed(GLFWwindow* window, int width, int height);
 
 	private:
 

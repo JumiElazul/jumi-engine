@@ -7,6 +7,10 @@
       {
           "name": "glad",
           "features": ["gl-api-latest"]
+      },
+      {
+          "name": "imgui",
+          "features": ["docking-experimental", "glfw-binding", "opengl3-binding"]
       }
   ],
   "builtin-baseline": "871e20cf67ebaa80c048b868be53c8e7375c79f3"

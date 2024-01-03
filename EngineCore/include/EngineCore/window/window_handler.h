@@ -7,7 +7,6 @@ struct GLFWwindow;
 
 namespace jumi
 {
-
 	struct WindowContext
 	{
 		int32 width = 1280;

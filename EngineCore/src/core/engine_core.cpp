@@ -77,8 +77,8 @@ namespace jumi
             JUMI_INFO("glad initialization : SUCCESS");
         }
 
-        /* // This needs to be created after glfw is initialized, which is why its not in the EngineCore initializer list */
-		_window_user_pointer = std::make_unique<WindowUserPointer>(*_window_handler.get(), *_input_handler.get());
+        // This needs to be created after glfw is initialized, which is why its not in the EngineCore initializer list
+		_window_user_pointer = std::make_unique<WindowUserPointer>(*_window_handler.get(), *_input_handler.get(), *_renderer.get());
 		glfwSetWindowUserPointer(_window_handler->get_window(), _window_user_pointer.get());
 
         _initialized = true;
@@ -170,8 +170,8 @@ namespace jumi
 
 
 	// Window User Pointer ----------------------------------------
-	WindowUserPointer::WindowUserPointer(WindowHandler& window_handler, InputHandler& input_handler)
-		: _window_handler(window_handler), _input_handler(input_handler)
+	WindowUserPointer::WindowUserPointer(WindowHandler& window_handler, InputHandler& input_handler, Renderer& renderer)
+		: _window_handler(window_handler), _input_handler(input_handler), _renderer(renderer)
 	{ 
 		configure_callbacks();
 	}
@@ -180,6 +180,7 @@ namespace jumi
 
 	WindowHandler& WindowUserPointer::get_window_handler() const { return _window_handler; }
 	InputHandler& WindowUserPointer::get_input_handler() const { return _input_handler; }
+	Renderer& WindowUserPointer::get_renderer() const { return _renderer; }
 
 	void WindowUserPointer::configure_callbacks() const
 	{
@@ -187,6 +188,7 @@ namespace jumi
 
 		glfwSetErrorCallback(glfw_error_callback);
 		glfwSetKeyCallback(window, glfw_key_callback);
+		glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
         //glfwSetErrorCallback();
 		//glfwSetMouseButtonCallback(window, MouseButtonCallback);
 		//glfwSetWindowFocusCallback(window, WindowFocusCallback);
@@ -195,7 +197,6 @@ namespace jumi
 		//glfwSetCursorPosCallback(window, CursorPosCallback);
 		//glfwSetWindowFocusCallback(window, WindowFocusCallback);
 		//glfwSetWindowSizeCallback(window, WindowSizeCallback);
-		//glfwSetFramebufferSizeCallback(window, FramebufferSizeCallback);
 		//glfwSetCharCallback(window, );
 		//glfwSetCharModsCallback(window, );
 		//glfwSetCursorEnterCallback(window, );
@@ -219,11 +220,17 @@ namespace jumi
 		// Convert the incoming glfw keycode to our custom engine keycodes
 		JUMI_KEYCODE keycode = KeyCodeConverter::glfw_to_jumi_keycode(key);
 		JUMI_KEYACTION keyaction = KeyCodeConverter::glfw_to_jumi_keyaction(action);
-		WindowUserPointer* windowUserPointer = static_cast<WindowUserPointer*>(glfwGetWindowUserPointer(window));
+		WindowUserPointer* window_user_pointer = static_cast<WindowUserPointer*>(glfwGetWindowUserPointer(window));
 
 		// TODO: Maybe handle the other parameters like action/mods
-		windowUserPointer->get_input_handler().on_key_pressed(keycode, keyaction);
+		window_user_pointer->get_input_handler().on_key_pressed(keycode, keyaction);
 	}
+
+    void WindowUserPointer::framebuffer_size_callback(GLFWwindow* window, int width, int height)
+    {
+        WindowUserPointer* window_user_pointer = static_cast<WindowUserPointer*>(glfwGetWindowUserPointer(window));
+        window_user_pointer->get_renderer().on_framebuffer_size_changed(window, width, height);
+    }
 
     void EngineCore::gl_debug_msg_callback(unsigned int source, unsigned int type, unsigned int id, unsigned int severity,
             JUMI_UNUSED int length, const char* message, JUMI_UNUSED const void* user_param)

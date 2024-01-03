@@ -54,20 +54,16 @@ project "EngineCore"
        "../vcpkg_installed/%{triplet}/include"
    }
 
-   libdirs
-   {
-       "../vcpkg_installed/%{triplet}/lib",
-       "../vcpkg_installed/%{triplet}/debug/lib"
-   }
-
    filter "system:windows"
       defines { "JUMI_WINDOWS", "GLFW_INCLUDE_NONE" }
 
    filter "configurations:Debug"
       symbols "On"
+      libdirs { "../vcpkg_installed/%{triplet}/debug/lib" }
       links { "fmtd", "glad", "glfw3", "spdlogd" }
 
    filter "configurations:Release"
       optimize "On"
+      libdirs { "../vcpkg_installed/%{triplet}/lib" }
       links { "fmt", "glad", "glfw3", "spdlog" }
 

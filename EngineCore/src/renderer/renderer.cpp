@@ -50,6 +50,12 @@ namespace jumi
 		}
 	}
 
+	void Renderer::on_framebuffer_size_changed(GLFWwindow* window, int width, int height)
+	{
+		JUMI_INFO("Framebuffer size changed to {}, {}", width, height);
+		glViewport(0, 0, width, height);
+	}
+
     void Renderer::render_mesh(const Mesh& mesh,
             JUMI_UNUSED const Camera& camera,
             std::shared_ptr<Shader> shader, 

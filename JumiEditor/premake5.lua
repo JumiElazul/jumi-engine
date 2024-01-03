@@ -12,11 +12,12 @@ project "JumiEditor"
    {
        "src",
        "../EngineCore/include/",
+       "../vcpkg_installed/%{triplet}/include/"
    }
 
    libdirs
    {
-
+       "../vcpkg_installed"
    }
 
    filter "system:windows"
@@ -24,9 +25,11 @@ project "JumiEditor"
 
    filter "configurations:Debug"
       symbols "On"
-      links { "EngineCore" }
+      libdirs { "../vcpkg_installed/%{triplet}/debug/lib" }
+      links { "EngineCore", "imguid" }
 
    filter "configurations:Release"
       optimize "On"
-      links { "EngineCore" }
+      libdirs { "../vcpkg_installed/%{triplet}/lib" }
+      links { "EngineCore", "imgui" }
 
