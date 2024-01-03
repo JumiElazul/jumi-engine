@@ -6,6 +6,10 @@ project "JumiEditor"
    files
    {
        "src/application/main.cpp",
+       "src/editor/imgui_core.cpp",
+       "src/editor/imgui_core.h",
+       "src/editor/scene_hierarchy.cpp",
+       "src/editor/scene_hierarchy.h",
    }
 
    includedirs

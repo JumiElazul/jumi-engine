@@ -14,6 +14,8 @@
 #include "EngineCore/resources/resource_library.h"
 #include "EngineCore/window/window_handler.h"
 
+#include "editor/imgui_core.h"
+
 void show_test_scene()
 {
     jumi::EngineCore& engine_core = jumi::EngineCore::instance();
@@ -86,6 +88,6 @@ void show_test_scene()
 
 int main()
 {
-	 show_test_scene();
-	return 0;
+    show_test_scene();
+    return 0;
 }
