@@ -10,7 +10,7 @@ namespace jumi
 	class DirectionalLight;
 	class SceneObject;
 
-	class JUMI_API Scene
+	class Scene
 	{
 	public:
 		Scene();

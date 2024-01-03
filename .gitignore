@@ -2,7 +2,12 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=cmake,linux,windows,visualstudio,c++
 
 ### C++ ###
-[Bb]in*
+*[Bb]in*
+*[Oo]bj*
+*.sln
+*vcpkg_installed/
+**.vcxproj
+**.vcxproj.filters
 
 # Prerequisites
 *.d

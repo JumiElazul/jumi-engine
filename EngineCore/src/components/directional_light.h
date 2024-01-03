@@ -6,7 +6,7 @@
 namespace jumi
 {
 
-    struct JUMI_API DirectionalLightParameters
+    struct DirectionalLightParameters
     {
         Vec3 ambient;
         Vec3 diffuse;
@@ -15,7 +15,7 @@ namespace jumi
         float intensity;
     };
 
-	class JUMI_API DirectionalLight
+	class DirectionalLight
 	{
 	public:
 		DirectionalLight();

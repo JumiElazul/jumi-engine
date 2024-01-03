@@ -2,7 +2,7 @@
 #include "components/camera.h"
 #include "components/directional_light.h"
 #include "components/scene_object.h"
-#include "logging/logger.h"
+#include "log/logger.h"
 
 namespace jumi
 {

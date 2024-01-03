@@ -31,7 +31,7 @@ namespace jumi
 		std::string to_string();
 	};
 
-	class JUMI_API WindowHandler
+	class WindowHandler
 	{
 	public:
 		WindowHandler();

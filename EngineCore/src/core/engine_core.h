@@ -34,7 +34,7 @@ namespace jumi
 	};
 
 
-	class JUMI_API EngineCore
+	class EngineCore
 	{
 	public:
 		static EngineCore& instance();
@@ -46,7 +46,6 @@ namespace jumi
 		WindowHandler& get_window();
 		InputHandler& get_input();
 		Renderer& get_renderer();
-        void run(IGame& game) const;
 
 	private:
 		EngineCore();

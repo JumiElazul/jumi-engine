@@ -17,7 +17,7 @@ namespace jumi
 		DrawArrays,
 	};
 
-	class JUMI_API Renderer
+	class Renderer
 	{
 	friend class ResourceLibrary;
 

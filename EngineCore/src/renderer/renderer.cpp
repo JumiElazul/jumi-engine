@@ -2,7 +2,7 @@
 #include "components/scene.h"
 #include "components/scene_object.h"
 #include "core/core.h"
-#include "logging/logger.h"
+#include "log/logger.h"
 #include "math/vector.h"
 #include "renderer/mesh.h"
 #include "renderer/shader.h"

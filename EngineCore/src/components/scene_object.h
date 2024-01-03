@@ -10,7 +10,7 @@ namespace jumi
 	class Mesh;
 	class Shader;
 
-	class JUMI_API SceneObject
+	class SceneObject
 	{
 	public:
 		SceneObject(const std::string& name, std::shared_ptr<Mesh> mesh = nullptr, std::shared_ptr<Shader> shader = nullptr);

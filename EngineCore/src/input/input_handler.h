@@ -11,7 +11,7 @@ namespace jumi
 {
 	using Keymap = std::unordered_map<JUMI_KEYCODE, bool>;
 
-	class JUMI_API InputHandler
+	class InputHandler
 	{
 	friend class WindowUserPointer;
 	friend class EngineCore;

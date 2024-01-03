@@ -24,7 +24,7 @@ namespace jumi
 		Plane,
 	};
 
-	class JUMI_API ResourceLibrary
+	class ResourceLibrary
 	{
 	public:
 		static std::shared_ptr<Mesh> create_primitive_mesh(MeshType mesh_type);

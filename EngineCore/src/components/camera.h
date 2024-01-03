@@ -31,7 +31,7 @@ namespace jumi
 		float z_far;
 	};
 
-	class JUMI_API Camera : public IComponent
+	class Camera : public IComponent
 	{
 	public:
 		Camera(CameraSpecification spec);

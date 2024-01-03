@@ -7,7 +7,7 @@
 namespace jumi
 {
 
-    struct JUMI_API Transform
+    struct Transform
     {
     public:
         Transform();

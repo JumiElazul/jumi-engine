@@ -1,5 +1,5 @@
 #include "renderer/shader.h"
-#include "logging/logger.h"
+#include "log/logger.h"
 #include "core/core.h"
 #include "math/vector.h"
 #include "math/matrix.h"

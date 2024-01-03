@@ -1,5 +1,5 @@
 #include "keycodes.h"
-#include "logging/logger.h"
+#include "log/logger.h"
 #include <GLFW/glfw3.h>
 
 namespace jumi

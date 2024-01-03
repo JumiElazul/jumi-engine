@@ -26,7 +26,7 @@ namespace jumi
 	
 	struct ShaderSourceTag { }; 
 
-	class JUMI_API Shader
+	class Shader
 	{
 	friend class ResourceLibrary;
 

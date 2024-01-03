@@ -1,5 +1,5 @@
 #include "components/directional_light.h"
-#include "logging/logger.h"
+#include "log/logger.h"
 
 namespace jumi
 {

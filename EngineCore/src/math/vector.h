@@ -6,7 +6,7 @@
 namespace jumi
 {
 
-	class JUMI_API Vec2
+	class Vec2
 	{
 	public:
 		float x;
@@ -38,7 +38,7 @@ namespace jumi
 		float distance(const Vec2& other) const;
 	};
 
-	class JUMI_API Vec3
+	class Vec3
 	{
 	public:
 		union
@@ -84,7 +84,7 @@ namespace jumi
 		float distance(const Vec3& other) const;
 	};
 
-	JUMI_API std::ostream& operator<<(std::ostream& stream, const Vec2& vec);
-	JUMI_API std::ostream& operator<<(std::ostream& stream, const Vec3& vec);
+	std::ostream& operator<<(std::ostream& stream, const Vec2& vec);
+	std::ostream& operator<<(std::ostream& stream, const Vec3& vec);
 
 }

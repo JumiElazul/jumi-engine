@@ -16,9 +16,9 @@
 
 int main(JUMI_UNUSED int argc, JUMI_UNUSED char* argv[])
 {
-	jumi::EngineCore& engine_core = jumi::EngineCore::instance();
-	engine_core.set_window_context(1920, 1080, "jumi Window!", false, true);
-	engine_core.init();
+    jumi::EngineCore& engine_core = jumi::EngineCore::instance();
+    engine_core.set_window_context(1920, 1080, "jumi Window!", false, true);
+    engine_core.init();
 
 	jumi::WindowHandler& window = engine_core.get_window();
 	jumi::InputHandler& input = engine_core.get_input();

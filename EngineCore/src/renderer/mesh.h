@@ -7,7 +7,7 @@
 namespace jumi
 {
 
-	class JUMI_API Mesh
+	class Mesh
 	{
 	public:
 		Mesh(const char* mesh_name, const float vertices[], const size_t vertices_size, const unsigned int indices[], const size_t indices_size);

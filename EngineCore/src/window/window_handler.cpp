@@ -1,5 +1,5 @@
 #include "window/window_handler.h"
-#include "logging/logger.h"
+#include "log/logger.h"
 #include "core/core.h"
 #include <GLFW/glfw3.h>
 #include <sstream>
@@ -120,7 +120,7 @@ namespace jumi
         // to Open GL version 4.2.  We can add support for higher versions later if necessary.
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);
 		glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
 		glfwWindowHint(GLFW_SAMPLES, 4);
 	}

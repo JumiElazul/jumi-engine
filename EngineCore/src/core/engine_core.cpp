@@ -1,7 +1,6 @@
 #include "core/engine_core.h"
-#include "core/game.h"
 #include "core/core.h"
-#include "logging/logger.h"
+#include "log/logger.h"
 #include "input/keycodes.h"
 #include "input/input_handler.h"
 #include "renderer/renderer.h"
@@ -148,21 +147,6 @@ namespace jumi
 
 		return *_renderer.get();
 	}
-
-    void EngineCore::run(IGame& game) const
-    {
-        game.init();
-
-        while (!_window_handler->should_close())
-        {
-            double deltatime = get_deltatime();
-
-            _input_handler->poll_input_events();
-            game.update(deltatime);
-            game.render();
-            _window_handler->swap_buffers();
-        }
-    }
 
 	bool EngineCore::init_glfw()
 	{

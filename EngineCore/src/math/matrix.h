@@ -8,7 +8,7 @@ namespace jumi
 {
 	class Vec3;
 
-	class JUMI_API Mat4
+	class Mat4
 	{
 	public:
         friend std::ostream& operator<<(std::ostream& stream, const Mat4& mat4);
