@@ -1,9 +1,9 @@
-#include "renderer/shader.h"
-#include "log/logger.h"
-#include "core/core.h"
-#include "math/vector.h"
-#include "math/matrix.h"
-#include "components/camera.h"
+#include "EngineCore/renderer/shader.h"
+#include "EngineCore/log/logger.h"
+#include "EngineCore/core/core.h"
+#include "EngineCore/math/vector.h"
+#include "EngineCore/math/matrix.h"
+#include "EngineCore/components/camera.h"
 #include <fstream>
 #include <string>
 #include <sstream>

@@ -1,6 +1,6 @@
-#include "window/window_handler.h"
-#include "log/logger.h"
-#include "core/core.h"
+#include "EngineCore/window/window_handler.h"
+#include "EngineCore/log/logger.h"
+#include "EngineCore/core/core.h"
 #include <GLFW/glfw3.h>
 #include <sstream>
 

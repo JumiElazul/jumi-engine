@@ -1,5 +1,5 @@
-#include "components/camera.h"
-#include "log/logger.h"
+#include "EngineCore/components/camera.h"
+#include "EngineCore/log/logger.h"
 #include <cmath>
 
 namespace jumi

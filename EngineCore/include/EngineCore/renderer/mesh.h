@@ -1,7 +1,7 @@
 #pragma once
 
-#include "core/core.h"
-#include "renderer/vertex_array_object.h"
+#include "EngineCore/core/core.h"
+#include "EngineCore/renderer/vertex_array_object.h"
 #include <string>
 
 namespace jumi

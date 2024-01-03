@@ -1,4 +1,4 @@
-#include "renderer/mesh.h"
+#include "EngineCore/renderer/mesh.h"
 #include <glad/glad.h>
 
 namespace jumi

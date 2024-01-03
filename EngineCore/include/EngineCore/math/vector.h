@@ -1,6 +1,6 @@
 #pragma once
 
-#include "core/core.h"
+#include "EngineCore/core/core.h"
 #include <iosfwd>
 
 namespace jumi

@@ -6,52 +6,45 @@ project "EngineCore"
    files
    {
        "src/components/camera.cpp",
-       "src/components/camera.h",
-       "src/components/component_interface.h",
        "src/components/directional_light.cpp",
-       "src/components/directional_light.h",
        "src/components/scene.cpp",
-       "src/components/scene.h",
        "src/components/scene_object.cpp",
-       "src/components/scene_object.h",
        "src/components/transform.cpp",
-       "src/components/transform.h",
-
-       "src/core/core.h",
        "src/core/engine_core.cpp",
-
        "src/events/event_bus.cpp",
-       "src/events/event_bus.h",
-
        "src/input/input_handler.cpp",
-       "src/input/input_handler.h",
        "src/input/keycodes.cpp",
-       "src/input/keycodes.h",
-
        "src/log/logger.cpp",
-       "src/log/logger.h",
-
        "src/math/functions.cpp",
        "src/math/functions.h",
        "src/math/matrix.cpp",
-       "src/math/matrix.h",
        "src/math/vector.cpp",
-       "src/math/vector.h",
-
        "src/renderer/mesh.cpp",
-       "src/renderer/mesh.h",
        "src/renderer/renderer.cpp",
-       "src/renderer/renderer.h",
        "src/renderer/shader.cpp",
-       "src/renderer/shader.h",
        "src/renderer/vertex_array_object.cpp",
        "src/renderer/vertex_array_object.h",
-
        "src/resources/resource_library.cpp",
-       "src/resources/resource_library.h",
-
        "src/window/window_handler.cpp",
-       "src/window/window_handler.h",
+
+       "include/EngineCore/core/core.h",
+       "include/EngineCore/components/camera.h",
+       "include/EngineCore/components/component_interface.h",
+       "include/EngineCore/components/directional_light.h",
+       "include/EngineCore/components/transform.h",
+       "include/EngineCore/components/scene.h",
+       "include/EngineCore/components/scene_object.h",
+       "include/EngineCore/math/matrix.h",
+       "include/EngineCore/math/vector.h",
+       "include/EngineCore/events/event_bus.h",
+       "include/EngineCore/input/keycodes.h",
+       "include/EngineCore/input/input_handler.h",
+       "include/EngineCore/log/logger.h",
+       "include/EngineCore/renderer/mesh.h",
+       "include/EngineCore/renderer/renderer.h",
+       "include/EngineCore/renderer/shader.h",
+       "include/EngineCore/resource_library.h",
+       "include/EngineCore/window_handler.h",
    }
 
    includedirs

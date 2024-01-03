@@ -1,5 +1,5 @@
-#include "math/functions.h"
-#include "core/core.h"
+#include "EngineCore/math/functions.h"
+#include "EngineCore/core/core.h"
 #include <cmath>
 
 #ifdef JUMI_WINDOWS

@@ -1,5 +1,5 @@
-#include "event_bus.h"
-#include "input/keycodes.h"
+#include "EngineCore/events/event_bus.h"
+#include "EngineCore/input/keycodes.h"
 
 namespace jumi
 {

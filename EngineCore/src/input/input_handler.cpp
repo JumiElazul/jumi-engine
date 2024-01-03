@@ -1,9 +1,9 @@
-#include "input/input_handler.h"
-#include "core/core.h"
-#include "core/engine_core.h"
-#include "input/keycodes.h"
-#include "events/event_bus.h"
-#include "log/logger.h"
+#include "EngineCore/input/input_handler.h"
+#include "EngineCore/core/core.h"
+#include "EngineCore/core/engine_core.h"
+#include "EngineCore/input/keycodes.h"
+#include "EngineCore/events/event_bus.h"
+#include "EngineCore/log/logger.h"
 #include <GLFW/glfw3.h>
 
 namespace jumi

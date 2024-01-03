@@ -1,7 +1,7 @@
-#include "resources/resource_library.h"
-#include "log/logger.h"
-#include "renderer/shader.h"
-#include "renderer/mesh.h"
+#include "EngineCore/resources/resource_library.h"
+#include "EngineCore/log/logger.h"
+#include "EngineCore/renderer/shader.h"
+#include "EngineCore/renderer/mesh.h"
 #include <memory>
 #include <string>
 

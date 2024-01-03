@@ -1,20 +1,20 @@
-#include "core/core.h"
-#include "core/engine_core.h"
-#include "components/camera.h"
-#include "components/scene.h"
-#include "components/scene_object.h"
-#include "events/event_bus.h"
-#include "input/input_handler.h"
-#include "input/keycodes.h"
-#include "math/matrix.h"
-#include "math/vector.h"
-#include "renderer/mesh.h"
-#include "renderer/renderer.h"
-#include "renderer/shader.h"
-#include "resources/resource_library.h"
-#include "window/window_handler.h"
+#include "EngineCore/core/core.h"
+#include "EngineCore/core/engine_core.h"
+#include "EngineCore/components/camera.h"
+#include "EngineCore/components/scene.h"
+#include "EngineCore/components/scene_object.h"
+#include "EngineCore/events/event_bus.h"
+#include "EngineCore/input/input_handler.h"
+#include "EngineCore/input/keycodes.h"
+#include "EngineCore/math/matrix.h"
+#include "EngineCore/math/vector.h"
+#include "EngineCore/renderer/mesh.h"
+#include "EngineCore/renderer/renderer.h"
+#include "EngineCore/renderer/shader.h"
+#include "EngineCore/resources/resource_library.h"
+#include "EngineCore/window/window_handler.h"
 
-int main(JUMI_UNUSED int argc, JUMI_UNUSED char* argv[])
+int main()
 {
     jumi::EngineCore& engine_core = jumi::EngineCore::instance();
     engine_core.set_window_context(1920, 1080, "jumi Window!", false, true);

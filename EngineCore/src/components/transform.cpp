@@ -1,5 +1,5 @@
-#include "components/transform.h"
-#include "math/matrix.h"
+#include "EngineCore/components/transform.h"
+#include "EngineCore/math/matrix.h"
 
 namespace jumi
 {

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "core/core.h"
-#include "math/vector.h"
+#include "EngineCore/core/core.h"
+#include "EngineCore/math/vector.h"
 
 namespace jumi
 {

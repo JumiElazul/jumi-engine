@@ -11,7 +11,7 @@ project "JumiEditor"
    includedirs
    {
        "src",
-       "../EngineCore/src/",
+       "../EngineCore/include/",
    }
 
    libdirs

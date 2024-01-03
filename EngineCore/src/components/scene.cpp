@@ -1,8 +1,8 @@
-#include "components/scene.h"
-#include "components/camera.h"
-#include "components/directional_light.h"
-#include "components/scene_object.h"
-#include "log/logger.h"
+#include "EngineCore/components/scene.h"
+#include "EngineCore/components/camera.h"
+#include "EngineCore/components/scene_object.h"
+#include "EngineCore/components/directional_light.h"
+#include "EngineCore/log/logger.h"
 
 namespace jumi
 {

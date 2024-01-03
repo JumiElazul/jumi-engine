@@ -1,4 +1,4 @@
-#include "renderer/vertex_array_object.h"
+#include "EngineCore/renderer/vertex_array_object.h"
 #include <glad/glad.h>
 
 namespace jumi

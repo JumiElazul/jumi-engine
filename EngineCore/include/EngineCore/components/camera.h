@@ -1,10 +1,10 @@
 #pragma once
 
-#include "core/core.h"
-#include "math/matrix.h"
-#include "math/vector.h"
-#include "components/component_interface.h"
-#include "components/transform.h"
+#include "EngineCore/core/core.h"
+#include "EngineCore/math/matrix.h"
+#include "EngineCore/math/vector.h"
+#include "EngineCore/components/component_interface.h"
+#include "EngineCore/components/transform.h"
 
 namespace jumi
 {

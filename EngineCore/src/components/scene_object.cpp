@@ -1,6 +1,6 @@
-#include "components/scene_object.h"
-#include "renderer/mesh.h"
-#include "renderer/shader.h"
+#include "EngineCore/components/scene_object.h"
+#include "EngineCore/renderer/mesh.h"
+#include "EngineCore/renderer/shader.h"
 
 namespace jumi
 {

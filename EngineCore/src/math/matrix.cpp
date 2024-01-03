@@ -1,7 +1,7 @@
-#include "math/matrix.h"
-#include "core/core.h"
-#include "math/functions.h"
-#include "math/vector.h"
+#include "EngineCore/math/matrix.h"
+#include "EngineCore/core/core.h"
+#include "EngineCore/math/functions.h"
+#include "EngineCore/math/vector.h"
 #include <cmath>
 
 namespace jumi

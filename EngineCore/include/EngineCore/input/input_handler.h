@@ -1,7 +1,7 @@
 #pragma once
 
-#include "core/core.h"
-#include "input/keycodes.h"
+#include "EngineCore/core/core.h"
+#include "EngineCore/input/keycodes.h"
 #include <unordered_map>
 
 struct GLFWwindow;
