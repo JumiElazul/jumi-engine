@@ -29,7 +29,7 @@ namespace jumi
 {
     constexpr int32 LOGMAP_SIZE = 7;
 
-	class JUMI_API Logger
+	class Logger
 	{
     public:
 		static std::shared_ptr<spdlog::logger> get_logger();

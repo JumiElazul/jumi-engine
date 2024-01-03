@@ -1,11 +1,11 @@
 #pragma once
 
 #include "EngineCore/core/core.h"
-#include "EngineCore/renderer/vertex_array_object.h"
 #include <string>
 
 namespace jumi
 {
+	class MeshImpl;
 
 	class Mesh
 	{
@@ -15,7 +15,6 @@ namespace jumi
 
 		Mesh(const Mesh& other) = delete;
 		Mesh& operator=(const Mesh& other) = delete;
-		// TODO: implement these
 		Mesh(Mesh&& other) noexcept = delete;
 		Mesh& operator=(Mesh&& other) noexcept = delete;
 
@@ -27,12 +26,7 @@ namespace jumi
 		static void unbind_mesh();
 
 	private:
-		std::string _mesh_name;
-		VertexArrayObject _vao;
-		unsigned int _vbo = 0;
-		unsigned int _ebo = 0;
-		size_t _vertice_count = 0;
-		size_t _indice_count = 0;
+		std::unique_ptr<MeshImpl> _impl;
 
 		size_t calculate_vertice_count(size_t vertSize);
 		size_t calculate_indice_count(size_t indiceSize);
