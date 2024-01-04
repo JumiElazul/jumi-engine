@@ -6,20 +6,12 @@ namespace jumi
     SceneHierarchy::SceneHierarchy() { }
     SceneHierarchy::~SceneHierarchy() { }
 
-    void SceneHierarchy::open()
-    {
-
-    }
-
-    void SceneHierarchy::close()
-    {
-
-    }
-
     void SceneHierarchy::render()
     {
         if (ImGui::Begin("Scene Hierarchy", nullptr))
         {
+            ImGui::PushStyleVar(ImGuiStyleVar_Alpha, 1.0f);
+            ImGui::PopStyleVar();
             ImGui::End();
         }
     }

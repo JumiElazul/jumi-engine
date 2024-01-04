@@ -4,7 +4,7 @@
 
 namespace jumi
 {
-    class HeaderBar : public ImGuiWindow
+    class HeaderBar : public ImGuiComponent
     {
     public:
         HeaderBar();
@@ -14,8 +14,11 @@ namespace jumi
         HeaderBar(HeaderBar&& other) = delete;
         HeaderBar& operator=(HeaderBar&& other) = delete;
 
-        virtual void open() override;
-        virtual void close() override;
         virtual void render() override;
+
+    private:
+        void render_file_menu() const;
+        void render_edit_menu() const;
+        void render_components_menu() const;
     };
 }

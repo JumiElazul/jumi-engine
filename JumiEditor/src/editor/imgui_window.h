@@ -3,12 +3,10 @@
 
 namespace jumi
 {
-    class ImGuiWindow
+    class ImGuiComponent
     {
     public:
-        virtual ~ImGuiWindow() = default;
-        virtual void open() = 0;
-        virtual void close() = 0;
+        virtual ~ImGuiComponent() = default;
         virtual void render() = 0;
     };
 }

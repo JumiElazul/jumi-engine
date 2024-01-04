@@ -3,14 +3,12 @@
 
 namespace jumi
 {
-	class PropertiesInspector : public ImGuiWindow
+	class PropertiesInspector : public ImGuiComponent
 	{
 	public:
 		PropertiesInspector();
 		~PropertiesInspector();
 
-		virtual void open();
-		virtual void close();
 		virtual void render();
 
 	private:

@@ -2,6 +2,7 @@
 
 #include "EngineCore/core/core.h"
 #include <memory>
+#include <string>
 
 struct GLFWwindow;
 

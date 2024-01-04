@@ -6,6 +6,7 @@
 #include "EngineCore/renderer/renderer.h"
 #include "EngineCore/window/window_handler.h"
 #include <memory>
+#include <filesystem>
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
 
@@ -102,7 +103,7 @@ namespace jumi
 		glEnable(GL_MULTISAMPLE);  
 		glViewport(0, 0, context.width, context.height);
 
-		glDebugMessageCallback(gl_debug_msg_callback, nullptr);
+		//glDebugMessageCallback(gl_debug_msg_callback, nullptr);
 
 		return true;
 	}

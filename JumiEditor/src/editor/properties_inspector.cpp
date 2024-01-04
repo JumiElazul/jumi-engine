@@ -11,17 +11,8 @@ namespace jumi
 	{
 	}
 
-	void PropertiesInspector::open()
-	{
-	}
-
-	void PropertiesInspector::close()
-	{
-	}
-
 	void PropertiesInspector::render()
 	{
 	}
-
 
 }

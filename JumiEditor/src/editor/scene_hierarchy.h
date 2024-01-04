@@ -4,14 +4,12 @@
 
 namespace jumi
 {
-    class SceneHierarchy : public ImGuiWindow
+    class SceneHierarchy : public ImGuiComponent
     {
     public:
         SceneHierarchy();
         ~SceneHierarchy();
 
-        virtual void open() override;
-        virtual void close() override;
         virtual void render() override;
     };
 }
