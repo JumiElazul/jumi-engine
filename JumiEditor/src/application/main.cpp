@@ -16,78 +16,94 @@
 
 #include "editor/imgui_core.h"
 
-void show_test_scene()
+namespace jumi
 {
-    jumi::EngineCore& engine_core = jumi::EngineCore::instance();
-    engine_core.set_window_context(1920, 1080, "Jumi Editor", false, false);
-    engine_core.init();
 
-	jumi::WindowHandler& window = engine_core.get_window();
-	jumi::InputHandler& input = engine_core.get_input();
-	jumi::Renderer& renderer = engine_core.get_renderer();
-	renderer.set_clear_color({ 0.2f, 0.2f, 0.2f });
+    void show_test_scene()
+    {
+        EngineCore& engine_core = EngineCore::instance();
+        engine_core.set_window_context(1920, 1080, "Jumi Editor", false, false);
+        engine_core.init();
 
-	std::shared_ptr<jumi::Mesh> cube_mesh = jumi::ResourceLibrary::create_primitive_mesh(jumi::MeshType::Cube);
-	std::shared_ptr<jumi::Shader> shader = jumi::ResourceLibrary::get_default_shader();
+        WindowHandler& window = engine_core.get_window();
+        InputHandler& input = engine_core.get_input();
+        Renderer& renderer = engine_core.get_renderer();
+        renderer.set_clear_color({ 0.2f, 0.2f, 0.2f });
 
-	jumi::Mat4 model{ jumi::Mat4::identity() };
-	model = jumi::Mat4::rotate(model, { 45.0f, 0.0f, 0.0f });
-	model = jumi::Mat4::translate(model, { 0.0f, 0.0f, -10.0f });
+        ImGuiCore& imgui_core = ImGuiCore::instance();
+        imgui_core.init(window.get_window());
 
-	shader->bind_shader();
+        std::shared_ptr<Mesh> cube_mesh = ResourceLibrary::create_primitive_mesh(MeshType::Cube);
+        std::shared_ptr<Shader> shader = ResourceLibrary::get_default_shader();
 
-	jumi::CameraSpecification camera_specification{};
-	camera_specification.projection_type = jumi::ProjectionType::Perspective;
-	camera_specification.fov = 55.0f;
-	camera_specification.aspect_ratio = 16.0f / 9.0f;
-	camera_specification.z_near = 0.01f;
-	camera_specification.z_far = 500.0f;
-	jumi::Camera camera{ camera_specification };
+        Mat4 model{ Mat4::identity() };
+        model = Mat4::rotate(model, { 45.0f, 0.0f, 0.0f });
+        model = Mat4::translate(model, { 0.0f, 0.0f, -10.0f });
 
-	std::shared_ptr<jumi::SceneObject> cube = std::make_shared<jumi::SceneObject>("CubeSceneObject", cube_mesh);
+        shader->bind_shader();
 
-	jumi::Scene main_scene;
-	main_scene.add_scene_object(cube);
+        CameraSpecification camera_specification{};
+        camera_specification.projection_type = ProjectionType::Perspective;
+        camera_specification.fov = 55.0f;
+        camera_specification.aspect_ratio = 16.0f / 9.0f;
+        camera_specification.z_near = 0.01f;
+        camera_specification.z_far = 500.0f;
+        Camera camera{ camera_specification };
 
-	while (!window.should_close())
-	{
-		renderer.clear_color_buffer();
-		renderer.clear_depth_buffer();
-        input.poll_input_events();
+        std::shared_ptr<SceneObject> cube = std::make_shared<SceneObject>("CubeSceneObject", cube_mesh);
 
-        shader->set_uniform_mat4("u_model_matrix", model);
-        shader->set_uniform_mat4("u_view_matrix", camera.view_matrix());
-        shader->set_uniform_mat4("u_projection_matrix", camera.projection_matrix());
+        Scene main_scene;
+        main_scene.add_scene_object(cube);
 
-        if (input.is_key_held(JUMI_KEY_F))
+        while (!window.should_close())
         {
-            camera.get_transform().move({ 0.0f, 0.01f, 0.0f });
+            imgui_core.begin_frame();
+            input.poll_input_events();
+
+            shader->set_uniform_mat4("u_model_matrix", model);
+            shader->set_uniform_mat4("u_view_matrix", camera.view_matrix());
+            shader->set_uniform_mat4("u_projection_matrix", camera.projection_matrix());
+
+            if (input.is_key_held(JUMI_KEY_F))
+            {
+                camera.get_transform().move({ 0.0f, 0.01f, 0.0f });
+            }
+            if (input.is_key_held(JUMI_KEY_S))
+            {
+                camera.get_transform().move({ 0.0f, -0.01f, 0.0f });
+            }
+            if (input.is_key_held(JUMI_KEY_R))
+            {
+                camera.get_transform().move({ -0.01f, 0.0f, 0.0f });
+            }
+            if (input.is_key_held(JUMI_KEY_T))
+            {
+                camera.get_transform().move({ 0.01f, 0.0f, 0.0f });
+            }
+
+            imgui_core.draw_ui();
+            renderer.render_scene(main_scene);
+
+            window.swap_buffers();
+            if (input.is_key_down(JUMI_KEY_Q))
+            {
+                window.close_window();
+            }
+            renderer.clear_color_buffer();
+            renderer.clear_depth_buffer();
+            imgui_core.end_frame();
         }
-		if (input.is_key_held(JUMI_KEY_S))
-		{
-			camera.get_transform().move({ 0.0f, -0.01f, 0.0f });
-		}
-		if (input.is_key_held(JUMI_KEY_R))
-		{
-			camera.get_transform().move({ -0.01f, 0.0f, 0.0f });
-		}
-		if (input.is_key_held(JUMI_KEY_T))
-		{
-			camera.get_transform().move({ 0.01f, 0.0f, 0.0f });
-		}
+    }
 
-		renderer.render_scene(main_scene);
+    int main()
+    {
+        show_test_scene();
+        return 0;
+    }
 
-		window.swap_buffers();
-		if (input.is_key_down(JUMI_KEY_Q))
-		{
-			window.close_window();
-		}
-	}
 }
 
 int main()
 {
-    show_test_scene();
-    return 0;
+    return jumi::main();
 }

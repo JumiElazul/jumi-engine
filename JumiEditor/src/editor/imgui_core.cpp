@@ -1,5 +1,7 @@
 #include "imgui_core.h"
 #include "editor/imgui_core.h"
+#include "editor/header_bar.h"
+#include "editor/properties_inspector.h"
 #include "editor/scene_hierarchy.h"
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
@@ -22,14 +24,15 @@ namespace jumi
         return instance;
     }
 
-    void ImGuiCore::init()
+    void ImGuiCore::init(GLFWwindow* window)
     {
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
         ImGuiIO& io = ImGui::GetIO();
+        (void)io;
         io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
         io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-        io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+        //io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
         ImGui::StyleColorsDark();
         ImGui_ImplGlfw_InitForOpenGL(window, true);
         ImGui_ImplOpenGL3_Init("#version 460");
@@ -46,14 +49,27 @@ namespace jumi
         ImGui::NewFrame();
     }
 
-    void ImGuiCore::render() const
+    void ImGuiCore::draw_ui() const
+    {
+        ImGuiID dockspace_id = ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
+        ImGui::ShowDemoWindow();
+
+        _header_bar->render();
+        _properties_inspector->render();
+        _scene_hierarchy->render();
+    }
+
+    void ImGuiCore::end_frame() const
     {
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+        ImGui::UpdatePlatformWindows();
     }
 
     void jumi::ImGuiCore::initialize_imgui_windows()
     {
+        _header_bar = std::make_unique<HeaderBar>();
+        _properties_inspector = std::make_unique<PropertiesInspector>();
         _scene_hierarchy = std::make_unique<SceneHierarchy>();
     }
 }

@@ -18,7 +18,9 @@ namespace jumi
 
     void SceneHierarchy::render()
     {
-        ImGui::Begin("Scene Hierarchy");
-        ImGui::End();
+        if (ImGui::Begin("Scene Hierarchy", nullptr))
+        {
+            ImGui::End();
+        }
     }
 }
