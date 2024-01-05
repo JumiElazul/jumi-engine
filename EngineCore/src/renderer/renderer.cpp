@@ -33,12 +33,23 @@ namespace jumi
 		glClear(GL_DEPTH_BUFFER_BIT);
 	}
 
-	void Renderer::render_scene(const Scene& scene, const ViewportTarget& viewport_target)
+	void Renderer::set_viewport_target(const ViewportTarget& target)
 	{
-		glViewport(viewport_target.x,
-		           viewport_target.y,
-		           viewport_target.width,
-		           viewport_target.height);
+		if (target.x < 0 || target.y < 0 || target.width < 0 || target.height < 0)
+		{
+            JUMI_CRITICAL("Invalid Viewport target specified in set_viewport_target(); parameter cannot be less than 0");
+			return;
+		}
+
+		_viewport_target = target;
+	}
+
+	void Renderer::render_scene(const Scene& scene)
+	{
+		glViewport(_viewport_target.x,
+		           _viewport_target.y,
+		           _viewport_target.width,
+		           _viewport_target.height);
 
 		const Camera& camera = scene.get_camera();
 		const std::vector<std::shared_ptr<SceneObject>> scene_objects = scene.get_scene_objects();

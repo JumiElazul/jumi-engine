@@ -38,8 +38,9 @@ namespace jumi
 		void set_clear_color(const Vec3& color) const;
 		void clear_color_buffer() const;
 		void clear_depth_buffer() const;
+		void set_viewport_target(const ViewportTarget& target);
 
-		void render_scene(const Scene& scene, const ViewportTarget& viewport_target);
+		void render_scene(const Scene& scene);
 
         void render_mesh(const Mesh& mesh,
                 const Camera& camera,
@@ -49,7 +50,7 @@ namespace jumi
 		void on_framebuffer_size_changed(GLFWwindow* window, int width, int height);
 
 	private:
-
+		ViewportTarget _viewport_target;
 	};
 
 }

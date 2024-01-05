@@ -82,7 +82,7 @@ namespace jumi
                 camera.get_transform().move({ 0.01f, 0.0f, 0.0f });
             }
 
-            renderer.render_scene(main_scene, { 0, 0, target.width, target.height });
+            renderer.render_scene(main_scene);
 
             imgui_core.draw_ui();
             window.swap_buffers();

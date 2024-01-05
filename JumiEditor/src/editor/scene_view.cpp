@@ -1,4 +1,6 @@
 #include "editor/scene_view.h"
+#include "EngineCore/core/engine_core.h"
+#include "EngineCore/renderer/renderer.h"
 #include <imgui.h>
 
 namespace jumi
@@ -36,7 +38,16 @@ namespace jumi
     {
         if (ImGui::Begin("Scene View", &_is_open, _flags))
         {
+            ImVec2 pos = ImGui::GetWindowPos();
+            int x = static_cast<int>(pos.x);
+            int y = static_cast<int>(pos.y);
+            ImVec2 size = ImGui::GetWindowSize();
+            int width = static_cast<int>(size.x);
+            int height = static_cast<int>(size.y);
 
+            EngineCore& core = EngineCore::instance();
+            Renderer& renderer = core.get_renderer();
+            renderer.set_viewport_target({ x, y, width, height });
         }
         ImGui::End();
     }

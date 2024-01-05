@@ -1,5 +1,6 @@
 #include "editor/scene_hierarchy.h"
 #include <imgui.h>
+#include <iostream>
 
 namespace jumi
 {
