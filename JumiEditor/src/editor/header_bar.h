@@ -1,6 +1,6 @@
 #pragma once
 
-#include "editor/imgui_window.h"
+#include "editor/imgui_component.h"
 
 namespace jumi
 {
@@ -14,6 +14,7 @@ namespace jumi
         HeaderBar(HeaderBar&& other) = delete;
         HeaderBar& operator=(HeaderBar&& other) = delete;
 
+        virtual void set_window_flags() override;
         virtual void render() override;
 
     private:

@@ -13,6 +13,14 @@ namespace jumi
 	class Camera;
 	class Scene;
 
+	struct ViewportTarget
+	{
+		int x = 0;
+		int y = 0;
+		int width = 100;
+		int height = 100;
+	};
+
 	enum RenderMode
 	{
 		DrawElements,
@@ -31,7 +39,7 @@ namespace jumi
 		void clear_color_buffer() const;
 		void clear_depth_buffer() const;
 
-		void render_scene(const Scene& scene);
+		void render_scene(const Scene& scene, const ViewportTarget& viewport_target);
 
         void render_mesh(const Mesh& mesh,
                 const Camera& camera,

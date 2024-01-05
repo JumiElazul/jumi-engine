@@ -33,8 +33,13 @@ namespace jumi
 		glClear(GL_DEPTH_BUFFER_BIT);
 	}
 
-	void Renderer::render_scene(const Scene& scene)
+	void Renderer::render_scene(const Scene& scene, const ViewportTarget& viewport_target)
 	{
+		glViewport(viewport_target.x,
+		           viewport_target.y,
+		           viewport_target.width,
+		           viewport_target.height);
+
 		const Camera& camera = scene.get_camera();
 		const std::vector<std::shared_ptr<SceneObject>> scene_objects = scene.get_scene_objects();
 

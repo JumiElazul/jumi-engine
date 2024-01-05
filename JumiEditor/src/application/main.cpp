@@ -54,6 +54,7 @@ namespace jumi
 
         Scene main_scene;
         main_scene.add_scene_object(cube);
+        const WindowContext& target = window.get_window_context();
 
         while (!window.should_close())
         {
@@ -81,9 +82,9 @@ namespace jumi
                 camera.get_transform().move({ 0.01f, 0.0f, 0.0f });
             }
 
-            imgui_core.draw_ui();
-            renderer.render_scene(main_scene);
+            renderer.render_scene(main_scene, { 0, 0, target.width, target.height });
 
+            imgui_core.draw_ui();
             window.swap_buffers();
             if (input.is_key_down(JUMI_KEY_Q))
             {

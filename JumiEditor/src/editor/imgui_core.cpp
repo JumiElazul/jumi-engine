@@ -2,9 +2,11 @@
 #include "editor/header_bar.h"
 #include "editor/properties_inspector.h"
 #include "editor/scene_hierarchy.h"
+#include "editor/scene_view.h"
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
+#include <glad/glad.h>
 
 namespace jumi
 {
@@ -63,12 +65,15 @@ namespace jumi
 
     void ImGuiCore::draw_ui() const
     {
+        ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0, 0, 0, 0));
         ImGuiID dockspace_id = ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
-        ImGui::ShowDemoWindow();
+        ImGui::PopStyleColor();
+        //ImGui::ShowDemoWindow();
 
         _header_bar->render();
         _properties_inspector->render();
         _scene_hierarchy->render();
+        _scene_view->render();
     }
 
     void ImGuiCore::end_frame() const
@@ -83,6 +88,7 @@ namespace jumi
         _header_bar = std::make_unique<HeaderBar>();
         _properties_inspector = std::make_unique<PropertiesInspector>();
         _scene_hierarchy = std::make_unique<SceneHierarchy>();
+        _scene_view = std::make_unique<SceneView>();
     }
 
     void ImGuiCore::set_config_flags()

@@ -1,13 +1,13 @@
-#include "editor/scene_hierarchy.h"
+#include "editor/scene_view.h"
 #include <imgui.h>
 
 namespace jumi
 {
-    SceneHierarchy::SceneHierarchy() { set_window_flags(); }
+    SceneView::SceneView() { set_window_flags(); }
 
-    SceneHierarchy::~SceneHierarchy() { }
+    SceneView::~SceneView() { }
 
-    void SceneHierarchy::set_window_flags()
+    void SceneView::set_window_flags()
     {
         //_flags |= ImGuiWindowFlags_NoTitleBar;
         //_flags |= ImGuiWindowFlags_NoResize;
@@ -16,7 +16,7 @@ namespace jumi
         //_flags |= ImGuiWindowFlags_NoScrollWithMouse;
         //_flags |= ImGuiWindowFlags_NoCollapse;
         //_flags |= ImGuiWindowFlags_AlwaysAutoResize;
-        //_flags |= ImGuiWindowFlags_NoBackground;
+        _flags |= ImGuiWindowFlags_NoBackground;
         //_flags |= ImGuiWindowFlags_NoSavedSettings;
         //_flags |= ImGuiWindowFlags_NoMouseInputs;
         //_flags |= ImGuiWindowFlags_MenuBar;
@@ -32,9 +32,9 @@ namespace jumi
         //_flags |= ImGuiWindowFlags_NoDocking;
     }
 
-    void SceneHierarchy::render()
+    void SceneView::render()
     {
-        if (ImGui::Begin("Scene Hierarchy", &_is_open, _flags))
+        if (ImGui::Begin("Scene View", &_is_open, _flags))
         {
 
         }

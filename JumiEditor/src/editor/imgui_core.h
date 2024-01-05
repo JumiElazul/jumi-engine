@@ -10,10 +10,11 @@ struct GLFWwindow;
 namespace jumi
 {
     class WindowHandler;
-    class Renderer;
-    class SceneHierarchy;
     class HeaderBar;
     class PropertiesInspector;
+    class SceneHierarchy;
+    class SceneView;
+    class Renderer;
 
     class ImGuiCore 
     {
@@ -38,6 +39,7 @@ namespace jumi
         std::unique_ptr<HeaderBar> _header_bar;
         std::unique_ptr<PropertiesInspector> _properties_inspector;
         std::unique_ptr<SceneHierarchy> _scene_hierarchy;
+        std::unique_ptr<SceneView> _scene_view;
 
         void initialize_imgui_windows();
         void initialize_backends(GLFWwindow* window);

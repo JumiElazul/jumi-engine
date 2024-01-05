@@ -10,6 +10,9 @@
 **.vcxproj.filters
 !premake.exe
 
+# Ignore imgui.ini
+*imgui.ini
+
 # Prerequisites
 *.d
 
