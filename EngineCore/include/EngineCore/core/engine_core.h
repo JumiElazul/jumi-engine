@@ -35,6 +35,13 @@ namespace jumi
 		static void glfw_error_callback(int err_code, const char* description);
 		static void glfw_key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 		static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+		static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
+		static void mouse_scroll_callback(GLFWwindow* window, double x_offset, double y_offset);
+		static void window_focus_callback(GLFWwindow* window, int focused);
+		static void window_close_callback(GLFWwindow* window);
+		static void window_maximize_callback(GLFWwindow* window, int maximized);
+		static void cursor_pos_callback(GLFWwindow* window, double xpos, double ypos);
+		static void window_size_callback(GLFWwindow* window, int width, int height);
 	};
 
 

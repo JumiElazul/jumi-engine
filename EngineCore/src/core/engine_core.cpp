@@ -190,14 +190,13 @@ namespace jumi
 		glfwSetErrorCallback(glfw_error_callback);
 		glfwSetKeyCallback(window, glfw_key_callback);
 		glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-        //glfwSetErrorCallback();
-		//glfwSetMouseButtonCallback(window, MouseButtonCallback);
-		//glfwSetWindowFocusCallback(window, WindowFocusCallback);
-		//glfwSetScrollCallback(window, ScrollCallback);
-		//glfwSetWindowCloseCallback(window, WindowCloseCallback);
-		//glfwSetCursorPosCallback(window, CursorPosCallback);
-		//glfwSetWindowFocusCallback(window, WindowFocusCallback);
-		//glfwSetWindowSizeCallback(window, WindowSizeCallback);
+		glfwSetMouseButtonCallback(window, mouse_button_callback);
+		glfwSetScrollCallback(window, mouse_scroll_callback);
+		glfwSetWindowFocusCallback(window, window_focus_callback);
+		glfwSetWindowCloseCallback(window, window_close_callback);
+		glfwSetWindowMaximizeCallback(window, window_maximize_callback);
+		glfwSetCursorPosCallback(window, cursor_pos_callback);
+		glfwSetWindowSizeCallback(window, window_size_callback);
 		//glfwSetCharCallback(window, );
 		//glfwSetCharModsCallback(window, );
 		//glfwSetCursorEnterCallback(window, );
@@ -206,7 +205,6 @@ namespace jumi
 		//glfwSetMonitorCallback(window, );
 		//glfwSetWindowContentScaleCallback(window, );
 		//glfwSetWindowIconifyCallback(window, );
-		//glfwSetWindowMaximizeCallback(window, );
 		//glfwSetWindowPosCallback(window, );
 		//glfwSetWindowRefreshCallback(window, );
 	}
@@ -216,7 +214,7 @@ namespace jumi
 		JUMI_ERROR("[err_code: {}] {}", err_code, description);
 	}
 
-	void WindowUserPointer::glfw_key_callback(GLFWwindow* window, int key, JUMI_UNUSED int scancode, int action, JUMI_UNUSED int mods)
+	void WindowUserPointer::glfw_key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 	{
 		// Convert the incoming glfw keycode to our custom engine keycodes
 		JUMI_KEYCODE keycode = KeyCodeConverter::glfw_to_jumi_keycode(key);
@@ -231,6 +229,41 @@ namespace jumi
     {
         WindowUserPointer* window_user_pointer = static_cast<WindowUserPointer*>(glfwGetWindowUserPointer(window));
         window_user_pointer->get_renderer().on_framebuffer_size_changed(window, width, height);
+    }
+
+    void WindowUserPointer::mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+    {
+
+    }
+
+    void WindowUserPointer::mouse_scroll_callback(GLFWwindow* window, double x_offset, double y_offset)
+    {
+
+    }
+
+    void WindowUserPointer::window_focus_callback(GLFWwindow* window, int focused)
+    {
+
+    }
+
+    void WindowUserPointer::window_close_callback(GLFWwindow* window)
+    {
+
+    }
+
+    void WindowUserPointer::cursor_pos_callback(GLFWwindow* window, double xpos, double ypos)
+    {
+
+    }
+
+    void WindowUserPointer::window_size_callback(GLFWwindow* window, int width, int height)
+    {
+
+    }
+
+    void WindowUserPointer::window_maximize_callback(GLFWwindow* window, int maximized)
+    {
+
     }
 
     void EngineCore::gl_debug_msg_callback(unsigned int source, unsigned int type, unsigned int id, unsigned int severity,
