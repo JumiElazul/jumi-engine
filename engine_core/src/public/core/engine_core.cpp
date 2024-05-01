@@ -11,7 +11,7 @@ namespace jumi
     engine_core::engine_core()
         : _window_handler(1920, 1080)
         , _input_handler(_window_handler.window())
-        , _glfw_callback_context(std::make_unique<glfw_callback_context>())
+        , _glfw_callback_context(std::make_unique<glfw_callback_context>(_window_handler, _input_handler))
     {
         logger::init();
         logger::print_debug_log_info();

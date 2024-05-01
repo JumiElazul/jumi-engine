@@ -1,4 +1,6 @@
 #include "internal/core/glfw_callback_context.h"
+#include "engine_core/window/window_handler.h"
+#include "engine_core/input/input_handler.h"
 #include "engine_core/core/logger.h"
 #include <glfw/glfw3.h>
 
@@ -23,7 +25,7 @@ namespace jumi
     void glfw_callback_context::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
     {
         const glfw_callback_context* ctx = static_cast<const glfw_callback_context*>(glfwGetWindowUserPointer(window));
-        ctx->_input_handler.key_callback(key, scancode, action, mods);
+        ctx->_input_handler.key_callback(window, key, scancode, action, mods);
     }
 
 }

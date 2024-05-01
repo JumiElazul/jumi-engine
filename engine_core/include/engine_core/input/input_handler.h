@@ -11,6 +11,7 @@ namespace jumi
     class input_handler
     {
     friend class engine_core;
+    friend class glfw_callback_context;
     public:
         void poll_inputs() const;
 

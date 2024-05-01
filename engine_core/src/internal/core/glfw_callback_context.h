@@ -2,11 +2,11 @@
 #define JUMI_ENGINE_CORE_CALLBACK_CONTEXT_H
 
 struct GLFWwindow;
-class window_handler;
-class input_handler;
 
 namespace jumi
 {
+    class window_handler;
+    class input_handler;
 
     class glfw_callback_context
     {

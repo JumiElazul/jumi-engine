@@ -10,7 +10,7 @@ namespace jumi
     constexpr std::string_view enum_to_string(Enum input)
     {
         static_assert(std::is_enum<Enum>::value, "enum_to_string can only be used with enums");
-        return magic_num::enum_name(input);
+        return magic_enum::enum_name(input);
     }
 
     enum class jumi_keyaction
