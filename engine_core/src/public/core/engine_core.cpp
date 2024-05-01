@@ -7,6 +7,7 @@
 namespace jumi
 {
 
+    // TODO: Create a configuration file for the engine using json or something
     engine_core::engine_core()
         : _window_handler(1920, 1080)
         , _input_handler(_window_handler.window())
@@ -44,4 +45,5 @@ namespace jumi
     {
         return glfwGetTime();
     }
+
 }

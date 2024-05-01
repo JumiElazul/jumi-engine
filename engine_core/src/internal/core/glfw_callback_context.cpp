@@ -23,7 +23,7 @@ namespace jumi
     void glfw_callback_context::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
     {
         const glfw_callback_context* ctx = static_cast<const glfw_callback_context*>(glfwGetWindowUserPointer(window));
-        ctx->key_callback();
+        ctx->_input_handler.key_callback(key, scancode, action, mods);
     }
 
 }
