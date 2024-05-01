@@ -12,9 +12,10 @@ namespace jumi
     {
     friend class engine_core;
     public:
-
         void open_window();
         void close_window();
+        void swap_buffers() const;
+        GLFWwindow* window() const;
 
     private:
         GLFWwindow* _window;

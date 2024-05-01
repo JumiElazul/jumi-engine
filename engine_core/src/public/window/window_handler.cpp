@@ -46,4 +46,14 @@ namespace jumi
         _window_open = true;
     }
 
+    void window_handler::swap_buffers() const
+    {
+        glfwSwapBuffers(_window);
+    }
+
+    GLFWwindow* window_handler::window() const
+    {
+        return _window;
+    }
+
 }

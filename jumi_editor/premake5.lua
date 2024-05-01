@@ -29,7 +29,7 @@ project(editor_name)
           "../vcpkg_installed/%{triplet}/debug/lib",
           "../" .. engine_core_name .. "/bin/Debug",
       }
-      links { engine_core_name .. "d" }
+      links { engine_core_name .. "d", "imguid" }
 
       filter "configurations:Release"
       optimize "On"
@@ -38,5 +38,5 @@ project(editor_name)
           "../" .. engine_core_name .. "/bin/Release",
           "../vcpkg_installed/%{triplet}/lib",
       }
-      links { engine_core_name }
+      links { engine_core_name, "imgui" }
 
