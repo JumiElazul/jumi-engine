@@ -1,7 +1,6 @@
 #include "engine_core/core/engine_core.h"
 #include "engine_core/core/exceptions.h"
 #include "engine_core/core/logger.h"
-#include <glfw/glfw3.h>
 
 namespace jumi
 {
@@ -13,15 +12,11 @@ namespace jumi
         logger::print_debug_log_info();
 
         JUMI_TRACE("Initializing engine_core");
-        if (!glfwInit())
-        { 
-            throw initialization_exception("Failed to initialize GLFW");
-        }
     }
 
     engine_core::~engine_core()
     {
-        glfwTerminate();
+
     }
 
     engine_core& engine_core::instance()

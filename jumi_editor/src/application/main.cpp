@@ -10,5 +10,17 @@ int main()
     window.open_window();
 
     std::string input;
-    std::getline(std::cin, input);
+
+    while (input != "exit")
+    {
+        std::getline(std::cin, input);
+        if (input == "s")
+        {
+            window.open_window();
+        }
+        else if (input == "h")
+        {
+            window.close_window();
+        }
+    }
 }

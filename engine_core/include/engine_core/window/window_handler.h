@@ -3,6 +3,8 @@
 
 #include "engine_core/window/window_handler.h"
 
+struct GLFWwindow;
+
 namespace jumi
 {
 
@@ -15,6 +17,7 @@ namespace jumi
         void close_window();
 
     private:
+        GLFWwindow* _window;
         bool _window_open;
         int _window_width;
         int _window_height;

@@ -19,7 +19,7 @@ project(engine_core_name)
    }
 
    filter "system:windows"
-      defines { "JUMI_WINDOWS", "JUMI_EXPORT_API" }
+      defines { "JUMI_WINDOWS", "JUMI_EXPORT_API", "GLFW_INCLUDE_NONE" }
 
    filter "configurations:Debug"
       symbols "On"
