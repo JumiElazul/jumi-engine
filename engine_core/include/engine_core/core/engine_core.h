@@ -3,6 +3,7 @@
 
 #include "engine_core/window/window_handler.h"
 #include "engine_core/input/input_handler.h"
+#include "engine_core/renderer/renderer.h"
 #include <memory>
 
 namespace jumi
@@ -25,6 +26,7 @@ namespace jumi
         bool _should_quit;
         window_handler _window_handler;
         input_handler _input_handler;
+        renderer _renderer;
         std::unique_ptr<glfw_callback_context> _glfw_callback_context;
 
         engine_core();

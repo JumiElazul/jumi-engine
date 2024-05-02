@@ -18,6 +18,7 @@ namespace jumi
         void close_window();
         void swap_buffers() const;
         GLFWwindow* window() const;
+        const window_info& get_window_info() const;
 
     private:
         GLFWwindow* _window;
@@ -27,6 +28,7 @@ namespace jumi
         window_info get_initial_window_info() const;
         void window_position_callback(int xpos, int ypos);
         void window_size_callback(int width, int height);
+        GLFWwindow* create_window();
 
         window_handler();
         ~window_handler();

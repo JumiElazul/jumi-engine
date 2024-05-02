@@ -12,7 +12,8 @@ namespace jumi
         : _should_quit(false)
         , _window_handler()
         , _input_handler()
-        , _glfw_callback_context(std::make_unique<glfw_callback_context>(_window_handler, _input_handler))
+        , _renderer(_window_handler.get_window_info())
+        , _glfw_callback_context(std::make_unique<glfw_callback_context>(_window_handler, _input_handler, _renderer))
     {
         logger::print_debug_log_info();
         JUMI_DEBUG("Initializing engine_core...");

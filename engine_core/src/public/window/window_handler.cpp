@@ -19,8 +19,7 @@ namespace jumi
         }
 
         _window_info = get_initial_window_info();
-        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
-        _window = glfwCreateWindow(_window_info.width, _window_info.height, "Jumi Engine", nullptr, nullptr);
+        _window = create_window();
 
         if (!_window)
         {
@@ -59,6 +58,11 @@ namespace jumi
         return _window;
     }
 
+    const window_info& window_handler::get_window_info() const
+    {
+        return _window_info;
+    }
+
     window_info window_handler::get_initial_window_info() const
     {
         window_info initial_window_info;
@@ -79,10 +83,25 @@ namespace jumi
     void window_handler::window_position_callback(int xpos, int ypos)
     {
         JUMI_DEBUG("Window position callback: x: {}, y: {}", xpos, ypos);
+        _window_info.x = xpos;
+        _window_info.y = ypos;
     }
 
     void window_handler::window_size_callback(int width, int height)
     {
         JUMI_DEBUG("Window size callback: width: {}, height: {}", width, height);
+        _window_info.width = width;
+        _window_info.height = height;
+    }
+
+    GLFWwindow* window_handler::create_window()
+    {
+        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+        glfwWindowHint(GLFW_SAMPLES, 2);
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+        return glfwCreateWindow(_window_info.width, _window_info.height, "Jumi Engine", nullptr, nullptr);
     }
 }
