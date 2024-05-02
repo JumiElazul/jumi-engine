@@ -16,16 +16,29 @@ namespace jumi
 
     void glfw_callback_context::hookup_callbacks(GLFWwindow* window)
     {
-        JUMI_DEBUG("Hooking up glfw callbacks...");
+        JUMI_INFO("Hooking up glfw callbacks...");
         glfwSetWindowUserPointer(window, this);
 
         glfwSetKeyCallback(window, key_callback);
+        glfwSetWindowPosCallback(window, window_position_callback);
+        glfwSetWindowSizeCallback(window, window_size_callback);
     }
 
     void glfw_callback_context::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
     {
         const glfw_callback_context* ctx = static_cast<const glfw_callback_context*>(glfwGetWindowUserPointer(window));
-        ctx->_input_handler.key_callback(window, key, scancode, action, mods);
+        ctx->_input_handler.key_callback(key, scancode, action, mods);
     }
 
+    void glfw_callback_context::window_position_callback(GLFWwindow* window, int xpos, int ypos)
+    {
+        const glfw_callback_context* ctx = static_cast<const glfw_callback_context*>(glfwGetWindowUserPointer(window));
+        ctx->_window_handler.window_position_callback(xpos, ypos);
+    }
+
+    void glfw_callback_context::window_size_callback(GLFWwindow* window, int width, int height)
+    {
+        const glfw_callback_context* ctx = static_cast<const glfw_callback_context*>(glfwGetWindowUserPointer(window));
+        ctx->_window_handler.window_size_callback(width, height);
+    }
 }

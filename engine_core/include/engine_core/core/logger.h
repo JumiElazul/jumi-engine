@@ -29,13 +29,12 @@ namespace jumi
     class logger
     {
     public:
-        static void init();
         static std::shared_ptr<spdlog::logger>& core_logger();
         static void print_debug_log_info();
 
     private:
         static std::shared_ptr<spdlog::logger> s_core_logger;
-        static bool s_initialized;
+        static void init();
     };
 
 }

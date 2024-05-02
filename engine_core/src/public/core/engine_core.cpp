@@ -9,20 +9,20 @@ namespace jumi
 
     // TODO: Create a configuration file for the engine using json or something
     engine_core::engine_core()
-        : _window_handler(1920, 1080)
-        , _input_handler(_window_handler.window())
+        : _should_quit(false)
+        , _window_handler()
+        , _input_handler()
         , _glfw_callback_context(std::make_unique<glfw_callback_context>(_window_handler, _input_handler))
     {
-        logger::init();
         logger::print_debug_log_info();
-        JUMI_DEBUG("Initializing engine_core..");
+        JUMI_DEBUG("Initializing engine_core...");
 
         _glfw_callback_context->hookup_callbacks(_window_handler.window());
     }
 
     engine_core::~engine_core()
     {
-
+        JUMI_DEBUG("Destructing engine_core...");
     }
 
     engine_core& engine_core::instance()
@@ -44,6 +44,22 @@ namespace jumi
     double engine_core::time() const
     {
         return glfwGetTime();
+    }
+
+    bool engine_core::should_quit() const
+    {
+        return _should_quit;
+    }
+
+    void engine_core::quit()
+    {
+        _should_quit = true;
+    }
+
+    void engine_core::new_frame()
+    {
+        _input_handler.new_frame_keymap();
+        glfwPollEvents();
     }
 
 }

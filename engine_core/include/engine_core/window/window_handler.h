@@ -2,6 +2,7 @@
 #define JUMI_ENGINE_WINDOW_WINDOW_HANDLER_H
 
 #include "engine_core/window/window_handler.h"
+#include "engine_core/structs/structs.h"
 
 struct GLFWwindow;
 
@@ -11,6 +12,7 @@ namespace jumi
     class window_handler
     {
     friend class engine_core;
+    friend class glfw_callback_context;
     public:
         void open_window();
         void close_window();
@@ -20,10 +22,13 @@ namespace jumi
     private:
         GLFWwindow* _window;
         bool _window_open;
-        int _window_width;
-        int _window_height;
+        window_info _window_info;
 
-        window_handler(int width, int height);
+        window_info get_initial_window_info() const;
+        void window_position_callback(int xpos, int ypos);
+        void window_size_callback(int width, int height);
+
+        window_handler();
         ~window_handler();
         window_handler(const window_handler& other) = delete;
         window_handler& operator=(const window_handler& other) = delete;

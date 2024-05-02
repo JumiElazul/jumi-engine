@@ -5,29 +5,25 @@ namespace jumi
 {
 
     std::shared_ptr<spdlog::logger> logger::s_core_logger;
-    bool logger::s_initialized = false;
 
     void logger::init()
     {
-        spdlog::set_pattern("%^[%T, %s, %!, line: %#] [%n] %v%$");
-        s_core_logger = spdlog::stdout_color_mt("JUMI");
-        s_core_logger->set_level(spdlog::level::trace);
-
-        s_initialized = true;
+        static bool s_initialized = []() {
+            spdlog::set_pattern("%^[%T, %s, %!, line: %#] [%n] %v%$");
+            s_core_logger = spdlog::stdout_color_mt("JUMI");
+            s_core_logger->set_level(spdlog::level::trace);
+            return true;
+        }();
     }
 
     std::shared_ptr<spdlog::logger>& logger::core_logger()
     {
+        init();
         return s_core_logger;
     }
 
     void logger::print_debug_log_info()
     {
-        if (!s_initialized)
-        {
-            throw initialization_exception("Logger not initialized");
-        }
-
         JUMI_TRACE("0. Trace logging enabled");
         JUMI_DEBUG("1. Debug logging enabled");
         JUMI_INFO("2. Info logging enabled");

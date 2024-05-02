@@ -3,7 +3,7 @@
 
 namespace jumi
 {
-
+    
     jumi_keyaction glfw_keyaction_to_jumi(int glfw_key)
     {
         switch (glfw_key)

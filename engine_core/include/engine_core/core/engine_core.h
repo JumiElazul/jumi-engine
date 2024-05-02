@@ -17,8 +17,12 @@ namespace jumi
         window_handler& window();
         input_handler& input();
         double time() const;
+        bool should_quit() const;
+        void quit();
+        void new_frame();
 
     private:
+        bool _should_quit;
         window_handler _window_handler;
         input_handler _input_handler;
         std::unique_ptr<glfw_callback_context> _glfw_callback_context;
