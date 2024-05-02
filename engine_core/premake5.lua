@@ -27,7 +27,7 @@ project(engine_core_name)
       {
           "../vcpkg_installed/%{triplet}/debug/lib",
       }
-      links { "fmtd", "glfw3", "glad", "spdlogd" }
+      links { "fmtd", "glfw3", "glad", "spdlogd", "glm" }
 
    filter "configurations:Release"
       optimize "On"
@@ -36,4 +36,4 @@ project(engine_core_name)
       {
           "../vcpkg_installed/%{triplet}/lib" 
       }
-      links { "fmt", "glfw3", "glad", "spdlog" }
+      links { "fmt", "glfw3", "glad", "spdlog", "glm" }

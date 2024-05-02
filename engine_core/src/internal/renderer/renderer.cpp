@@ -29,6 +29,11 @@ namespace jumi
         JUMI_DEBUG("Destructing renderer...");
     }
 
+    void renderer::set_clear_color(vec3 color)
+    {
+        glClearColor(color.r, color.g, color.b, 1.0f);
+    }
+
     void renderer::initialize_default_opengl_settings(const window_info& window_info)
     {
         glEnable(GL_DEBUG_OUTPUT);

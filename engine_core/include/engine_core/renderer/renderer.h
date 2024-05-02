@@ -1,8 +1,14 @@
 #ifndef JUMI_ENGINE_RENDERER_RENDERER_H
 #define JUMI_ENGINE_RENDERER_RENDERER_H
 
+#include "engine_core/math/math_types.h"
 #include <glad/glad.h>
 #include <string>
+
+namespace glm
+{
+    struct vec3;
+}
 
 namespace jumi
 {
@@ -19,6 +25,7 @@ namespace jumi
     friend class engine_core;
     friend class glfw_callback_context;
     public:
+        void set_clear_color(vec3 color);
 
     private:
         opengl_version _opengl_version;
