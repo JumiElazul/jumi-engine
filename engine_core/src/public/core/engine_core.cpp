@@ -32,14 +32,19 @@ namespace jumi
         return instance;
     }
 
-    window_handler& engine_core::window()
+    window_handler& engine_core::get_window()
     {
         return _window_handler;
     }
 
-    input_handler& engine_core::input()
+    input_handler& engine_core::get_input()
     {
         return _input_handler;
+    }
+
+    renderer& engine_core::get_renderer()
+    {
+        return _renderer;
     }
 
     double engine_core::time() const

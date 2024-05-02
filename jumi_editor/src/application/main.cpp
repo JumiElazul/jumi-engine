@@ -11,14 +11,16 @@ namespace jumi
     int main()
     {
         engine_core& engine_core = engine_core::instance();
-        window_handler& window = engine_core.window();
-        input_handler& input = engine_core.input();
-        renderer& renderer = engine_core.renderer();
+        window_handler& window = engine_core.get_window();
+        input_handler& input = engine_core.get_input();
+        renderer& renderer = engine_core.get_renderer();
 
         window.open_window();
+        renderer.set_clear_color({ 1.0f, 0.0f, 0.0f });
 
         while (!engine_core.should_quit())
         {
+            renderer.clear_color_buffer();
             engine_core.new_frame();
 
             if (input.key_pressed(jumi_key::key_escape))
@@ -26,6 +28,7 @@ namespace jumi
                 engine_core.quit();
             }
 
+            renderer.render_scene();
             window.swap_buffers();
         }
 

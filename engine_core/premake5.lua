@@ -12,8 +12,8 @@ project(engine_core_name)
 
    includedirs
    {
-       "include",
        "src",
+       "include",
        "../vcpkg_installed/%{triplet}/include"
    }
 

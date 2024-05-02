@@ -15,10 +15,11 @@ namespace jumi
     {
     public:
         static engine_core& instance();
-        window_handler& window();
-        input_handler& input();
-        double time() const;
-        bool should_quit() const;
+        [[no_discard]] window_handler& get_window();
+        [[no_discard]] input_handler& get_input();
+        [[no_discard]] renderer& get_renderer();
+        [[no_discard]] double time() const;
+        [[no_discard]] bool should_quit() const;
         void quit();
         void new_frame();
 

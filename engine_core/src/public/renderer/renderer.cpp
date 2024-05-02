@@ -2,6 +2,8 @@
 #include "engine_core/core/exceptions.h"
 #include "engine_core/core/logger.h"
 #include "engine_core/structs/structs.h"
+#include "internal/renderer/vertex_array_object.h"
+#include "internal/renderer/vertex_buffer_object.h"
 #include <glfw/glfw3.h>
 #include <glad/glad.h>
 #include <string>
@@ -9,11 +11,46 @@
 namespace jumi
 {
 
+    class test_object
+    {
+    public:
+        test_object()
+            : vao()
+            , vbo()
+        {
+            vao.bind();
+            vbo.bind();
+
+            static float vertices[] =
+            {
+                -0.5f, -0.5f, 0.0f, // Bottom left
+                 0.5f, -0.5f, 0.0f, // Bottom right
+                -0.5f,  0.5f, 0.0f, // Top left
+                 0.5f,  0.5f, 0.0f, // Top right
+            };
+
+            vbo.buffer_data(sizeof(vertices), vertices, GL_STATIC_DRAW);
+            vbo.set_vertex_attributes(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+            vbo.enable_vertex_attributes_array(0);
+        }
+
+        void bind()
+        {
+            vao.bind();
+            vbo.bind();
+        }
+
+    private:
+        vertex_array_object vao;
+        vertex_buffer_object vbo;
+    };
+
     // TODO: Decouple the renderer viewport from the window size
     renderer::renderer(const window_info& window_info)
         : _opengl_version{ 4, 6 }
         , _viewport_width(window_info.width)
         , _viewport_height(window_info.width)
+        , _test_object(nullptr)
     {
         JUMI_DEBUG("Initializing renderer...");
         if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -22,16 +59,34 @@ namespace jumi
         }
 
         initialize_default_opengl_settings(window_info);
+        _test_object = new test_object();
     }
 
     renderer::~renderer()
     {
         JUMI_DEBUG("Destructing renderer...");
+        delete _test_object;
     }
 
     void renderer::set_clear_color(vec3 color)
     {
         glClearColor(color.r, color.g, color.b, 1.0f);
+    }
+
+    void renderer::clear_color_buffer()
+    {
+        glClear(GL_COLOR_BUFFER_BIT);
+    }
+
+    void renderer::clear_depth_buffer()
+    {
+        glClear(GL_DEPTH_BUFFER_BIT);
+    }
+
+    void renderer::render_scene()
+    {
+        _test_object->bind();
+        glDrawArrays(GL_TRIANGLES, 0, 4);
     }
 
     void renderer::initialize_default_opengl_settings(const window_info& window_info)

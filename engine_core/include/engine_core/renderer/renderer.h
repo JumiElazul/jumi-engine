@@ -5,14 +5,10 @@
 #include <glad/glad.h>
 #include <string>
 
-namespace glm
-{
-    struct vec3;
-}
-
 namespace jumi
 {
     struct window_info;
+    class test_object;
 
     struct opengl_version
     {
@@ -26,11 +22,15 @@ namespace jumi
     friend class glfw_callback_context;
     public:
         void set_clear_color(vec3 color);
+        void clear_depth_buffer();
+        void clear_color_buffer();
+        void render_scene();
 
     private:
         opengl_version _opengl_version;
         int _viewport_width;
         int _viewport_height;
+        test_object* _test_object;
 
         void initialize_default_opengl_settings(const window_info& window_info);
         void framebuffer_size_callback(int width, int height);
