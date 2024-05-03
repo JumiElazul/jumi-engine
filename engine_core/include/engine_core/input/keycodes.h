@@ -17,7 +17,9 @@ namespace jumi
     {
         release,
         press,
-        repeat
+        repeat,
+
+        none,
     };
 
     enum class jumi_key
@@ -72,7 +74,6 @@ namespace jumi
         key_grave_accent,
         key_world_1,
         key_world_2,
-
         key_escape,
         key_enter,
         key_tab,
@@ -143,6 +144,8 @@ namespace jumi
         key_right_alt,
         key_right_super,
         key_menu,
+
+        key_none,
     };
 
     enum class jumi_mousebutton
@@ -155,6 +158,8 @@ namespace jumi
         mouse_button_6,
         mouse_button_7,
         mouse_button_8,
+
+        mouse_button_none,
     };
 
     enum class jumi_keymod
@@ -165,6 +170,8 @@ namespace jumi
         mod_super,
         mod_caps_lock,
         mod_num_lock,
+
+        mod_none,
     };
 
     enum class jumi_joystick
@@ -185,6 +192,8 @@ namespace jumi
         joystick_14,
         joystick_15,
         joystick_16,
+
+        joystick_none,
     };
 
     enum class jumi_gamepad_button
@@ -210,6 +219,8 @@ namespace jumi
         right_y,
         left_trigger,
         right_trigger,
+
+        none,
     };
 
 }

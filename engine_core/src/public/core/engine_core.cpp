@@ -1,12 +1,12 @@
 #include "engine_core/core/engine_core.h"
 #include "engine_core/core/exceptions.h"
 #include "engine_core/core/logger.h"
+#include "engine_core/core/timers.h"
 #include "internal/core/glfw_callback_context.h"
 #include <glfw/glfw3.h>
 
 namespace jumi
 {
-
     // TODO: Create a configuration file for the engine using json or something
     engine_core::engine_core()
         : _should_quit(false)
@@ -14,6 +14,7 @@ namespace jumi
         , _input_handler()
         , _renderer(_window_handler.get_window_info())
         , _glfw_callback_context(std::make_unique<glfw_callback_context>(_window_handler, _input_handler, _renderer))
+        , _timers(timers::instance())
     {
         logger::print_debug_log_info();
         JUMI_DEBUG("Initializing engine_core...");
@@ -64,8 +65,8 @@ namespace jumi
 
     void engine_core::new_frame()
     {
+        _timers.calculate_deltatime();
         _input_handler.new_frame_keymap();
         glfwPollEvents();
     }
-
 }

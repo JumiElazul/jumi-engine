@@ -11,6 +11,7 @@ namespace jumi
             case GLFW_RELEASE:                          return jumi_keyaction::release;
             case GLFW_PRESS:                            return jumi_keyaction::press;
             case GLFW_REPEAT:                           return jumi_keyaction::repeat;
+            default:                                    return jumi_keyaction::none;
         }
     }
 
@@ -21,6 +22,7 @@ namespace jumi
             case jumi_keyaction::release:               return GLFW_RELEASE;
             case jumi_keyaction::press:                 return GLFW_PRESS;
             case jumi_keyaction::repeat:                return GLFW_REPEAT;
+            default:                                    return -1;
         }
     }
 
@@ -148,6 +150,7 @@ namespace jumi
             case GLFW_KEY_RIGHT_ALT:                    return jumi_key::key_right_alt;
             case GLFW_KEY_RIGHT_SUPER:                  return jumi_key::key_right_super;
             case GLFW_KEY_MENU:                         return jumi_key::key_menu;
+            default:                                    return jumi_key::key_none;
         }
     }
 
@@ -275,6 +278,7 @@ namespace jumi
             case jumi_key::key_right_alt:               return GLFW_KEY_RIGHT_ALT;
             case jumi_key::key_right_super:             return GLFW_KEY_RIGHT_SUPER;
             case jumi_key::key_menu:                    return GLFW_KEY_MENU;
+            default:                                    return -1;
         }
     }
 
@@ -290,6 +294,7 @@ namespace jumi
             case GLFW_MOUSE_BUTTON_6:                   return jumi_mousebutton::mouse_button_6;
             case GLFW_MOUSE_BUTTON_7:                   return jumi_mousebutton::mouse_button_7;
             case GLFW_MOUSE_BUTTON_8:                   return jumi_mousebutton::mouse_button_8;
+            default:                                    return jumi_mousebutton::mouse_button_none;
         }
     }
 
@@ -305,6 +310,7 @@ namespace jumi
             case jumi_mousebutton::mouse_button_6:      return GLFW_MOUSE_BUTTON_6;
             case jumi_mousebutton::mouse_button_7:      return GLFW_MOUSE_BUTTON_7;
             case jumi_mousebutton::mouse_button_8:      return GLFW_MOUSE_BUTTON_8;
+            default:                                    return -1;
         }
     }
 
@@ -318,6 +324,7 @@ namespace jumi
             case GLFW_MOD_SUPER:                        return jumi_keymod::mod_super;
             case GLFW_MOD_CAPS_LOCK:                    return jumi_keymod::mod_caps_lock;
             case GLFW_MOD_NUM_LOCK:                     return jumi_keymod::mod_num_lock;
+            default:                                    return jumi_keymod::mod_none;
         }
     }
 
@@ -337,6 +344,7 @@ namespace jumi
             case GLFW_JOYSTICK_10:                      return jumi_joystick::joystick_10;
             case GLFW_JOYSTICK_11:                      return jumi_joystick::joystick_11;
             case GLFW_JOYSTICK_12:                      return jumi_joystick::joystick_12;
+            default:                                    return jumi_joystick::joystick_none;
         }
     }
 
@@ -356,6 +364,7 @@ namespace jumi
             case jumi_joystick::joystick_10:            return GLFW_JOYSTICK_10;
             case jumi_joystick::joystick_11:            return GLFW_JOYSTICK_11;
             case jumi_joystick::joystick_12:            return GLFW_JOYSTICK_12;
+            default:                                    return -1;
         }
     }
 
@@ -378,6 +387,7 @@ namespace jumi
             case GLFW_GAMEPAD_BUTTON_DPAD_RIGHT:        return jumi_gamepad_button::dpad_right;
             case GLFW_GAMEPAD_BUTTON_DPAD_DOWN:         return jumi_gamepad_button::dpad_down;
             case GLFW_GAMEPAD_BUTTON_DPAD_LEFT:         return jumi_gamepad_button::dpad_left;
+            default:                                    return jumi_gamepad_button::none;
         }
     }
 
@@ -406,6 +416,7 @@ namespace jumi
             case jumi_gamepad_button::right_y:          return GLFW_GAMEPAD_AXIS_RIGHT_Y;
             case jumi_gamepad_button::left_trigger:     return GLFW_GAMEPAD_AXIS_LEFT_TRIGGER;
             case jumi_gamepad_button::right_trigger:    return GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER;
+            default:                                    return -1;
         }
     }
 

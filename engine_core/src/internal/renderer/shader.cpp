@@ -22,13 +22,37 @@ namespace jumi
     }
 
     shader::shader(shader&& other) noexcept
+        : _opengl_id(other._opengl_id)
+        , _vertex_shader_id(other._vertex_shader_id)
+        , _fragment_shader_id(other._vertex_shader_id)
+        , _shader_primed(other._shader_primed)
+        , _shader_linked(other._shader_linked)
     {
-
+        other._opengl_id = 0;
+        other._vertex_shader_id = 0;
+        other._fragment_shader_id = 0;
+        other._shader_primed = false;
+        other._shader_linked = false;
     }
 
     shader& shader::operator=(shader&& other) noexcept
     {
+        if (this != &other)
+        {
+            _opengl_id = other._opengl_id;
+            _vertex_shader_id = other._vertex_shader_id;
+            _fragment_shader_id = other._vertex_shader_id;
+            _shader_primed = other._shader_primed;
+            _shader_linked = other._shader_linked;
 
+            other._opengl_id = 0;
+            other._vertex_shader_id = 0;
+            other._fragment_shader_id = 0;
+            other._shader_primed = false;
+            other._shader_linked = false;
+        }
+
+        return *this;
     }
 
     const unsigned int& shader::opengl_id() const

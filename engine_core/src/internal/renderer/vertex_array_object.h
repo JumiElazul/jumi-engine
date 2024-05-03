@@ -16,7 +16,7 @@ namespace jumi
         vertex_array_object(vertex_array_object&& other) noexcept;
         vertex_array_object& operator=(vertex_array_object&& other) noexcept;
 
-        [[no_discard]] const unsigned int& opengl_id() const;
+        [[nodiscard]] const unsigned int& opengl_id() const;
         void bind() const;
         static void unbind();
 

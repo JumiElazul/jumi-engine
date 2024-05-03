@@ -17,7 +17,7 @@ namespace jumi
         vertex_buffer_object(vertex_buffer_object&& other) noexcept;
         vertex_buffer_object& operator=(vertex_buffer_object&& other) noexcept;
 
-        [[no_discard]] const unsigned int& opengl_id() const;
+        [[nodiscard]] const unsigned int& opengl_id() const;
         void bind() const;
         void buffer_data(GLsizeiptr size, const void* data, GLenum usage);
         void set_vertex_attributes(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void* pointer);

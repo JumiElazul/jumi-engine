@@ -8,7 +8,7 @@
 namespace jumi
 {
 
-    int main()
+    int entry_point()
     {
         engine_core& engine_core = engine_core::instance();
         window_handler& window = engine_core.get_window();
@@ -39,5 +39,5 @@ namespace jumi
 
 int main()
 {
-    return jumi::main();
+    return jumi::entry_point();
 }
