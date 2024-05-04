@@ -14,9 +14,13 @@ namespace jumi
     class resource_manager_impl
     {
     public:
+        // TODO: The way we construct the _base_resource_path is a total hack.  Will work for now for debugging purposes,
+        // but will implement a more robust solution later.
         resource_manager_impl()
+            : _base_resource_path(std::filesystem::current_path().parent_path().string() + "\\engine_core\\resources\\")
+            , _shader_resource_path(_base_resource_path + "shaders\\")
+            , _shader_library(_shader_resource_path)
         {
-            construct_resource_paths();
             initialize_default_resources();
         }
 
@@ -25,27 +29,20 @@ namespace jumi
 
         }
 
-        std::string asset_path() const
+        const std::string& base_resource_path() const
         {
-            return _asset_path;
+            return _base_resource_path;
         }
 
-        std::string shader_path() const
+        const std::string& shader_resource_path() const
         {
-            return _shader_path;
+            return _shader_resource_path;
         }
 
     private:
+        const std::string _base_resource_path;
+        const std::string _shader_resource_path;
         shader_library _shader_library;
-        std::string _asset_path;
-        std::string _shader_path;
-
-        void construct_resource_paths()
-        {
-            _asset_path = std::filesystem::current_path().string() + "\\assets\\";
-
-            _shader_path = _asset_path + "shaders\\";
-        }
 
         void initialize_default_resources()
         {
@@ -60,14 +57,14 @@ namespace jumi
     //                                             INTERFACE
     // ----------------------------------------------------------------------------------------------------
     // ----------------------------------------------------------------------------------------------------
-    std::string resource_manager::resource_path() const
+    const std::string& resource_manager::base_resource_path() const
     {
-        return _resource_manager_impl->asset_path();
+        return _resource_manager_impl->base_resource_path();
     }
 
-    std::string resource_manager::shader_path() const
+    const std::string& resource_manager::shader_resource_path() const
     {
-        return _resource_manager_impl->shader_path();
+        return _resource_manager_impl->shader_resource_path();
     }
 
     resource_manager::resource_manager()

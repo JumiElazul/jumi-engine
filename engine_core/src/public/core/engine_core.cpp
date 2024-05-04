@@ -2,6 +2,7 @@
 #include "engine_core/core/exceptions.h"
 #include "engine_core/core/logger.h"
 #include "engine_core/core/timers.h"
+#include "engine_core/resources/resource_manager.h"
 #include "internal/core/glfw_callback_context.h"
 #include <glfw/glfw3.h>
 

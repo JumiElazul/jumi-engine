@@ -23,6 +23,8 @@ namespace jumi
         shader& operator=(shader&& other) noexcept;
 
         [[nodiscard]] const unsigned int& opengl_id() const;
+        [[nodiscard]] bool shader_primed() const;
+        [[nodiscard]] bool shader_linked() const;
         void prime_shader(const std::string& vertex_shader_path, const std::string& fragment_shader_path);
         void link_shader();
         void bind() const;

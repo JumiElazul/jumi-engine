@@ -60,6 +60,16 @@ namespace jumi
         return _opengl_id;
     }
 
+    bool shader::shader_primed() const
+    {
+        return _shader_primed;
+    }
+
+    bool shader::shader_linked() const
+    {
+        return _shader_linked;
+    }
+
     void shader::prime_shader(const std::string& vertex_shader_path, const std::string& fragment_shader_path)
     {
         if (_shader_linked)

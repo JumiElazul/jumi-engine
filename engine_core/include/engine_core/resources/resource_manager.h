@@ -12,12 +12,11 @@ namespace jumi
     {
     friend class engine_core;
     public:
+        const std::string& base_resource_path() const;
+        const std::string& shader_resource_path() const;
 
     private:
         std::unique_ptr<resource_manager_impl> _resource_manager_impl;
-
-        std::string resource_path() const;
-        std::string shader_path() const;
 
         resource_manager();
         ~resource_manager();

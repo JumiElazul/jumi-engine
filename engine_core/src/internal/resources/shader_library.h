@@ -2,6 +2,7 @@
 #define JUMI_ENGINE_RESOURCES_SHADER_LIBRARY_H
 
 #include "internal/renderer/shader.h"
+#include <string>
 #include <vector>
 
 namespace jumi
@@ -13,11 +14,12 @@ namespace jumi
     public:
 
     private:
+        const std::string& _shader_resource_path;
         std::vector<shader> _shaders;
 
         void initialize_default_shaders();
 
-        shader_library();
+        shader_library(const std::string& shader_resource_path);
         ~shader_library();
         shader_library(const shader_library& other) = delete;
         shader_library& operator=(const shader_library& other) = delete;

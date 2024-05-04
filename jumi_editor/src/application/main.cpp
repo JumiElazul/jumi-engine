@@ -16,6 +16,8 @@ namespace jumi
         renderer& renderer = engine_core.get_renderer();
         resource_manager& resource_manager = engine_core.get_resource_manager();
 
+        const std::string& base_resource_path = resource_manager.base_resource_path();
+
         window.open_window();
         renderer.set_clear_color({ 1.0f, 0.0f, 0.0f });
 
