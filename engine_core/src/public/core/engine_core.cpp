@@ -13,10 +13,10 @@ namespace jumi
         , _window_handler()
         , _input_handler()
         , _renderer(_window_handler.get_window_info())
+        , _resource_manager()
         , _glfw_callback_context(std::make_unique<glfw_callback_context>(_window_handler, _input_handler, _renderer))
         , _timers(timers::instance())
     {
-        logger::print_debug_log_info();
         JUMI_DEBUG("Initializing engine_core...");
 
         _glfw_callback_context->hookup_callbacks(_window_handler.window());
@@ -46,6 +46,11 @@ namespace jumi
     renderer& engine_core::get_renderer()
     {
         return _renderer;
+    }
+
+    resource_manager& engine_core::get_resource_manager()
+    {
+        return _resource_manager;
     }
 
     double engine_core::time() const

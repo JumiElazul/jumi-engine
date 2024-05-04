@@ -14,6 +14,7 @@ namespace jumi
         window_handler& window = engine_core.get_window();
         input_handler& input = engine_core.get_input();
         renderer& renderer = engine_core.get_renderer();
+        resource_manager& resource_manager = engine_core.get_resource_manager();
 
         window.open_window();
         renderer.set_clear_color({ 1.0f, 0.0f, 0.0f });

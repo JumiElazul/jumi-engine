@@ -1,6 +1,7 @@
 #ifndef JUMI_ENGINE_CORE_LOGGER_H
 #define JUMI_ENGINE_CORE_LOGGER_H
 
+#define SPDLOG_LEVEL_NAMES { "TRACE   ", "DEBUG   ", "INFO    ", "WARN    ", "ERROR   ", "CRITICAL", "OFF     " }
 #define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_TRACE
 #include "engine_core/core/exceptions.h"
 #include <spdlog/spdlog.h>
@@ -30,11 +31,12 @@ namespace jumi
     {
     public:
         static std::shared_ptr<spdlog::logger>& core_logger();
-        static void print_debug_log_info();
 
     private:
         static std::shared_ptr<spdlog::logger> s_core_logger;
         static void init();
+        static void setup_logger();
+        static void print_debug_log_info();
     };
 
 }

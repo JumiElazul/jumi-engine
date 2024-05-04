@@ -4,9 +4,12 @@
 #include "engine_core/structs/structs.h"
 #include "internal/renderer/vertex_array_object.h"
 #include "internal/renderer/vertex_buffer_object.h"
+#include "internal/renderer/shader.h"
 #include <glfw/glfw3.h>
 #include <glad/glad.h>
 #include <string>
+
+#include <filesystem>
 
 namespace jumi
 {
@@ -15,11 +18,11 @@ namespace jumi
     {
     public:
         test_object()
-            : vao()
-            , vbo()
+            : _vao()
+            , _vbo()
         {
-            vao.bind();
-            vbo.bind();
+            _vao.bind();
+            _vbo.bind();
 
             static float vertices[] =
             {
@@ -29,20 +32,21 @@ namespace jumi
                  0.5f,  0.5f, 0.0f, // Top right
             };
 
-            vbo.buffer_data(sizeof(vertices), vertices, GL_STATIC_DRAW);
-            vbo.set_vertex_attributes(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-            vbo.enable_vertex_attributes_array(0);
+            _vbo.buffer_data(sizeof(vertices), vertices, GL_STATIC_DRAW);
+            _vbo.set_vertex_attributes(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+            _vbo.enable_vertex_attributes_array(0);
         }
 
         void bind()
         {
-            vao.bind();
-            vbo.bind();
+            _vao.bind();
+            _vbo.bind();
         }
 
     private:
-        vertex_array_object vao;
-        vertex_buffer_object vbo;
+        vertex_array_object _vao;
+        vertex_buffer_object _vbo;
+        shader _shader;
     };
 
     // TODO: Decouple the renderer viewport from the window size

@@ -4,6 +4,7 @@
 #include "engine_core/window/window_handler.h"
 #include "engine_core/input/input_handler.h"
 #include "engine_core/renderer/renderer.h"
+#include "engine_core/resources/resource_manager.h"
 #include <memory>
 
 namespace jumi
@@ -19,9 +20,9 @@ namespace jumi
         [[nodiscard]] window_handler& get_window();
         [[nodiscard]] input_handler& get_input();
         [[nodiscard]] renderer& get_renderer();
+        [[nodiscard]] resource_manager& get_resource_manager();
         [[nodiscard]] double time() const;
         [[nodiscard]] bool should_quit() const;
-        [[nodiscard]] float delta_time() const;
         void quit();
         void new_frame();
 
@@ -30,6 +31,7 @@ namespace jumi
         window_handler _window_handler;
         input_handler _input_handler;
         renderer _renderer;
+        resource_manager _resource_manager;
         std::unique_ptr<glfw_callback_context> _glfw_callback_context;
         timers& _timers;
 
