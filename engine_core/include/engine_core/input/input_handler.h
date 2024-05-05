@@ -20,6 +20,7 @@ namespace jumi
         std::unordered_map<jumi_key, bool> _previous_frame_keymap;
         std::unordered_map<jumi_key, bool> _current_frame_keymap;
 
+        void init();
         void new_frame_keymap();
 
         input_handler();

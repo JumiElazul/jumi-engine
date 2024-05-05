@@ -30,10 +30,13 @@ namespace jumi
         bool _should_quit;
         window_handler _window_handler;
         input_handler _input_handler;
-        renderer _renderer;
         resource_manager _resource_manager;
+        renderer _renderer;
         std::unique_ptr<glfw_callback_context> _glfw_callback_context;
         timers& _timers;
+
+        void init_glfw() const;
+        void init_glad() const;
 
         engine_core();
         ~engine_core();

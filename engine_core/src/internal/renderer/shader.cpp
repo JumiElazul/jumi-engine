@@ -2,12 +2,14 @@
 #include "engine_core/core/logger.h"
 #include "engine_core/utility/utility.h"
 #include <glad/glad.h>
+#include <string>
 
 namespace jumi
 {
 
-    shader::shader()
-        : _opengl_id()
+    shader::shader(const std::string& shader_name)
+        : _shader_name(shader_name)
+        , _opengl_id()
         , _vertex_shader_id()
         , _fragment_shader_id()
         , _shader_primed(false)
@@ -53,6 +55,11 @@ namespace jumi
         }
 
         return *this;
+    }
+
+    const std::string& shader::name() const
+    {
+        return _shader_name;
     }
 
     const unsigned int& shader::opengl_id() const
@@ -159,7 +166,7 @@ namespace jumi
         glUseProgram(_opengl_id);
     }
 
-    void shader::unbind()
+    void shader::unbind() const
     {
         glUseProgram(0);
     }

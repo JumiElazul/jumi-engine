@@ -5,8 +5,8 @@ namespace jumi
 {
     struct window_info
     {
-        int width;
-        int height;
+        int width = 1920;
+        int height = 1080;
         int x;
         int y;
     };

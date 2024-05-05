@@ -34,10 +34,14 @@ namespace jumi
         return _previous_frame_keymap[key] && _current_frame_keymap[key];
     }
 
+    void input_handler::init()
+    {
+
+    }
+
     void input_handler::new_frame_keymap()
     {
         _previous_frame_keymap = _current_frame_keymap;
-        //_current_frame_keymap.clear();
     }
 
     void input_handler::key_callback(int key, int scancode, int action, int mods)

@@ -2,14 +2,15 @@
 #include "engine_core/core/exceptions.h"
 #include "engine_core/core/logger.h"
 #include "engine_core/structs/structs.h"
+#include "engine_core/resources/resource_manager.h"
 #include "internal/renderer/vertex_array_object.h"
 #include "internal/renderer/vertex_buffer_object.h"
 #include "internal/renderer/shader.h"
+#include "engine_core/renderer/i_shader.h"
 #include <glfw/glfw3.h>
 #include <glad/glad.h>
+#include <memory>
 #include <string>
-
-#include <filesystem>
 
 namespace jumi
 {
@@ -46,30 +47,30 @@ namespace jumi
     private:
         vertex_array_object _vao;
         vertex_buffer_object _vbo;
-        shader _shader;
     };
 
     // TODO: Decouple the renderer viewport from the window size
-    renderer::renderer(const window_info& window_info)
+    renderer::renderer(const window_info& window_info, const resource_manager& resource_manager)
         : _opengl_version{ 4, 6 }
         , _viewport_width(window_info.width)
         , _viewport_height(window_info.width)
+        , _resource_manager(resource_manager)
         , _test_object(nullptr)
     {
-        JUMI_DEBUG("Initializing renderer...");
-        if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-        {
-            throw initialization_exception("Failed to initialize GLAD");
-        }
 
-        initialize_default_opengl_settings(window_info);
-        _test_object = new test_object();
     }
 
     renderer::~renderer()
     {
         JUMI_DEBUG("Destructing renderer...");
         delete _test_object;
+    }
+
+    void renderer::init()
+    {
+        JUMI_DEBUG("Initializing renderer...");
+        glDebugMessageCallback(opengl_debug_message_callback, 0);
+        _test_object = new test_object();
     }
 
     void renderer::set_clear_color(vec3 color)
@@ -90,26 +91,11 @@ namespace jumi
     void renderer::render_scene()
     {
         _test_object->bind();
-        glDrawArrays(GL_TRIANGLES, 0, 4);
-    }
+        const std::string& default_shader_name = _resource_manager.default_shader_name();
+        std::shared_ptr<i_shader> default_shader = _resource_manager.get_shader(default_shader_name);
+        default_shader->bind();
 
-    void renderer::initialize_default_opengl_settings(const window_info& window_info)
-    {
-        glEnable(GL_DEBUG_OUTPUT);
-        glEnable(GL_DEPTH_TEST);
-        glEnable(GL_MULTISAMPLE);
-        glViewport(0, 0, _viewport_width, _viewport_height);
-
-        if (_opengl_version.major >= 4 && _opengl_version.minor >= 3)
-        {
-            glDebugMessageCallback(opengl_debug_message_callback, 0);
-        }
-        else
-        {
-            // TODO: Deal with versions that are less than 4.3 using the old method of using glGetError.
-            JUMI_CRITICAL("OpenGL version does not support debug message callback");
-            throw initialization_exception("OpenGL version does not support debug message callback");
-        }
+        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     }
 
     void renderer::framebuffer_size_callback(int width, int height)
@@ -186,5 +172,4 @@ namespace jumi
             default:                                return "Unknown";
         }
     }
-
 }

@@ -1,4 +1,5 @@
 #include "engine_core/resources/resource_manager.h"
+#include "engine_core/core/logger.h"
 #include "internal/resources/shader_library.h"
 #include <filesystem>
 #include <string>
@@ -21,12 +22,18 @@ namespace jumi
             , _shader_resource_path(_base_resource_path + "shaders\\")
             , _shader_library(_shader_resource_path)
         {
-            initialize_default_resources();
+            JUMI_DEBUG("Initializing resource_manager_impl...");
         }
 
         ~resource_manager_impl()
         {
+            JUMI_DEBUG("Destructing resource_manager_impl...");
+        }
 
+        void init()
+        {
+            _shader_library.init();
+            //_texture_library.init();
         }
 
         const std::string& base_resource_path() const
@@ -37,6 +44,16 @@ namespace jumi
         const std::string& shader_resource_path() const
         {
             return _shader_resource_path;
+        }
+
+        const std::string& default_shader_name() const
+        {
+            return _shader_library.get_default_shader_name();
+        }
+
+        std::shared_ptr<i_shader> get_shader(const std::string& shader_name)
+        {
+            return _shader_library.get_shader(shader_name);
         }
 
     private:
@@ -57,6 +74,23 @@ namespace jumi
     //                                             INTERFACE
     // ----------------------------------------------------------------------------------------------------
     // ----------------------------------------------------------------------------------------------------
+
+    resource_manager::resource_manager()
+        : _resource_manager_impl(std::make_unique<resource_manager_impl>())
+    {
+        JUMI_DEBUG("Initializing resource_manager...");
+    }
+
+    resource_manager::~resource_manager()
+    {
+        JUMI_DEBUG("Destructing resource_manager...");
+    }
+
+    void resource_manager::init()
+    {
+        _resource_manager_impl->init();
+    }
+
     const std::string& resource_manager::base_resource_path() const
     {
         return _resource_manager_impl->base_resource_path();
@@ -67,15 +101,14 @@ namespace jumi
         return _resource_manager_impl->shader_resource_path();
     }
 
-    resource_manager::resource_manager()
-        : _resource_manager_impl(std::make_unique<resource_manager_impl>())
+    const std::string& resource_manager::default_shader_name() const
     {
-
+        return _resource_manager_impl->default_shader_name();
     }
 
-    resource_manager::~resource_manager()
+    std::shared_ptr<i_shader> resource_manager::get_shader(const std::string& shader_name) const 
     {
-
+        return _resource_manager_impl->get_shader(shader_name);
     }
 
 }

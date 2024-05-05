@@ -2,6 +2,7 @@
 #define JUMI_ENGINE_RENDERER_SHADER_H
 
 #include "internal/renderer/i_opengl_resource.h"
+#include "engine_core/renderer/i_shader.h"
 #include <string>
 
 namespace jumi
@@ -12,25 +13,28 @@ namespace jumi
         fragment,
     };
 
-    class shader : public i_opengl_resource
+    class shader : public i_opengl_resource, public i_shader
     {
     public:
-        shader();
+        shader(const std::string& shader_name);
         ~shader();
         shader(const shader& other) = delete;
         shader operator=(const shader& other) = delete;
         shader(shader&& other) noexcept;
         shader& operator=(shader&& other) noexcept;
 
-        [[nodiscard]] const unsigned int& opengl_id() const;
-        [[nodiscard]] bool shader_primed() const;
-        [[nodiscard]] bool shader_linked() const;
+        [[nodiscard]] const std::string& name() const override;
+        [[nodiscard]] const unsigned int& opengl_id() const override;
+        [[nodiscard]] bool shader_primed() const override;
+        [[nodiscard]] bool shader_linked() const override;
+        void bind() const override;
+        void unbind() const override;
+
         void prime_shader(const std::string& vertex_shader_path, const std::string& fragment_shader_path);
         void link_shader();
-        void bind() const;
-        static void unbind();
 
     private:
+        std::string _shader_name;
         unsigned int _opengl_id;
         unsigned int _vertex_shader_id;
         unsigned int _fragment_shader_id;

@@ -14,6 +14,7 @@ namespace jumi
     friend class engine_core;
     friend class glfw_callback_context;
     public:
+        void init();
         void open_window();
         void close_window();
         void swap_buffers() const;
@@ -25,10 +26,10 @@ namespace jumi
         bool _window_open;
         window_info _window_info;
 
-        window_info get_initial_window_info() const;
         void window_position_callback(int xpos, int ypos);
         void window_size_callback(int width, int height);
         GLFWwindow* create_window();
+        window_info get_initial_window_info() const;
 
         window_handler();
         ~window_handler();

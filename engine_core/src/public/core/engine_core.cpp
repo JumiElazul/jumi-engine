@@ -5,6 +5,7 @@
 #include "engine_core/resources/resource_manager.h"
 #include "internal/core/glfw_callback_context.h"
 #include <glfw/glfw3.h>
+#include <memory>
 
 namespace jumi
 {
@@ -13,12 +14,18 @@ namespace jumi
         : _should_quit(false)
         , _window_handler()
         , _input_handler()
-        , _renderer(_window_handler.get_window_info())
         , _resource_manager()
+        , _renderer(_window_handler.get_window_info(), _resource_manager)
         , _glfw_callback_context(std::make_unique<glfw_callback_context>(_window_handler, _input_handler, _renderer))
         , _timers(timers::instance())
     {
         JUMI_DEBUG("Initializing engine_core...");
+        init_glfw();
+        _window_handler.init();
+        init_glad();
+        _input_handler.init();
+        _resource_manager.init();
+        _renderer.init();
 
         _glfw_callback_context->hookup_callbacks(_window_handler.window());
     }
@@ -26,6 +33,23 @@ namespace jumi
     engine_core::~engine_core()
     {
         JUMI_DEBUG("Destructing engine_core...");
+        glfwTerminate();
+    }
+
+    void engine_core::init_glfw() const
+    {
+        if (!glfwInit())
+        {
+            throw initialization_exception("GLFW could not be initialized");
+        }
+    }
+
+    void engine_core::init_glad() const
+    {
+        if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+        {
+            throw initialization_exception("GLAD could not be initialized");
+        }
     }
 
     engine_core& engine_core::instance()

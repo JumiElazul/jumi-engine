@@ -2,8 +2,10 @@
 #define JUMI_ENGINE_RESOURCES_SHADER_LIBRARY_H
 
 #include "internal/renderer/shader.h"
+#include "engine_core/renderer/i_shader.h"
+#include <memory>
 #include <string>
-#include <vector>
+#include <unordered_map>
 
 namespace jumi
 {
@@ -12,10 +14,15 @@ namespace jumi
     {
     friend class resource_manager_impl;
     public:
+        std::shared_ptr<i_shader> get_shader(const std::string& shader_name) const;
+        [[nodiscard]] const std::string& get_default_shader_name() const;
 
     private:
-        const std::string& _shader_resource_path;
-        std::vector<shader> _shaders;
+        void init();
+
+        const std::string _shader_resource_path;
+        const std::string _default_shader_name;
+        std::unordered_map<std::string, std::shared_ptr<i_shader>> _shaders;
 
         void initialize_default_shaders();
 
