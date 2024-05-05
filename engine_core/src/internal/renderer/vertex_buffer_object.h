@@ -1,7 +1,7 @@
 #ifndef JUMI_ENGINE_RENDERER_VERTEX_BUFFER_OBJECT_H
 #define JUMI_ENGINE_RENDERER_VERTEX_BUFFER_OBJECT_H
 
-#include "internal/renderer/i_opengl_resource.h"
+#include "engine_core/renderer/i_opengl_resource.h"
 #include <glad/glad.h>
 
 namespace jumi

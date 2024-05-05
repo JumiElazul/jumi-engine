@@ -1,8 +1,7 @@
 #ifndef JUMI_ENGINE_RENDERER_SHADER_H
 #define JUMI_ENGINE_RENDERER_SHADER_H
 
-#include "internal/renderer/i_opengl_resource.h"
-#include "engine_core/renderer/i_shader.h"
+#include "engine_core/renderer/i_opengl_resource.h"
 #include <string>
 
 namespace jumi
@@ -13,7 +12,7 @@ namespace jumi
         fragment,
     };
 
-    class shader : public i_opengl_resource, public i_shader
+    class shader : public i_opengl_resource
     {
     public:
         shader(const std::string& shader_name);
@@ -23,12 +22,12 @@ namespace jumi
         shader(shader&& other) noexcept;
         shader& operator=(shader&& other) noexcept;
 
-        [[nodiscard]] const std::string& name() const override;
-        [[nodiscard]] const unsigned int& opengl_id() const override;
-        [[nodiscard]] bool shader_primed() const override;
-        [[nodiscard]] bool shader_linked() const override;
-        void bind() const override;
-        void unbind() const override;
+        [[nodiscard]] const std::string& name() const;
+        [[nodiscard]] const unsigned int& opengl_id() const;
+        [[nodiscard]] bool shader_primed() const;
+        [[nodiscard]] bool shader_linked() const;
+        void bind() const;
+        void unbind() const;
 
         void prime_shader(const std::string& vertex_shader_path, const std::string& fragment_shader_path);
         void link_shader();
@@ -43,7 +42,7 @@ namespace jumi
 
         unsigned int compile_shader(const std::string& shader_source, shader_type type);
 
-        virtual void release_opengl_resource() override;
+        virtual void release_opengl_resource() ;
     };
 
 }

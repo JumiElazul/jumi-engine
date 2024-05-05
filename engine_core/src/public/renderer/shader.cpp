@@ -1,4 +1,4 @@
-#include "internal/renderer/shader.h"
+#include "engine_core/renderer/shader.h"
 #include "engine_core/core/logger.h"
 #include "engine_core/utility/utility.h"
 #include <glad/glad.h>

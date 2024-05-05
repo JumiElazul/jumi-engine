@@ -1,13 +1,13 @@
 #ifndef JUMI_ENGINE_RESOURCES_RESOURCE_MANAGER_H_
 #define JUMI_ENGINE_RESOURCES_RESOURCE_MANAGER_H_
 
-#include "engine_core/renderer/i_shader.h"
 #include <memory>
 #include <string>
 
 namespace jumi
 {
     class resource_manager_impl;
+    class shader;
 
     class resource_manager
     {
@@ -18,7 +18,7 @@ namespace jumi
         const std::string& base_resource_path() const;
         const std::string& shader_resource_path() const;
         const std::string& default_shader_name() const;
-        std::shared_ptr<i_shader> get_shader(const std::string& shader_name) const;
+        std::shared_ptr<shader> get_shader(const std::string& shader_name) const;
 
     private:
         std::unique_ptr<resource_manager_impl> _resource_manager_impl;

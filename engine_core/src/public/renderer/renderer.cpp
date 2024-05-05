@@ -5,8 +5,8 @@
 #include "engine_core/resources/resource_manager.h"
 #include "internal/renderer/vertex_array_object.h"
 #include "internal/renderer/vertex_buffer_object.h"
-#include "internal/renderer/shader.h"
-#include "engine_core/renderer/i_shader.h"
+#include "engine_core/renderer/shader.h"
+#include "engine_core/renderer/shader.h"
 #include <glfw/glfw3.h>
 #include <glad/glad.h>
 #include <memory>
@@ -92,7 +92,7 @@ namespace jumi
     {
         _test_object->bind();
         const std::string& default_shader_name = _resource_manager.default_shader_name();
-        std::shared_ptr<i_shader> default_shader = _resource_manager.get_shader(default_shader_name);
+        std::shared_ptr<shader> default_shader = _resource_manager.get_shader(default_shader_name);
         default_shader->bind();
 
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);

@@ -2,7 +2,7 @@
 #include "engine_core/core/logger.h"
 #include "engine_core/input/input_handler.h"
 #include "engine_core/renderer/renderer.h"
-#include "engine_core/renderer/i_shader.h"
+#include "engine_core/renderer/shader.h"
 #include <iostream>
 #include <memory>
 #include <string>
@@ -19,7 +19,7 @@ namespace jumi
         resource_manager& resource_manager = engine_core.get_resource_manager();
 
         const std::string& default_shader_name = resource_manager.default_shader_name();
-        std::shared_ptr<i_shader> default_shader = resource_manager.get_shader(default_shader_name);
+        std::shared_ptr<shader> default_shader = resource_manager.get_shader(default_shader_name);
 
         default_shader->bind();
 

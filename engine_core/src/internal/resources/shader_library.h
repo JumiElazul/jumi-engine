@@ -1,8 +1,8 @@
 #ifndef JUMI_ENGINE_RESOURCES_SHADER_LIBRARY_H
 #define JUMI_ENGINE_RESOURCES_SHADER_LIBRARY_H
 
-#include "internal/renderer/shader.h"
-#include "engine_core/renderer/i_shader.h"
+#include "engine_core/renderer/shader.h"
+#include "engine_core/renderer/shader.h"
 #include <memory>
 #include <string>
 #include <unordered_map>
@@ -14,7 +14,7 @@ namespace jumi
     {
     friend class resource_manager_impl;
     public:
-        std::shared_ptr<i_shader> get_shader(const std::string& shader_name) const;
+        std::shared_ptr<shader> get_shader(const std::string& shader_name) const;
         [[nodiscard]] const std::string& get_default_shader_name() const;
 
     private:
@@ -22,7 +22,7 @@ namespace jumi
 
         const std::string _shader_resource_path;
         const std::string _default_shader_name;
-        std::unordered_map<std::string, std::shared_ptr<i_shader>> _shaders;
+        std::unordered_map<std::string, std::shared_ptr<shader>> _shaders;
 
         void initialize_default_shaders();
 

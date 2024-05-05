@@ -1,4 +1,5 @@
 #include "engine_core/resources/resource_manager.h"
+#include "engine_core/renderer/shader.h"
 #include "engine_core/core/logger.h"
 #include "internal/resources/shader_library.h"
 #include <filesystem>
@@ -51,7 +52,7 @@ namespace jumi
             return _shader_library.get_default_shader_name();
         }
 
-        std::shared_ptr<i_shader> get_shader(const std::string& shader_name)
+        std::shared_ptr<shader> get_shader(const std::string& shader_name)
         {
             return _shader_library.get_shader(shader_name);
         }
@@ -106,7 +107,7 @@ namespace jumi
         return _resource_manager_impl->default_shader_name();
     }
 
-    std::shared_ptr<i_shader> resource_manager::get_shader(const std::string& shader_name) const 
+    std::shared_ptr<shader> resource_manager::get_shader(const std::string& shader_name) const 
     {
         return _resource_manager_impl->get_shader(shader_name);
     }

@@ -1,8 +1,8 @@
-project(editor_name)
-   kind "ConsoleApp"
+project(scene_manager_name)
+   kind "StaticLib"
    language "C++"
    targetdir "bin/%{cfg.buildcfg}"
-   dependson "engine_core"
+   -- dependson "engine_core"
 
    files 
    {
@@ -13,8 +13,9 @@ project(editor_name)
    includedirs 
    {
        "src",
+       "include",
        "../vcpkg_installed/%{triplet}/include",
-       "../" .. engine_core_name .. "/include",
+       -- "../" .. engine_core_name .. "/include",
    }
 
    prebuildcommands { }
@@ -26,19 +27,17 @@ project(editor_name)
       symbols "On"
       libdirs 
       {
-          "../" .. engine_core_name .. "/bin/Debug",
-          "../" .. scene_manager_name .. "/bin/Debug",
           "../vcpkg_installed/%{triplet}/debug/lib",
+          -- "../" .. engine_core_name .. "/bin/Debug",
       }
-      links { engine_core_name .. "d", scene_manager_name .. "d", "imguid" }
+      links {  }
 
       filter "configurations:Release"
       optimize "On"
       libdirs 
       {
-          "../" .. engine_core_name .. "/bin/Release",
-          "../" .. scene_manager_name .. "/bin/Release",
+          -- "../" .. engine_core_name .. "/bin/Release",
           "../vcpkg_installed/%{triplet}/lib",
       }
-      links { engine_core_name, scene_manager_name, "imgui" }
+      links {  }
 

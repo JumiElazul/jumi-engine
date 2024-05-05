@@ -1,8 +1,8 @@
 #include "internal/resources/shader_library.h"
-#include "internal/renderer/shader.h"
+#include "engine_core/renderer/shader.h"
 #include "engine_core/core/exceptions.h"
 #include "engine_core/core/logger.h"
-#include "engine_core/renderer/i_shader.h"
+#include "engine_core/renderer/shader.h"
 #include <memory>
 #include <string>
 #include <stdexcept>
@@ -24,7 +24,7 @@ namespace jumi
         JUMI_DEBUG("Destructing shader_library...");
     }
 
-    std::shared_ptr<i_shader> shader_library::get_shader(const std::string& shader_name) const
+    std::shared_ptr<shader> shader_library::get_shader(const std::string& shader_name) const
     {
         try
         {
@@ -49,7 +49,7 @@ namespace jumi
 
     void shader_library::initialize_default_shaders()
     {
-        std::shared_ptr<i_shader> default_shader = std::make_shared<shader>(_default_shader_name);
+        std::shared_ptr<shader> default_shader = std::make_shared<shader>(_default_shader_name);
         std::string default_vertex_shader_name = _shader_resource_path + "__DEFAULT_VERTEX__.vert";
         std::string default_fragment_shader_name = _shader_resource_path + "__DEFAULT_FRAGMENT__.frag";
         default_shader->prime_shader(default_vertex_shader_name, default_fragment_shader_name);
