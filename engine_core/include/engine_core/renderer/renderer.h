@@ -1,7 +1,7 @@
-#ifndef JUMI_ENGINE_RENDERER_RENDERER_H
-#define JUMI_ENGINE_RENDERER_RENDERER_H
+#ifndef JUMI_ENGINE_ENGINE_CORE_RENDERER_RENDERER_H
+#define JUMI_ENGINE_ENGINE_CORE_RENDERER_RENDERER_H
 
-#include "engine_core/math/math_types.h"
+#include "jumi_math/math/math_types.h"
 #include <glad/glad.h>
 #include <string>
 

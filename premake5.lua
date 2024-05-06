@@ -1,5 +1,5 @@
 engine_core_name = "engine_core"
-scene_manager_name = "scene_manager"
+jumi_math_name = "jumi_math"
 editor_name = "jumi_editor"
 
 workspace "jumi_engine"
@@ -23,5 +23,5 @@ workspace "jumi_engine"
    triplet = determine_triplet()
 
    include(engine_core_name .. "/premake5.lua")
-   include(scene_manager_name .. "/premake5.lua")
+   include(jumi_math_name .. "/premake5.lua")
    include(editor_name .. "/premake5.lua")

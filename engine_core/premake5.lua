@@ -2,6 +2,7 @@ project(engine_core_name)
    kind "StaticLib"
    language "C++"
    targetdir "bin/%{cfg.buildcfg}"
+   dependson(jumi_math_name)
 
    files 
    {
@@ -14,7 +15,8 @@ project(engine_core_name)
    {
        "src",
        "include",
-       "../vcpkg_installed/%{triplet}/include"
+       "../vcpkg_installed/%{triplet}/include",
+       "../" .. jumi_math_name .. "/include",
    }
 
    filter "system:windows"
@@ -27,7 +29,7 @@ project(engine_core_name)
       {
           "../vcpkg_installed/%{triplet}/debug/lib",
       }
-      links { "fmtd", "glfw3", "glad", "spdlogd", "glm" }
+      links { "fmtd", "glfw3", "glad", "spdlogd" }
 
    filter "configurations:Release"
       optimize "On"
@@ -36,4 +38,4 @@ project(engine_core_name)
       {
           "../vcpkg_installed/%{triplet}/lib" 
       }
-      links { "fmt", "glfw3", "glad", "spdlog", "glm" }
+      links { "fmt", "glfw3", "glad", "spdlog" }

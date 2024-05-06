@@ -1,8 +1,7 @@
-project(scene_manager_name)
+project(jumi_math_name)
    kind "StaticLib"
    language "C++"
    targetdir "bin/%{cfg.buildcfg}"
-   -- dependson "engine_core"
 
    files 
    {
@@ -15,7 +14,6 @@ project(scene_manager_name)
        "src",
        "include",
        "../vcpkg_installed/%{triplet}/include",
-       -- "../" .. engine_core_name .. "/include",
    }
 
    prebuildcommands { }
@@ -28,16 +26,14 @@ project(scene_manager_name)
       libdirs 
       {
           "../vcpkg_installed/%{triplet}/debug/lib",
-          -- "../" .. engine_core_name .. "/bin/Debug",
       }
-      links {  }
+      links { "glm" }
 
       filter "configurations:Release"
       optimize "On"
       libdirs 
       {
-          -- "../" .. engine_core_name .. "/bin/Release",
           "../vcpkg_installed/%{triplet}/lib",
       }
-      links {  }
+      links { "glm" }
 
