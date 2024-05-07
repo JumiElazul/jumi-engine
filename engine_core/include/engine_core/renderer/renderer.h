@@ -9,7 +9,12 @@ namespace jumi
 {
     struct window_info;
     class resource_manager;
-    class test_object;
+    class scene_object;
+
+    struct renderer_options
+    {
+        bool wireframe = false;
+    };
 
     struct opengl_version
     {
@@ -26,14 +31,14 @@ namespace jumi
         void set_clear_color(vec3 color);
         void clear_depth_buffer();
         void clear_color_buffer();
-        void render_scene();
+        void render_scene_object(const scene_object& scene_object) const;
 
     private:
+        renderer_options _renderer_options;
         opengl_version _opengl_version;
         int _viewport_width;
         int _viewport_height;
         const resource_manager& _resource_manager;
-        test_object* _test_object;
 
         void framebuffer_size_callback(int width, int height);
 

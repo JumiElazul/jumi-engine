@@ -3,9 +3,10 @@
 #include "engine_core/core/logger.h"
 #include "engine_core/structs/structs.h"
 #include "engine_core/resources/resource_manager.h"
+#include "engine_core/scene/scene_object.h"
 #include "internal/renderer/vertex_array_object.h"
 #include "internal/renderer/vertex_buffer_object.h"
-#include "engine_core/renderer/shader.h"
+#include "internal/renderer/mesh.h"
 #include "engine_core/renderer/shader.h"
 #include <glfw/glfw3.h>
 #include <glad/glad.h>
@@ -15,47 +16,13 @@
 namespace jumi
 {
 
-    class test_object
-    {
-    public:
-        test_object()
-            : _vao()
-            , _vbo()
-        {
-            _vao.bind();
-            _vbo.bind();
-
-            static float vertices[] =
-            {
-                -0.5f, -0.5f, 0.0f, // Bottom left
-                 0.5f, -0.5f, 0.0f, // Bottom right
-                -0.5f,  0.5f, 0.0f, // Top left
-                 0.5f,  0.5f, 0.0f, // Top right
-            };
-
-            _vbo.buffer_data(sizeof(vertices), vertices, GL_STATIC_DRAW);
-            _vbo.set_vertex_attributes(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-            _vbo.enable_vertex_attributes_array(0);
-        }
-
-        void bind()
-        {
-            _vao.bind();
-            _vbo.bind();
-        }
-
-    private:
-        vertex_array_object _vao;
-        vertex_buffer_object _vbo;
-    };
-
     // TODO: Decouple the renderer viewport from the window size
     renderer::renderer(const window_info& window_info, const resource_manager& resource_manager)
-        : _opengl_version{ 4, 6 }
+        : _renderer_options{ }
+        , _opengl_version{ 4, 6 }
         , _viewport_width(window_info.width)
         , _viewport_height(window_info.width)
         , _resource_manager(resource_manager)
-        , _test_object(nullptr)
     {
 
     }
@@ -63,14 +30,12 @@ namespace jumi
     renderer::~renderer()
     {
         JUMI_DEBUG("Destructing renderer...");
-        delete _test_object;
     }
 
     void renderer::init()
     {
         JUMI_DEBUG("Initializing renderer...");
         glDebugMessageCallback(opengl_debug_message_callback, 0);
-        _test_object = new test_object();
     }
 
     void renderer::set_clear_color(vec3 color)
@@ -88,14 +53,14 @@ namespace jumi
         glClear(GL_DEPTH_BUFFER_BIT);
     }
 
-    void renderer::render_scene()
+    void renderer::render_scene_object(const scene_object& scene_object) const
     {
-        _test_object->bind();
         const std::string& default_shader_name = _resource_manager.default_shader_name();
         std::shared_ptr<shader> default_shader = _resource_manager.get_shader(default_shader_name);
+        scene_object.prepare_for_render();
         default_shader->bind();
 
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+        glDrawArrays(GL_TRIANGLE_STRIP, 0, scene_object.get_mesh().vertice_count());
     }
 
     void renderer::framebuffer_size_callback(int width, int height)

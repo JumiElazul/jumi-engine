@@ -3,6 +3,7 @@
 #include "engine_core/input/input_handler.h"
 #include "engine_core/renderer/renderer.h"
 #include "engine_core/renderer/shader.h"
+#include "engine_core/scene/scene_object.h"
 #include <iostream>
 #include <memory>
 #include <string>
@@ -26,6 +27,8 @@ namespace jumi
         window.open_window();
         renderer.set_clear_color({ 1.0f, 1.0f, 1.0f });
 
+        scene_object so;
+
         while (!engine_core.should_quit())
         {
             renderer.clear_color_buffer();
@@ -36,7 +39,7 @@ namespace jumi
                 engine_core.quit();
             }
 
-            renderer.render_scene();
+            renderer.render_scene_object(so);
             window.swap_buffers();
         }
 

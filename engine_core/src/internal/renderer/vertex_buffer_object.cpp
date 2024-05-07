@@ -43,17 +43,17 @@ namespace jumi
         glBindBuffer(GL_ARRAY_BUFFER, _opengl_id);
     }
 
-    void vertex_buffer_object::buffer_data(GLsizeiptr size, const void* data, GLenum usage)
+    void vertex_buffer_object::buffer_data(GLsizeiptr size, const void* data, GLenum usage) const
     {
         glBufferData(GL_ARRAY_BUFFER, size, data, usage);
     }
 
-    void vertex_buffer_object::set_vertex_attributes(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void* pointer)
+    void vertex_buffer_object::set_vertex_attributes(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void* pointer) const
     {
         glVertexAttribPointer(index, size, type, normalized, stride, pointer);
     }
 
-    void vertex_buffer_object::enable_vertex_attributes_array(unsigned int index)
+    void vertex_buffer_object::enable_vertex_attributes_array(unsigned int index) const
     {
         glEnableVertexAttribArray(index);
     }

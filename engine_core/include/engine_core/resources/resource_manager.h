@@ -21,7 +21,7 @@ namespace jumi
         std::shared_ptr<shader> get_shader(const std::string& shader_name) const;
 
     private:
-        std::unique_ptr<resource_manager_impl> _resource_manager_impl;
+        std::unique_ptr<resource_manager_impl> _impl;
 
         resource_manager();
         ~resource_manager();

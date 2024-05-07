@@ -19,9 +19,9 @@ namespace jumi
 
         [[nodiscard]] const unsigned int& opengl_id() const;
         void bind() const;
-        void buffer_data(GLsizeiptr size, const void* data, GLenum usage);
-        void set_vertex_attributes(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void* pointer);
-        void enable_vertex_attributes_array(unsigned int index);
+        void buffer_data(GLsizeiptr size, const void* data, GLenum usage) const;
+        void set_vertex_attributes(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void* pointer) const;
+        void enable_vertex_attributes_array(unsigned int index) const;
         static void unbind();
 
     private:
