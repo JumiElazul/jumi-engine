@@ -1,5 +1,5 @@
-#include <engine_core/core/engine_core.h>
-#include <stdio.h>
+#include "engine_core/core/engine_core.h"
+#include "internal/backend.h"
 
 namespace jumi
 {
@@ -10,9 +10,14 @@ namespace jumi
         return instance;
     }
 
-    void engine_core::print(const char* str) const
+    engine_core::engine_core()
     {
-        printf("%s\n", str);
+        backend::init(window_input_api::glfw, rendering_api::open_gl);
+    }
+
+    engine_core::~engine_core()
+    {
+        backend::cleanup();
     }
 
 }

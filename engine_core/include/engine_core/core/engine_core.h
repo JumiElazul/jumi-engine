@@ -8,11 +8,10 @@ namespace jumi
     {
     public:
         static engine_core& instance();
-        void print(const char* str) const;
 
     private:
-        engine_core() = default;
-        ~engine_core() = default;
+        engine_core();
+        ~engine_core();
         engine_core(const engine_core& other) = delete;
         engine_core& operator=(const engine_core& other) = delete;
         engine_core(engine_core&& other) = delete;
