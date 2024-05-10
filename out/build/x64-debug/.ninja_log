@@ -1,0 +1,5 @@
+# ninja log v5
+7	64	7370821814007216	jumi_editor/CMakeFiles/jumi_editor.dir/src/entry_point/main.cpp.obj	1edc69294983d87b
+3	80	7370821814163434	engine_core/CMakeFiles/engine_core.dir/src/core/engine_core.cpp.obj	1e33e21b5dce28b9
+80	178	7370821814944685	engine_core/engine_core.lib	af048fc444e59586
+178	999	7370821819536624	jumi_editor/jumi_editor.exe	99f976f27f4b2b38
