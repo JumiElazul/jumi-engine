@@ -7,10 +7,12 @@ set(PUBLIC_SOURCES
 
 set(PUBLIC_HEADERS
     "include/engine_core/core/engine_core.h"
+    "include/engine_core/core/logger.h"
 )
 
 set(PRIVATE_SOURCES
     "src/internal/backend.cpp"
+    "src/internal/logger.cpp"
 )
 
 set(PRIVATE_HEADERS
