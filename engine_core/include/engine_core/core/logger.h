@@ -1,6 +1,8 @@
 #ifndef JUMI_ENGINE_ENGINE_CORE_CORE_LOGGER_H
 #define JUMI_ENGINE_ENGINE_CORE_CORE_LOGGER_H
 
+#include <string>
+
 namespace jumi
 {
 
@@ -20,6 +22,7 @@ namespace jumi
     {
     public:
         static void log(log_level level, const char* msg);
+        static void log(log_level level, const std::string& msg);
     };
 
 }

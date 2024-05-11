@@ -30,8 +30,8 @@ namespace jumi
 
     private:
         static bool s_initialized;
-        static window_input_api s_w_api;
-        static rendering_api s_r_api;
+        static window_input_api s_window_input_api;
+        static rendering_api s_renderer_api;
 
         static void init_glfw();
         static void init_open_gl();

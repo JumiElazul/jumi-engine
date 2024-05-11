@@ -25,5 +25,9 @@ target_include_directories(${target} PUBLIC "include")
 target_include_directories(${target} PRIVATE "src")
 
 find_package(magic_enum CONFIG REQUIRED)
+find_package(glfw3 CONFIG REQUIRED)
+find_package(fmt CONFIG REQUIRED)
 
 target_link_libraries(${target} PRIVATE magic_enum::magic_enum)
+target_link_libraries(${target} PRIVATE glfw)
+target_link_libraries(${target} PRIVATE fmt::fmt)
