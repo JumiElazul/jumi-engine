@@ -1,5 +1,5 @@
 #include "internal/backend.h"
-#include <iostream>
+#include "engine_core/core/logger.h"
 
 namespace jumi
 {
@@ -9,6 +9,7 @@ namespace jumi
 
     void backend::init(window_input_api w_api, rendering_api r_api)
     {
+        JUMI_INFO("Initializing backend...");
         if (s_initialized)
         {
             return;
@@ -93,42 +94,42 @@ namespace jumi
 
     void backend::init_glfw()
     {
-        std::cout << "Initializing glfw\n";
+        JUMI_INFO("Initializing glfw");
     }
 
     void backend::init_open_gl()
     {
-        std::cout << "Initializing opengl\n";
+        JUMI_INFO("Initializing opengl");
     }
 
     void backend::init_direct3d()
     {
-        std::cout << "Initializing direct3d\n";
+        JUMI_INFO("Initializing direct3d");
     }
 
     void backend::init_vulkan()
     {
-        std::cout << "Initializing vulkan\n";
+        JUMI_INFO("Initializing vulkan");
     }
 
     void backend::cleanup_glfw()
     {
-        std::cout << "Cleaning up glfw\n";
+        JUMI_INFO("Cleaning up glfw");
     }
 
     void backend::cleanup_open_gl()
     {
-        std::cout << "Cleaning up opengl\n";
+        JUMI_INFO("Cleaning up opengl");
     }
 
     void backend::cleanup_direct3d()
     {
-        std::cout << "Cleaning up direct3d\n";
+        JUMI_INFO("Cleaning up direct3d");
     }
 
     void backend::cleanup_vulkan()
     {
-        std::cout << "Cleaning up vulkan\n";
+        JUMI_INFO("Cleaning up vulkan");
     }
 
 }

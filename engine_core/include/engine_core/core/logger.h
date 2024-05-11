@@ -1,8 +1,6 @@
 #ifndef JUMI_ENGINE_ENGINE_CORE_CORE_LOGGER_H
 #define JUMI_ENGINE_ENGINE_CORE_CORE_LOGGER_H
 
-#include <memory>
-
 namespace jumi
 {
 
@@ -21,12 +19,7 @@ namespace jumi
     class logger
     {
     public:
-        template<typename... Args>
-        static void log(log_level level, Args&& args);
-
-    private:
-        class logger_impl;
-        static std::unique_ptr<logger_impl> s_impl;
+        static void log(log_level level, const char* msg);
     };
 
 }

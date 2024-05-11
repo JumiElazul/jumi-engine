@@ -24,3 +24,6 @@ add_library(${target} STATIC ${PUBLIC_SOURCES} ${PRIVATE_SOURCES} ${PUBLIC_HEADE
 target_include_directories(${target} PUBLIC "include")
 target_include_directories(${target} PRIVATE "src")
 
+find_package(magic_enum CONFIG REQUIRED)
+
+target_link_libraries(${target} PRIVATE magic_enum::magic_enum)
