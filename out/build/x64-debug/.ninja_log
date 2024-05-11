@@ -1,21 +1,9 @@
 # ninja log v5
-4	63	7371099785312489	engine_core/CMakeFiles/engine_core.dir/src/core/engine_core.cpp.obj	741c47061a94eac6
-8	65	7371099785332724	engine_core/CMakeFiles/engine_core.dir/src/internal/backend.cpp.obj	b8216f89aedaac5f
-3	64	7371102166801298	jumi_editor/CMakeFiles/jumi_editor.dir/src/entry_point/main.cpp.obj	c562d54b3e62c2d0
-14	795	7371099792619097	engine_core/CMakeFiles/engine_core.dir/src/internal/logger.cpp.obj	e67e3581ce42985f
-795	894	7371099793501619	engine_core/engine_core.lib	99cb85979db67191
-3	32	0	clean	10cefbc2b3eb0a58
-64	1042	7371102171973223	jumi_editor/jumi_editor.exe	9994ba0d172a0aa4
-2	7561	7371106583919671	build.ninja	1bece072c6f9b6a8
-2	56	7371106584749565	engine_core/CMakeFiles/engine_core.dir/src/internal/backend.cpp.obj	b8216f89aedaac5f
-6	902	7371106593204247	engine_core/CMakeFiles/engine_core.dir/src/internal/logger.cpp.obj	e67e3581ce42985f
-903	1008	7371106594192105	engine_core/engine_core.lib	99cb85979db67191
-1008	1989	7371106599432498	jumi_editor/jumi_editor.exe	cff00ec37902c75c
-7	884	7371108787917126	engine_core/CMakeFiles/engine_core.dir/src/internal/logger.cpp.obj	e67e3581ce42985f
-3	1054	7371108789620580	engine_core/CMakeFiles/engine_core.dir/src/internal/backend.cpp.obj	b8216f89aedaac5f
-1054	1171	7371108790652698	engine_core/engine_core.lib	99cb85979db67191
-1171	2131	7371108795929535	jumi_editor/jumi_editor.exe	cff00ec37902c75c
 3	58	7371112657615184	engine_core/CMakeFiles/engine_core.dir/src/core/engine_core.cpp.obj	741c47061a94eac6
 8	1090	7371112667909307	engine_core/CMakeFiles/engine_core.dir/src/internal/backend.cpp.obj	b8216f89aedaac5f
+3	64	7371102166801298	jumi_editor/CMakeFiles/jumi_editor.dir/src/entry_point/main.cpp.obj	c562d54b3e62c2d0
+7	884	7371108787917126	engine_core/CMakeFiles/engine_core.dir/src/internal/logger.cpp.obj	e67e3581ce42985f
 1090	1204	7371112668942555	engine_core/engine_core.lib	99cb85979db67191
+3	32	0	clean	10cefbc2b3eb0a58
 1204	2370	7371112675741188	jumi_editor/jumi_editor.exe	cff00ec37902c75c
+2	7561	7371546513859451	build.ninja	1bece072c6f9b6a8

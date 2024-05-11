@@ -4,6 +4,7 @@
   "dependencies": [
       "magic-enum",
       "fmt",
-      "glfw3"
+      "glfw3",
+      "spdlog"
   ]
 }
