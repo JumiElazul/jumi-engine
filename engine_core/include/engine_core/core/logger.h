@@ -3,6 +3,15 @@
 
 #include <string>
 
+#define SPDLOG_LEVEL_NAMES { "TRACE   ", "DEBUG   ", "INFO    ", "WARN    ", "ERROR   ", "CRITICAL", "OFF     " }
+#define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_TRACE
+#include <spdlog/spdlog.h>
+
+namespace spdlog
+{
+    class logger;
+}
+
 namespace jumi
 {
 
@@ -21,20 +30,26 @@ namespace jumi
     class logger
     {
     public:
-        static void log(log_level level, const char* msg);
-        static void log(log_level level, const std::string& msg);
+        static std::shared_ptr<spdlog::logger>& core_logger();
+
+    private:
+        static std::shared_ptr<spdlog::logger> s_core_logger;
+        static log_level s_log_level;
+        static void init();
+        static void setup_logger();
+        static void print_debug_log_info();
     };
 
 }
 
 #define JUMI_LOGGING_ENABLED
 #ifdef JUMI_LOGGING_ENABLED
-    #define JUMI_TRACE(...)    logger::log(log_level::trace, __VA_ARGS__)
-    #define JUMI_DEBUG(...)    logger::log(log_level::debug, __VA_ARGS__)
-    #define JUMI_INFO(...)     logger::log(log_level::info, __VA_ARGS__)
-    #define JUMI_WARN(...)     logger::log(log_level::warn, __VA_ARGS__)
-    #define JUMI_ERROR(...)    logger::log(log_level::error, __VA_ARGS__)
-    #define JUMI_CRITICAL(...) logger::log(log_level::critical, __VA_ARGS__)
+    #define JUMI_TRACE(...)    SPDLOG_LOGGER_TRACE(jumi::logger::core_logger(), __VA_ARGS__)    
+    #define JUMI_DEBUG(...)    SPDLOG_LOGGER_DEBUG(jumi::logger::core_logger(), __VA_ARGS__)    
+    #define JUMI_INFO(...)     SPDLOG_LOGGER_INFO(jumi::logger::core_logger(), __VA_ARGS__)    
+    #define JUMI_WARN(...)     SPDLOG_LOGGER_WARN(jumi::logger::core_logger(), __VA_ARGS__)    
+    #define JUMI_ERROR(...)    SPDLOG_LOGGER_ERROR(jumi::logger::core_logger(), __VA_ARGS__)    
+    #define JUMI_CRITICAL(...) SPDLOG_LOGGER_CRITICAL(jumi::logger::core_logger(), __VA_ARGS__)    
 #else
     #define JUMI_TRACE(...)
     #define JUMI_DEBUG(...)
