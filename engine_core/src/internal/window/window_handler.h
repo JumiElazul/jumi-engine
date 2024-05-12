@@ -12,6 +12,8 @@ namespace jumi
 
     class window_handler : public i_requires_init
     {
+    friend class engine_callback_context;
+    friend class engine_core;
     public:
         window_handler();
         ~window_handler();
@@ -33,6 +35,7 @@ namespace jumi
 
         void create_window();
         monitor_data collect_monitor_data();
+        GLFWwindow* get_window();
     };
 
 }

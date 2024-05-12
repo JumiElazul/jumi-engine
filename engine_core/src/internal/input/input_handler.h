@@ -10,17 +10,22 @@ namespace jumi
 
     class input_handler : public i_requires_init
     {
+    friend class engine_callback_context;
     public:
-        input_handler() = default;
-        ~input_handler() = default;
+        input_handler();
+        ~input_handler();
 
         virtual void init() override;
+        void new_frame();
+        [[nodiscard]] JUMI_KEY_STATE is_keydown(JUMI_KEY key);
+        [[nodiscard]] JUMI_KEY_STATE is_keyup(JUMI_KEY key);
+        [[nodiscard]] JUMI_KEY_STATE is_keyheld(JUMI_KEY key);
 
     private:
         std::unordered_map<JUMI_KEY, JUMI_KEY_STATE> _current_frame_key_states;
         std::unordered_map<JUMI_KEY, JUMI_KEY_STATE> _previous_frame_key_states;
 
-        void set_callbacks();
+        void key_callback(int key, int scancode, int action, int mods);
     };
 
 }

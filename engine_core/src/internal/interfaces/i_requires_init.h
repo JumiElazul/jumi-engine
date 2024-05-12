@@ -9,6 +9,7 @@ namespace jumi
     public:
         virtual ~i_requires_init() = default;
         virtual void init() = 0;
+        inline bool is_initialized() const { return _initialized; }
 
     protected:
         bool _initialized = false;

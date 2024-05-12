@@ -7,6 +7,7 @@ namespace jumi
 {
     class window_handler;
     class input_handler;
+    class engine_callback_context;
 
     class engine_core
     {
@@ -17,6 +18,7 @@ namespace jumi
     private:
         std::unique_ptr<window_handler> _window_handler;
         std::unique_ptr<input_handler> _input_handler;
+        std::unique_ptr<engine_callback_context> _callback_context;
 
         engine_core();
         ~engine_core();

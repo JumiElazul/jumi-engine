@@ -8,6 +8,10 @@ using JUMI_GAMEPAD_BUTTON = int;
 using JUMI_MOD = int;
 using JUMI_KEY_STATE = bool;
 
+#define JUMI_RELEASE                                    0
+#define JUMI_PRESS                                      1
+#define JUMI_REPEAT                                     2
+
 #define JUMI_KEY_SPACE                                  32
 #define JUMI_KEY_APOSTROPHE                             39 
 #define JUMI_KEY_COMMA                                  44

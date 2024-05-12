@@ -1,5 +1,6 @@
 #include "internal/window/window_handler.h"
 #include "engine_core/core/exceptions.h"
+#include "engine_core/core/logger.h"
 #include <GLFW/glfw3.h>
 
 namespace jumi
@@ -11,10 +12,12 @@ namespace jumi
         , _primary_monitor_data()
         , _window_data()
     {
+        JUMI_INFO("Constructing window_handler...");
     }
 
     window_handler::~window_handler()
     {
+        JUMI_INFO("Destructing window_handler...");
         if (_window)
         {
             glfwDestroyWindow(_window);
@@ -23,6 +26,7 @@ namespace jumi
 
     void window_handler::init()
     {
+        JUMI_INFO("Initializing window_handler...");
         // This needs to be done in the init() method because it requires glfw to be initialized
         _primary_monitor_data = collect_monitor_data();
 
@@ -111,6 +115,7 @@ namespace jumi
 
     const window_data& window_handler::get_window_data()           const { return _window_data; }
     const monitor_data& window_handler::get_primary_monitor_data() const { return _primary_monitor_data; }
+    GLFWwindow* window_handler::get_window()                             { return _window; }
     bool window_handler::should_close()                            const { return _should_close; }
 
 }

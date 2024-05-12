@@ -14,6 +14,7 @@ set(PUBLIC_HEADERS
 
 set(PRIVATE_SOURCES
     "src/internal/core/backend.cpp"
+    "src/internal/core/engine_callback_context.cpp"
     "src/internal/core/logger.cpp"
 
     "src/internal/input/input_handler.cpp"
@@ -23,6 +24,7 @@ set(PRIVATE_SOURCES
 
 set(PRIVATE_HEADERS
     "src/internal/core/backend.h"
+    "src/internal/core/engine_callback_context.h"
 
     "src/internal/input/input_handler.h"
 
