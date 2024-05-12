@@ -8,18 +8,32 @@ set(PUBLIC_SOURCES
 set(PUBLIC_HEADERS
     "include/engine_core/core/engine_core.h"
     "include/engine_core/core/logger.h"
+    "include/engine_core/core/structs.h"
+    "include/engine_core/core/exceptions.h"
 )
 
 set(PRIVATE_SOURCES
-    "src/internal/backend.cpp"
-    "src/internal/logger.cpp"
+    "src/internal/core/backend.cpp"
+    "src/internal/core/logger.cpp"
+
+    "src/internal/input/input_handler.cpp"
+
+    "src/internal/window/window_handler.cpp"
 )
 
 set(PRIVATE_HEADERS
-    "src/internal/backend.h"
+    "src/internal/core/backend.h"
+
+    "src/internal/input/input_handler.h"
+
+    "src/internal/window/window_handler.h"
+
+    "src/internal/interfaces/i_requires_init.h"
 )
 
 add_library(${target} STATIC ${PUBLIC_SOURCES} ${PRIVATE_SOURCES} ${PUBLIC_HEADERS} ${PRIVATE_HEADERS})
+
+target_compile_definitions(${target} PRIVATE GLFW_INCLUDE_NONE)
 
 target_include_directories(${target} PUBLIC "include")
 target_include_directories(${target} PRIVATE "src")

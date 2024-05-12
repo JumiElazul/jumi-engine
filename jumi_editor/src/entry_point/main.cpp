@@ -7,7 +7,7 @@ namespace jumi
     int entry_point(int argc, char** argv)
     {
         engine_core& core = engine_core::instance();
-        JUMI_TRACE("Entry point...");
+        core.run();
 
         return 0;
     }

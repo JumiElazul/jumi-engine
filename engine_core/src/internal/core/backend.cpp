@@ -1,7 +1,6 @@
-#include "internal/backend.h"
+#include "internal/core/backend.h"
 #include "engine_core/core/logger.h"
 #include <magic_enum.hpp>
-#include <fmt/format.h>
 #include <glfw/glfw3.h>
 
 namespace jumi
@@ -17,9 +16,7 @@ namespace jumi
             return;
         }
 
-        // TODO: Get a proper logging library with format strings
-        std::string init_message = fmt::format("Initializing backend with window_input_api {} and rendering_api {}...", magic_enum::enum_name(w_api), magic_enum::enum_name(r_api));
-        JUMI_INFO(init_message);
+        JUMI_INFO("Initializing backend with window_input_api {} and rendering_api {}...", magic_enum::enum_name(w_api), magic_enum::enum_name(r_api));
 
         s_window_input_api = w_api;
         s_renderer_api = r_api;
@@ -112,21 +109,6 @@ namespace jumi
         }
     }
 
-    void backend::init_open_gl()
-    {
-        JUMI_INFO("Initializing opengl");
-    }
-
-    void backend::init_direct3d()
-    {
-        JUMI_INFO("Initializing direct3d");
-    }
-
-    void backend::init_vulkan()
-    {
-        JUMI_INFO("Initializing vulkan");
-    }
-
     void backend::cleanup_glfw()
     {
         JUMI_INFO("Cleaning up glfw");
@@ -134,19 +116,34 @@ namespace jumi
         glfwTerminate();
     }
 
+    void backend::init_open_gl()
+    {
+        JUMI_INFO("Initializing opengl");
+    }
+
     void backend::cleanup_open_gl()
     {
         JUMI_INFO("Cleaning up opengl");
     }
 
+    void backend::init_direct3d()
+    {
+
+    }
+
+    void backend::init_vulkan()
+    {
+
+    }
+
     void backend::cleanup_direct3d()
     {
-        JUMI_INFO("Cleaning up direct3d");
+
     }
 
     void backend::cleanup_vulkan()
     {
-        JUMI_INFO("Cleaning up vulkan");
+
     }
 
 }
