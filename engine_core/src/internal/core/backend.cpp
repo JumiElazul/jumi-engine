@@ -30,62 +30,7 @@ namespace jumi
             }
         }
 
-        switch (r_api)
-        {
-            case rendering_api::open_gl:
-            {
-                init_open_gl();
-                break;
-            }
-            case rendering_api::direct3d:
-            {
-                init_direct3d();
-                break;
-            }
-            case rendering_api::vulkan:
-            {
-                init_vulkan();
-                break;
-            }
-        }
-
         s_initialized = true;
-    }
-
-    void backend::cleanup()
-    {
-        if (!s_initialized)
-        {
-            return;
-        }
-
-        switch (s_window_input_api)
-        {
-            case window_input_api::glfw:
-            {
-                cleanup_glfw();
-                break;
-            }
-        }
-
-        switch (s_renderer_api)
-        {
-            case rendering_api::open_gl:
-            {
-                cleanup_open_gl();
-                break;
-            }
-            case rendering_api::direct3d:
-            {
-                cleanup_direct3d();
-                break;
-            }
-            case rendering_api::vulkan:
-            {
-                cleanup_vulkan();
-                break;
-            }
-        }
     }
 
     window_input_api backend::get_window_input_api()
@@ -98,52 +43,34 @@ namespace jumi
         return s_renderer_api;
     }
 
+    void backend::cleanup()
+    {
+        switch (s_window_input_api)
+        {
+            case window_input_api::glfw:
+            {
+                glfwTerminate();
+                break;
+            }
+        }
+    }
+
     void backend::init_glfw()
     {
-        JUMI_INFO("Initializing glfw");
+        JUMI_INFO("Initializing glfw...");
 
         if (!glfwInit())
         {
-            JUMI_CRITICAL("Failed to initialize glfw");
+            JUMI_CRITICAL("Failed to initialize glfw...");
             return;
         }
+        JUMI_INFO("glfw Initialized!");
     }
 
     void backend::cleanup_glfw()
     {
-        JUMI_INFO("Cleaning up glfw");
-
+        JUMI_INFO("Cleaning up glfw...");
         glfwTerminate();
-    }
-
-    void backend::init_open_gl()
-    {
-        JUMI_INFO("Initializing opengl");
-    }
-
-    void backend::cleanup_open_gl()
-    {
-        JUMI_INFO("Cleaning up opengl");
-    }
-
-    void backend::init_direct3d()
-    {
-
-    }
-
-    void backend::init_vulkan()
-    {
-
-    }
-
-    void backend::cleanup_direct3d()
-    {
-
-    }
-
-    void backend::cleanup_vulkan()
-    {
-
     }
 
 }

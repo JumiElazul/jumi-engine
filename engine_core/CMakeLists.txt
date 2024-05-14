@@ -19,6 +19,10 @@ set(PRIVATE_SOURCES
 
     "src/internal/input/input_handler.cpp"
 
+    "src/internal/math/math_types.cpp"
+
+    "src/internal/renderer/opengl_renderer.cpp"
+
     "src/internal/window/window_handler.cpp"
 )
 
@@ -28,9 +32,14 @@ set(PRIVATE_HEADERS
 
     "src/internal/input/input_handler.h"
 
-    "src/internal/window/window_handler.h"
-
     "src/internal/interfaces/i_requires_init.h"
+    "src/internal/interfaces/i_renderer.h"
+
+    "src/internal/math/math_types.h"
+
+    "src/internal/renderer/opengl_renderer.h"
+
+    "src/internal/window/window_handler.h"
 )
 
 add_library(${target} STATIC ${PUBLIC_SOURCES} ${PRIVATE_SOURCES} ${PUBLIC_HEADERS} ${PRIVATE_HEADERS})
@@ -44,8 +53,12 @@ find_package(magic_enum CONFIG REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
 find_package(fmt CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
+find_package(glad CONFIG REQUIRED)
+find_package(glm CONFIG REQUIRED)
 
 target_link_libraries(${target} PRIVATE magic_enum::magic_enum)
 target_link_libraries(${target} PRIVATE glfw)
 target_link_libraries(${target} PRIVATE fmt::fmt)
 target_link_libraries(${target} PRIVATE spdlog::spdlog)
+target_link_libraries(${target} PRIVATE glad::glad)
+target_link_libraries(${target} PRIVATE glm::glm)

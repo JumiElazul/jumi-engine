@@ -96,6 +96,8 @@ namespace jumi
         {
             throw jexcept::initialization_exception("Failed to create window");
         }
+
+        glfwMakeContextCurrent(_window);
     }
 
     monitor_data window_handler::collect_monitor_data()

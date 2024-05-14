@@ -24,9 +24,9 @@ namespace jumi
     {
     public:
         static void init(window_input_api w_api, rendering_api r_api);
-        static void cleanup();
         static window_input_api get_window_input_api();
         static rendering_api get_rendering_api();
+        static void cleanup();
 
     private:
         static bool s_initialized;
@@ -34,13 +34,7 @@ namespace jumi
         static rendering_api s_renderer_api;
 
         static void init_glfw();
-        static void init_open_gl();
-        static void init_direct3d();
-        static void init_vulkan();
         static void cleanup_glfw();
-        static void cleanup_open_gl();
-        static void cleanup_direct3d();
-        static void cleanup_vulkan();
     };
 
 }

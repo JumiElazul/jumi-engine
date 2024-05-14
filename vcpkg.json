@@ -5,6 +5,8 @@
       "magic-enum",
       "fmt",
       "glfw3",
-      "spdlog"
+      "spdlog",
+      "glad",
+      "glm"
   ]
 }
