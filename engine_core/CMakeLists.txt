@@ -3,42 +3,37 @@ project(${target})
 
 set(PUBLIC_SOURCES
     "src/core/engine_core.cpp"
+    "src/events/event_bus.cpp"
+    "src/events/event_types.cpp"
 )
 
 set(PUBLIC_HEADERS
     "include/engine_core/core/engine_core.h"
+    "include/engine_core/core/exceptions.h"
     "include/engine_core/core/logger.h"
     "include/engine_core/core/structs.h"
-    "include/engine_core/core/exceptions.h"
+    "include/engine_core/events/event_bus.h"
+    "include/engine_core/events/event_types.h"
 )
 
 set(PRIVATE_SOURCES
     "src/internal/core/backend.cpp"
     "src/internal/core/engine_callback_context.cpp"
     "src/internal/core/logger.cpp"
-
     "src/internal/input/input_handler.cpp"
-
     "src/internal/math/math_types.cpp"
-
     "src/internal/renderer/opengl_renderer.cpp"
-
     "src/internal/window/window_handler.cpp"
 )
 
 set(PRIVATE_HEADERS
     "src/internal/core/backend.h"
     "src/internal/core/engine_callback_context.h"
-
     "src/internal/input/input_handler.h"
-
     "src/internal/interfaces/i_requires_init.h"
     "src/internal/interfaces/i_renderer.h"
-
     "src/internal/math/math_types.h"
-
     "src/internal/renderer/opengl_renderer.h"
-
     "src/internal/window/window_handler.h"
 )
 

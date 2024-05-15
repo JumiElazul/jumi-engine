@@ -1,5 +1,6 @@
 #include "engine_core/core/engine_core.h"
 #include "engine_core/core/logger.h"
+#include "engine_core/core/event_bus.h"
 #include "internal/core/backend.h"
 #include "internal/core/engine_callback_context.h"
 #include "internal/window/window_handler.h"
@@ -48,10 +49,11 @@ namespace jumi
         // Main loop
         while (!_window_handler->should_close())
         {
-            _renderer->clear_color_buffer();
             // Clear the color and depth buffers
+            _renderer->clear_color_buffer();
 
             // Poll events
+            event_bus::poll_events();
 
             // Update the window
 

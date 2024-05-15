@@ -62,13 +62,6 @@ namespace jumi
         if (_initialized)
         {
             glfwSwapBuffers(_window);
-
-            glfwPollEvents();
-
-            if (glfwGetKey(_window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-            {
-                close_window(true);
-            }
         }
     }
 
