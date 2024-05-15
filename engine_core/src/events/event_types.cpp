@@ -7,4 +7,9 @@ namespace jumi
     JUMI_KEY key_event::get_key() const { return _key; }
     int key_event::get_state() const { return _state; }
 
+    window_resize_event::window_resize_event(int width, int height) : _width(width) , _height(height) { }
+    int window_resize_event::get_width() const { return _width; }
+    int window_resize_event::get_height() const { return _height; }
+
+
 }

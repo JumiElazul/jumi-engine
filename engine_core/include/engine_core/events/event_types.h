@@ -24,6 +24,18 @@ namespace jumi
         int _state;
     };
 
+    class window_resize_event : public event
+    {
+    public:
+        window_resize_event(int width, int height);
+        int get_width() const;
+        int get_height() const;
+
+    private:
+        int _width;
+        int _height;
+    };
+
 }
 
 #endif
