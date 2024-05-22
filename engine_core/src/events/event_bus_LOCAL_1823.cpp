@@ -18,11 +18,7 @@ namespace jumi
         _event_func(event);
     }
 
-<<<<<<< HEAD
     std::uint32_t event_function::id() const
-=======
-    int event_function::id() const
->>>>>>> 1c4900fbccbc39354a838ff5b475e68d0f00ef97
     {
         return _id;
     }
@@ -66,40 +62,16 @@ namespace jumi
         while (!_event_queue.empty())
         {
             std::unique_ptr<event> event_ptr = std::move(_event_queue.front());
-            const char* event_descriptor = event_ptr->type();
-            event_listeners& listeners = _event_listener_map[event_descriptor];
+            const std::type_index event_type = typeid(*event_ptr);
+            const event_listeners& listeners = _event_listener_map[event_type];
 
-            for (event_function& listener_func : listeners)
+            for (const std::function<void(const event&)>& func : listeners)
             {
-                listener_func(*event_ptr);
+                func(*event_ptr);
             }
 
             _event_queue.pop();
         }
-    }
-
-    std::uint32_t event_bus::register_to_event(const char* event_description, const std::function<void(const event&)>& callback)
-    {
-        event_listeners& listeners = _event_listener_map[event_description];
-        listeners.emplace_back(callback);
-        return listeners.at(listeners.size() - 1).id();
-    }
-
-    bool event_bus::deregister_from_event(const char* event_description, std::uint32_t id)
-    {
-        event_listeners& listeners = _event_listener_map[event_description];
-
-        auto it = std::remove_if(listeners.begin(), listeners.end(), [&](const event_function& func) {
-            return func.id() == id;
-        });
-
-        if (it != listeners.end())
-        {
-            listeners.erase(it, listeners.end());
-            return true;
-        }
-
-        return false;
     }
 
 }
