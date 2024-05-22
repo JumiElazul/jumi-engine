@@ -5,7 +5,6 @@
 #include <functional>
 #include <memory>
 #include <queue>
-#include <typeindex>
 #include <unordered_map>
 #include <vector>
 
@@ -18,15 +17,16 @@ namespace jumi
     public:
         event_function(const std::function<void(const event&)>& event_func);
         void operator()(const event& event);
+        std::uint32_t id() const;
 
     private:
-        int _id;
+        std::uint32_t _id;
         std::function<void(const event&)> _event_func;
 
         int assign_id();
     };
 
-    using event_listeners = std::vector<std::function<void(const event&)>>;
+    using event_listeners = std::vector<event_function>;
 
     class event_bus
     {
@@ -36,6 +36,8 @@ namespace jumi
 
         void push_event(std::unique_ptr<event> event_ptr);
         void dispatch_events();
+        std::uint32_t register_to_event(const char* event_description, const std::function<void(const event&)>& callback);
+        bool deregister_from_event(const char* event_description, std::uint32_t id);
 
     private:
         event_bus();
@@ -46,7 +48,7 @@ namespace jumi
         event_bus& operator=(event_bus&&) = delete;
 
         std::queue<std::unique_ptr<event>> _event_queue;
-        std::unordered_map<std::type_index, event_listeners> _event_listener_map;
+        std::unordered_map<const char*, event_listeners> _event_listener_map;
     };
 
 }

@@ -1,6 +1,6 @@
 #include "engine_core/core/engine_core.h"
 #include "engine_core/core/logger.h"
-#include "engine_core/core/event_bus.h"
+#include "engine_core/events/event_bus.h"
 #include "internal/core/backend.h"
 #include "internal/core/engine_callback_context.h"
 #include "internal/window/window_handler.h"
