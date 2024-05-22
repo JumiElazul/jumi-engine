@@ -18,11 +18,7 @@ namespace jumi
         _event_func(event);
     }
 
-<<<<<<< HEAD
     std::uint32_t event_function::id() const
-=======
-    int event_function::id() const
->>>>>>> 1c4900fbccbc39354a838ff5b475e68d0f00ef97
     {
         return _id;
     }
