@@ -45,15 +45,26 @@ namespace jumi
 
     void engine_core::run()
     {
+        event_bus& event_bus = event_bus::instance();
+
         _renderer->set_clear_color({ 1.0f, 0.0f, 0.0f });
         // Main loop
         while (!_window_handler->should_close())
         {
             // Clear the color and depth buffers
             _renderer->clear_color_buffer();
+            
+            // Move the input data from the last frame into the last frame keymap
+            _input_handler->new_frame();
 
             // Poll events
-            event_bus::poll_events();
+            event_bus.poll_events();
+            event_bus.dispatch_events();
+
+            if (_input_handler->is_keydown(JUMI_KEY_ESCAPE))
+            {
+                _window_handler->close_window(true);
+            }
 
             // Update the window
 

@@ -32,8 +32,8 @@ namespace jumi
     {
     public:
         static event_bus& instance();
-        static void poll_events();
 
+        void poll_events();
         void push_event(std::unique_ptr<event> event_ptr);
         void dispatch_events();
         std::uint32_t register_to_event(const char* event_description, const std::function<void(const event&)>& callback);
