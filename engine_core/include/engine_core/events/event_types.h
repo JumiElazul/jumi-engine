@@ -3,6 +3,12 @@
 
 #include "engine_core/input/keycodes.h"
 
+#define EVENT_FUNCTIONS(name)                                                   \
+public:                                                                         \
+    virtual inline const char* type() const override { return _descriptor; }    \
+private:                                                                        \
+    static constexpr const char* _descriptor = #name
+
 namespace jumi
 {
 
@@ -10,10 +16,12 @@ namespace jumi
     {
     public:
         virtual ~event() = default;
+        virtual const char* type() const = 0;
     };
 
     class key_event : public event
     {
+    EVENT_FUNCTIONS(key_event);
     public:
         key_event(JUMI_KEY key, int state);
         JUMI_KEY get_key() const;
@@ -26,6 +34,7 @@ namespace jumi
 
     class window_resize_event : public event
     {
+    EVENT_FUNCTIONS(window_resize_event);
     public:
         window_resize_event(int width, int height);
         int get_width() const;
